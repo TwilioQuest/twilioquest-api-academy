@@ -1,6 +1,6 @@
 {
-  "title": "Destination Template",
-  "description": "This is an example of how to create a destination in the nav map aboard the Fog Owl!",
+  "title": "API Academy",
+  "description": "The API Academy!",
   "questTitle": "A New World",
   "questDescription": "This level will show in the nav map! Neat, huh?",
   "navMap": {
