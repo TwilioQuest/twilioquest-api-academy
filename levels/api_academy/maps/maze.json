@@ -176,10 +176,16 @@
          "name":"Objects",
          "objects":[
                 {
-                 "gid":11039,
+                 "gid":11040,
                  "height":24,
                  "id":145,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"objectiveName",
+                         "type":"string",
+                         "value":"neumann_initiation"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -188,10 +194,16 @@
                  "y":216
                 }, 
                 {
-                 "gid":11035,
+                 "gid":11036,
                  "height":24,
                  "id":146,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"objectiveName",
+                         "type":"string",
+                         "value":"turing_initiation"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -200,10 +212,16 @@
                  "y":1080
                 }, 
                 {
-                 "gid":11036,
+                 "gid":11037,
                  "height":24,
                  "id":148,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"objectiveName",
+                         "type":"string",
+                         "value":"lovelace_initiation"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -212,10 +230,21 @@
                  "y":792
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":149,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"neumann_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -224,10 +253,21 @@
                  "y":156
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":150,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"neumann_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -236,10 +276,21 @@
                  "y":156
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":151,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"neumann_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -248,10 +299,21 @@
                  "y":300
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":152,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"neumann_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -260,10 +322,21 @@
                  "y":300
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":153,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"lovelace_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -272,10 +345,21 @@
                  "y":732
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":154,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"lovelace_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -284,10 +368,21 @@
                  "y":732
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":157,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"lovelace_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -296,10 +391,21 @@
                  "y":876
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":158,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"lovelace_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -308,10 +414,21 @@
                  "y":876
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":163,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"turing_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -320,10 +437,21 @@
                  "y":1020
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":164,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"turing_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -332,10 +460,21 @@
                  "y":1020
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":165,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"turing_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -344,10 +483,21 @@
                  "y":1164
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":166,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"turing_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -356,10 +506,16 @@
                  "y":1164
                 }, 
                 {
-                 "gid":11033,
+                 "gid":11034,
                  "height":24,
                  "id":168,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"objectiveName",
+                         "type":"string",
+                         "value":"hopper_initiation"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -368,10 +524,21 @@
                  "y":384
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":169,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"hopper_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -380,10 +547,21 @@
                  "y":324
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":170,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"hopper_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -392,10 +570,21 @@
                  "y":324
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":171,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"hopper_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -404,10 +593,21 @@
                  "y":468
                 }, 
                 {
-                 "gid":11045,
+                 "gid":11046,
                  "height":26,
                  "id":172,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"hopper_initiation_flame"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -605,14 +805,14 @@
         }, 
         {
          "firstgid":11017,
-         "source":"..\/..\/..\/tilesets\/MyCustomObjects.json"
+         "source":"..\/..\/..\/tilesets\/ApiAcademyObjects.json"
         }, 
         {
-         "firstgid":11019,
+         "firstgid":11020,
          "source":"..\/..\/..\/..\/.bundled\/tilesets\/TwilioQuestNPCs.json"
         }, 
         {
-         "firstgid":11031,
+         "firstgid":11032,
          "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/TwilioQuestObjects.json"
         }],
  "tilewidth":24,
