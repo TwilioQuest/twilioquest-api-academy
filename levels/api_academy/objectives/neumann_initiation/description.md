@@ -1,7 +1,7 @@
-# Git Started
+# RESTful APIs
 
-Many open source projects (and many software companies) use [git](https://git-scm.com/) for [version control](https://en.wikipedia.org/wiki/Version_control) and collaboration. [GitHub](https://www.github.com/) is a popular platform that many open source projects use to host their [git repositories](https://git-scm.com/book/en/v1/Git-Basics-Getting-a-Git-Repository).
+The challenge before you is to unlock four **chests of knowledge**, one for each of the student houses at the API Academy. This chest is sponsored by **House von Neumann**, named for polymath and computer scientist [John von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann). To bypass the locking mechanism, you must answer a few questions related to RESTful APIs. Answer the questions on the right, and then click *HACK*.
 
-The challenges to follow will take you through contributing to an open source project hosted on GitHub. The first step on that journey is [creating a free GitHub account](https://github.com/join).
+## Learning about APIs
 
-Once you've made your free GitHub account, __enter the username you chose__ into the field on the right and press *HACK*.
+The challenges in the API Academy are based on [this incredible API introduction course](https://www.youtube.com/watch?v=GZvSYJDk-us) by your Fog Owl crewmate **Craig Dennis**. Click the *Show Help* button below to see an embedded portion of the video relevant to these questions.

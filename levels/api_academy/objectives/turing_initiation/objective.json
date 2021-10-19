@@ -1,17 +1,22 @@
 {
-  "title": "Turing Initiation",
-  "description": "<strong>Create a GitHub account</strong> to contribute to open source projects that use GitHub to host their source code.",
-  "show_ide": false,
+  "title": "API Academy Admission: Defining an API",
+  "description": "To unlock the chest of knowledge for <strong>House Turing</strong>, you must first define an API.",
+  "show_ide": true,
   "validation_fields": [
     {
-      "name": "username",
+      "name": "answer1",
       "type": "text",
-      "placeholder": "e.g. samantha_smith99",
-      "label": "Enter your GitHub username here."
+      "placeholder": "",
+      "label": "Fill in the blank - \"API\" stands for \"Application Programming &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;\"."
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Look at the code in the JavaScript code editor (click 'Show Code Editor' above). What is the name of the string function that provides an API for converting the contents of the string to all caps?"
     }
   ],
   "rewards": {
-    "xp": 100,
-    "items": ["octocat_ears"]
+    "xp": 200
   }
 }
