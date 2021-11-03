@@ -12,5 +12,10 @@
   "priority": 3,
   "backgroundMusic": "fascinatingarea_108253b",
   "flavorTextOverrides": {},
-  "objectives": []
+  "objectives": [
+    "hopper_initiation",
+    "lovelace_initiation",
+    "neumann_initiation",
+    "turing_initiation"
+  ]
 }
