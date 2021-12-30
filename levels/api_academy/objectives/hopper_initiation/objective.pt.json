@@ -1,0 +1,22 @@
+{
+  "title": "Admissão da Academia da API: APIs remotas",
+  "description": "Para desbloquear o baú do conhecimento da <strong>Casa Hopper</strong>, você deve entender que algumas APIs são <strong>remotas</strong>, sendo executadas em outro computador.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "O código e os recursos computacionais necessários para atender a uma chamada de API devem estar fisicamente localizados no computador onde a API é chamada."
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Qual sigla de quatro letras descreve um tipo de API remota que se tornou uma maneira padrão de quais APIs remotas são expostas aos desenvolvedores?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

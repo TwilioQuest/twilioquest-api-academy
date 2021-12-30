@@ -1,0 +1,21 @@
+{
+  "title": "Academia da API",
+  "description": "A prestigiada Academia de Artes da API de Arcane é a principal instituição de ensino superior na Nuvem. Aqui, os alunos aprendem a controlar os encantamentos mágicos que são as APIs. Visite a escola e veja se você tem o que é preciso para ingressar na Academia!",
+  "questTitle": "Entrar na Academia",
+  "questDescription": "Vá até a Academia e prove que você tem o que é necessário para participar!",
+  "navMap": {
+    "x": 70,
+    "y": 45,
+    "sprite": "nav_map/example_planet.png"
+  },
+  "is_mission": false,
+  "priority": 3,
+  "backgroundMusic": "fascinatingarea_108253b",
+  "flavorTextOverrides": {},
+  "objectives": [
+    "hopper_initiation",
+    "lovelace_initiation",
+    "neumann_initiation",
+    "turing_initiation"
+  ]
+}

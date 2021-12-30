@@ -1,0 +1,22 @@
+{
+  "title": "Admissão da Academia da API: Como a Web funciona",
+  "description": "Para desbloquear o baú do conhecimento para a <strong>Casa Lovelace</strong>, você deve aprender alguns princípios básicos sobre a rede mundial.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Qual sigla de quatro letras descreve o protocolo mais comum usado por clientes da Web (como seu navegador) e servidores da Web para transferir dados na Web, como HTML ou imagens?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Às vezes, um computador cliente precisa enviar informações adicionais quando solicita uma página da Web ou outro recurso de um servidor (como o estado que precisa persistir nas solicitações, como \"cookies\"). Como são chamadas essas informações extras?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

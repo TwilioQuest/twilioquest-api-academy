@@ -1,0 +1,22 @@
+{
+  "title": "Admissão na Academia da API: APIs RESTful",
+  "description": "Para desbloquear o baú de conhecimento para a <strong>Casa von Neumann</strong>, você deve aprender sobre APIs RESTful.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Qual é o nome abstrato de um bloco de dados que pode ser endereçado por um URI e potencialmente transferido usando uma API RESTful?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Qual método/verbo HTTP é mais comumente usado para criar novos dados em um servidor em uma API RESTful?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

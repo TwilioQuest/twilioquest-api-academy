@@ -1,0 +1,22 @@
+{
+  "title": "Admissão da Academia da API: Definir uma API",
+  "description": "Para desbloquear o baú do conhecimento para a <strong>Casa Turing</strong>, você deve primeiro definir uma API.",
+  "show_ide": true,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Preencha o espaço - \"API\" significa \"Programação de Aplicativo &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;\"."
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Observe o código no editor de código JavaScript (clique em 'Show Code Editor' (Mostrar editor de código) acima). Qual é o nome da função de string que fornece uma API para converter o conteúdo da string em tudo maiúsculo?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
