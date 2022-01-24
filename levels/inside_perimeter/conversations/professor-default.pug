@@ -1,0 +1,147 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+  let allComplete = false;
+  if (
+    worldState.initiation && 
+    worldState.initiation.lastShownHouseNotification &&
+    worldState.initiation.lastShownHouseNotification === 4
+  ) {
+    allComplete = true;
+  }
+
+mixin personal_intro
+  response#personal_intro.
+    Could you remind me who you are, and what you do here?
+
+mixin exposition
+  response#exposition.
+    What is the purpose of the Academy?
+
+mixin get_started
+  response#get_started.
+    How can I gain entrance to the Academy?
+
+conversation(display_name="Admissions Director Heapsort")
+  case lastResponse
+    when "personal_intro"
+      statement#personal_intro
+      responses
+        +get_started
+        +exposition
+
+    when "exposition"
+      statement#exposition
+      responses
+        +get_started
+        +personal_intro
+
+    when "ack"
+      statement#ack
+      responses
+        +exposition
+        +personal_intro
+
+    when "get_started"
+      statement#get_started
+      responses
+        if allComplete
+          +exposition
+          +personal_intro
+        else
+          response#ack.
+            Understood. I will report back when I have found all the chests.
+
+    default
+      if !worldState.heapsortInitialGreeting
+        - worldState.heapsortInitialGreeting = true;
+        statement#default
+        responses
+          response#personal_intro.
+            I am very interested in joining the Academy, but perhaps a round of 
+            introductions are in order?
+          +exposition
+          +get_started
+
+      else if allComplete
+        statement#thanks
+        responses
+          +exposition
+          +personal_intro
+
+      else
+        statement#follow_up_greeting
+        responses
+          +get_started
+          +exposition
+          +personal_intro
+
+  statements
+    statement#default
+      text.
+        Oh, well now, an Operator! May I presume that you're here to apply for
+        admission to the Academy? <br/><br/>
+        I do hope so - we haven't had many Operators 
+        study here at the Arcane Academy of API Arts, but each one has been 
+        a model student.
+
+    statement#follow_up_greeting
+      text.
+        Operator, hello again! Are you excited to begin your academic exploits 
+        at the Academy?
+
+    statement#thanks
+      text.
+        Well done! You've completed the admissions exercises required to join
+        the Academy. Unfortunately, we are not quite prepared to have midterm 
+        students enter the Academy just yet. 
+        <a href="https://www.twilio.com/quest#email">Please register here</a>
+        to receive an official admission letter when the time comes to begin 
+        your studies.<br/></br/>
+        <i>[You suspect that the developers of TwilioQuest need more time to 
+        complete the rest of the Academy, and resolve to check back later.]</i>
+
+    statement#get_started
+      if allComplete
+        text.
+          At this point, you've proven that you're ready to enter the Academy.
+          Now, we just have to wait until midterm students are granted access 
+          to the Academy. <a href="https://www.twilio.com/quest#email">Please register here</a>
+          to receive an official admissions letter when the time comes to
+          enter the Academy!
+      else
+        text.
+          All prospective students are required to master the basic tenets of 
+          API usage prior to joining the Academy. In the forest to the south,
+          you will find <span class="highlight">four treasure chests</span>.
+          Open each one to light one of the braziers behind me.<br/><br/>
+          Once all four braziers are lit, you will have proved yourself worthy 
+          to enter the Arcane Academy of API Arts! 
+
+    statement#ack
+      text.
+        I wish you luck in your search. Each chest is located in a small monument
+        to each of the Academy's four student houses - Lovelace, Turing, 
+        von Neumann, and Hopper. Look for 
+        <span class="highlight">stone structures bearing the colors</span> of 
+        each house.
+
+    statement#exposition
+      text.
+        APIs are the fundamental building blocks of programming. Most of the
+        code you write will invoke code written by someone else, so mastering 
+        these concepts are of utmost importance.<br/><br/>
+        Also, learning to use APIs over the Internet, via HTTP, is an incredible 
+        boost in power for your code. Teaching our students to unlock this power 
+        is the primary purpose of the Academy.
+    
+    statement#personal_intro
+      text.
+        I am <span class="highlight">Professor Kimberly Heapsort</span>, director 
+        of admissions for the Arcane Academy of API Arts. I ensure that our 
+        student body is ready to learn the lessons that can be found at our 
+        school, and that an education at the Academy is in reach for aspiring 
+        developers from all backgrounds.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

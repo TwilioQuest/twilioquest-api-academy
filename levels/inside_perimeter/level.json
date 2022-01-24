@@ -1,0 +1,18 @@
+{
+  "title": "Inside the Gates",
+  "description": "The Academy has accepted you - now it's time to learn your first spell and get sorted into your house!",
+  "questTitle": "Getting Sorted",
+  "questDescription": "Make your way through the catacombs to find the house where you belong!",
+  "navMap": {
+    "x": 70,
+    "y": 45,
+    "sprite": "nav_map/example_planet.png"
+  },
+  "is_mission": false,
+  "priority": 3,
+  "backgroundMusic": "fascinatingarea_108253b",
+  "flavorTextOverrides": {},
+  "objectives": [
+    "obtain_spell"
+  ]
+}
