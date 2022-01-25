@@ -24,17 +24,12 @@ module.exports = async function (event, world) {
   console.log('hello')
   console.log(world)
   const worldState = merge(INITIAL_STATE, world.getState(WORLD_STATE_KEY));
+
   //const levelState = merge(INITIAL_LEVEL_STATE, world.getState(LEVEL_STATE_KEY));
 
   processInitiationEvents(event, world, worldState);
 
-  if (worldState.initiation.lastShownHouseNotification === 4) { 
-    // do stuff
-    world.showEntities('exit_2');
-    world.hideEntities('door');
-  } else {
-    world.hideEntities('exit_2');
-  }
+  
 
   updateQuestLogWhenComplete({
     notification:

@@ -129,8 +129,8 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":407,
-                 "y":696
+                 "x":407.666666666667,
+                 "y":638.333333333333
                 }, 
                 {
                  "gid":10003,
@@ -160,7 +160,7 @@
                  "visible":true,
                  "width":0,
                  "x":1175.66666666667,
-                 "y":601.333333333333
+                 "y":611
                 }, 
                 {
                  "height":6,
@@ -170,7 +170,7 @@
                         {
                          "name":"levelName",
                          "type":"string",
-                         "value":"api_academy"
+                         "value":"inside_perimeter"
                         }, 
                         {
                          "name":"mapName",
@@ -188,6 +188,33 @@
                  "width":48.1666666666667,
                  "x":1151.91666666667,
                  "y":570.333333333333
+                }, 
+                {
+                 "height":6,
+                 "id":8,
+                 "name":"exit_to_intro",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"api_academy"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"default"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry3"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":62.3333333333333,
+                 "x":376.333333333333,
+                 "y":689.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -219,7 +246,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":8,
+ "nextobjectid":9,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

@@ -93,12 +93,12 @@
                         {
                          "name":"levelName",
                          "type":"string",
-                         "value":"api_academy"
+                         "value":"inside_perimeter"
                         }, 
                         {
                          "name":"mapName",
                          "type":"string",
-                         "value":"inside-perimeter"
+                         "value":"default"
                         }, 
                         {
                          "name":"playerEntryPoint",

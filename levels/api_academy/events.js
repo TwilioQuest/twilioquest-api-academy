@@ -5,7 +5,7 @@ const updateQuestLogWhenComplete = require("./events/updateQuestLogWhenComplete"
 
 const INITIAL_STATE = {
   initiation: {
-    lastShownHouseNotification: 0,
+    lastShownHouseNotification: 4,
     enteredMazeFirstTime: false,
   },
 };
@@ -16,6 +16,14 @@ module.exports = async function (event, world) {
   const worldState = merge(INITIAL_STATE, world.getState(WORLD_STATE_KEY));
 
   processInitiationEvents(event, world, worldState);
+
+  if (worldState.initiation.lastShownHouseNotification === 4) { 
+    // do stuff
+    world.showEntities('exit_to_inside');
+    world.hideEntities('door');
+  } else {
+    world.hideEntities('exit_to_inside');
+  }
 
   updateQuestLogWhenComplete({
     notification:

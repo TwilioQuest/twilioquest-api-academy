@@ -8,23 +8,19 @@ module.exports = async (helper) => {
     `);
   }
 
-  if (answer1 !== 'false') {
+  if (!answer1.includes('message') && !answer1.includes('media') && !answer1.includes('service')) {
     return helper.fail(`
-      The first answer is incorrect - remote APIs make use of computational
-      resources and code that may reside on other computers (servers) on a
-      network.
+      The first answer is incorrect.
     `);
   }
 
-  if (!answer2 || answer2 !== 'rest') {
+  if (!answer2 || answer2 !== 'body') {
     return helper.fail(`
-      The second answer is incorrect - the expanded version of the acronym we 
-      are looking for is "Respresentational State Transfer". Check Craig's 
-      video one more time for the four-letter acronym.
+      The second answer is incorrect.
     `);
   }
 
   return helper.success(`
-    You've got it! You've opened the chest of knowledge for House Hopper.
+    You've got it! You've opened the chest and received the Spell Scroll, bring it back to the Groundskeeper!
   `);
 };

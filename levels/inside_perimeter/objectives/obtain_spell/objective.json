@@ -11,11 +11,9 @@
     },
     {
       "name": "answer2",
-      "type": "radio",
-      "value": "testoption",
+      "type": "text",
       "placeholder": "",
-      "label": "Look at the documentation for the `Message Resource`. Which of the following is NOT a property of the `Message Resource`?",
-      "values": ["option1", "option2"]
+      "label": "Look at the documentation for the `Message Resource`. Type the first property listed for the `Message Resource`?"
     }
   ],
   "rewards": {
