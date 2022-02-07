@@ -32,27 +32,7 @@ function processInitiationEvents(event, world, worldState) {
     event.name === "objectiveCompleted" ||
     event.name === "objectiveCompletedAgain"
   ) {
-    const completedHouses = [];
-
-    if (world.isObjectiveCompleted("hopper_initiation")) {
-      world.showEntities("hopper_initiation_flame");
-      completedHouses.push("Hopper");
-    }
-
-    if (world.isObjectiveCompleted("neumann_initiation")) {
-      world.showEntities("neumann_initiation_flame");
-      completedHouses.push("Neumann");
-    }
-
-    if (world.isObjectiveCompleted("lovelace_initiation")) {
-      world.showEntities("lovelace_initiation_flame");
-      completedHouses.push("Lovelace");
-    }
-
-    if (world.isObjectiveCompleted("turing_initiation")) {
-      world.showEntities("turing_initiation_flame");
-      completedHouses.push("Turing");
-    }
+    const completedHouses = [];    
 
     if (
       worldState.initiation.lastShownHouseNotification !==

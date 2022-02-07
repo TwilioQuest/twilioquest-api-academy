@@ -1,0 +1,6 @@
+{
+  "name": "spell_scroll",
+  "displayName": "Spell Scroll",
+  "type": "accessory",
+  "description": "This is a spell scroll"
+}
