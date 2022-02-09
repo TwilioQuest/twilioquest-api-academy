@@ -1,0 +1,22 @@
+{
+  "title": "Admission à l'Académie des API: les API RESTful",
+  "description": "Pour déverrouiller le coffre des connaissances de la <strong>Maison von Neumann</strong>, vous devez apprendre à connaître les API RESTful.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Quel est le nom abstrait d'un lot de données pouvant être désigné par un URI et potentiellement transféré à l'aide d'une API RESTful?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Quel verbe/méthode HTTP est le plus couramment utilisé pour créer de nouvelles données sur un serveur dans une API RESTful?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
