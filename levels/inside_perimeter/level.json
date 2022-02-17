@@ -8,6 +8,11 @@
   "backgroundMusic": "fascinatingarea_108253b",
   "flavorTextOverrides": {},
   "objectives": [
-    "obtain_spell"
+    "obtain_wand",
+    "hopper_key",
+    "lovelace_key",
+    "neumann_key",
+    "turing_key",
+    "twilio_api_setup"
   ]
 }

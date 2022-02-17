@@ -21,6 +21,6 @@ module.exports = async (helper) => {
   }
 
   return helper.success(`
-    You've got it! You've opened the chest and received a wand, you can now earn spells and perform them around the grounds of the API Academy!
+    You've got it! You've opened the chest and received the Spell Scroll, bring it back to the Groundskeeper!
   `);
 };

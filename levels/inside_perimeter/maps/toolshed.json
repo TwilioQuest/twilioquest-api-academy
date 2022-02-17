@@ -131,7 +131,7 @@
                         {
                          "name":"objectiveName",
                          "type":"string",
-                         "value":"obtain_spell"
+                         "value":"obtain_wand"
                         }],
                  "rotation":0,
                  "type":"",
@@ -159,7 +159,7 @@
                         {
                          "name":"objectiveName",
                          "type":"string",
-                         "value":"obtain_spell"
+                         "value":"obtain_wand"
                         }],
                  "rotation":0,
                  "type":"",
@@ -173,6 +173,12 @@
                  "height":24,
                  "id":9,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"hackable",
+                         "type":"bool",
+                         "value":false
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,

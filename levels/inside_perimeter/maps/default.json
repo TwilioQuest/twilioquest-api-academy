@@ -114,6 +114,12 @@
                  "height":32,
                  "id":3,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"groundskeeper"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -213,6 +219,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -241,6 +257,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -269,6 +295,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -297,6 +333,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -325,6 +371,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -353,6 +409,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -381,6 +447,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -409,6 +485,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -437,6 +523,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -465,6 +561,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -493,6 +599,16 @@
                          "name":"key",
                          "type":"string",
                          "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
                         }],
                  "rotation":0,
                  "type":"",
@@ -523,16 +639,26 @@
                          "value":"bramble_block"
                         }, 
                         {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
                          "name":"spellable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":264.25,
-                 "y":287.5
+                 "x":256.25,
+                 "y":290.75
                 }, 
                 {
                  "gid":2068,
@@ -556,16 +682,26 @@
                          "value":"bramble_block"
                         }, 
                         {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
                          "name":"spellable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":240,
-                 "y":288
+                 "x":236,
+                 "y":299
                 }, 
                 {
                  "gid":1968,
@@ -589,16 +725,26 @@
                          "value":"bramble_block"
                         }, 
                         {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
                          "name":"spellable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":240,
-                 "y":264
+                 "x":236.25,
+                 "y":275.25
                 }, 
                 {
                  "height":0,
@@ -624,6 +770,11 @@
                  "name":"exit_to_catacombs",
                  "properties":[
                         {
+                         "name":"disabled",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"levelName",
                          "type":"string",
                          "value":"inside_perimeter"
@@ -638,12 +789,141 @@
                          "type":"string",
                          "value":"player_entry1"
                         }],
-                 "rotation":0,
+                 "rotation":180,
                  "type":"levelChange",
                  "visible":true,
                  "width":48.3333,
-                 "x":239.58335,
-                 "y":281.25
+                 "x":287.91665,
+                 "y":269.75
+                }, 
+                {
+                 "gid":2070,
+                 "height":24,
+                 "id":43,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"bramble_catacombs"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":268.75,
+                 "y":301
+                }, 
+                {
+                 "gid":1970,
+                 "height":24,
+                 "id":44,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"bramble_catacombs"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":268.25,
+                 "y":277
+                }, 
+                {
+                 "gid":1671,
+                 "height":24,
+                 "id":45,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"bramble_catacombs"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"bramble_block"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"disappear"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"unlocksTransition",
+                         "type":"string",
+                         "value":"exit_to_catacombs"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":253,
+                 "y":297
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -716,13 +996,13 @@
                  "value":true
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":60,
          "x":0,
          "y":0
         }],
  "nextlayerid":18,
- "nextobjectid":42,
+ "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
