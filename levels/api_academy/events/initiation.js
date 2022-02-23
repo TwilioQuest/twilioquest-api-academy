@@ -61,7 +61,7 @@ function processInitiationEvents(event, world, worldState) {
       // Default message if not all have been found
       let completedHousesNotification = world.getTranslatedString('api-academy.initiation.completedHousesNotification',
       { 
-        house: completedHouses.length > 1 ? "houses" : "house" ,
+        house: completedHouses.length > 1 ? "houses" : "house",
         completedHouses: joinStringsWithOxfordComma(completedHouses),
         completedHousesLength: 4 - completedHouses.length
       });

@@ -47,11 +47,7 @@ module.exports = {
   corpo discente está pronto para aprender as lições que podem ser encontradas em nossa 
   escola, e que uma educação na Academia está ao alcance de aspirantes a 
   desenvolvedores de todas as origens.`,
-  "api-academy.initiation.completedHousesNotification": `Eu concluí as cerimônias de iniciação para o {
-        house
-      } <i>{completedHouses}</i>. {
-      completedHousesLength
-    } mais para ir!`,
+  "api-academy.initiation.completedHousesNotification": `Eu concluí as cerimônias de iniciação para o {house} <i>{completedHouses}</i>. {completedHousesLength} mais para ir!`,
   "api-academy.initiation.completedHousesNotification4": "Eu concluí todas as cerimônias das casas! Eu deveria voltar para os portões do castelo agora!",
   "api-academy.events.notification": "Já concluí tudo na <span class='highlight'>Academia da API</span>!",
   "api-academy.events.log": "Já concluí tudo na Academia da API!",
