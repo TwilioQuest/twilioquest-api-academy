@@ -106,7 +106,7 @@ module.exports = async function (event, world) {
     if (
       env.hasOwnProperty('TQ_TWILIO_ACCOUNT_SID') 
       && env.hasOwnProperty('TQ_TWILIO_AUTH_TOKEN')
-    ) worldState.insideCatacombs.hasCredentials = true;
+    ) twilio_api_setup_complete();
   }
 
   const runNpcChecks = event => {
@@ -118,17 +118,17 @@ module.exports = async function (event, world) {
    * Objective complete function definitions
    */
   const objectives = {
-    twilio_api_setup: () => twilio_api_setup(),
-    obtain_wand: () => obtain_wand()
+    twilio_api_setup: () => twilio_api_setup_complete(),
+    obtain_wand: () => obtain_wand_complete()
   }
 
-  const twilio_api_setup = () => {
+  const twilio_api_setup_complete = () => {
     worldState.insideCatacombs.hasCredentials = true;
-    unhackObject('statue_credential');
+    unhackObject('statue_credentials');
     destroyObject('catacombs_barrier');
   }
 
-  const obtain_wand = () => {
+  const obtain_wand_complete = () => {
     worldState.insidePerimeter.hasWand = true;
   }
 
@@ -188,12 +188,12 @@ module.exports = async function (event, world) {
       entity.hackable = false;
     });
 
+    // for first run though, 
     if (worldState.insideCatacombs.hasCredentials) {
       destroyObject('catacombs_barrier');
       unhackObject('statue_credentials');
     }
   }
-
 
   /*
    * Handles object interactions
