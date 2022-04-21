@@ -1,6 +1,8 @@
 module.exports = async (helper) => {
   const answer1 = helper.getNormalizedInput('answer1');
   const answer2 = helper.getNormalizedInput('answer2');
+  const answer3 = helper.getNormalizedInput('answer3');
+
 
   if (!answer1 || !answer2 || !answer3) {
     return helper.fail(`

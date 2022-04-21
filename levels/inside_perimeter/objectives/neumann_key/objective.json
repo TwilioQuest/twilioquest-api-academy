@@ -19,7 +19,7 @@
       "name": "answer3",
       "type": "text",
       "placeholder": "",
-      "label": "To create (and thereby send) a message using the Twilio Programmable SMS API, which HTTP method would you use?"
+      "label": "Finally, to truly prove your worthiness to the <House Neumann mascot>, answer this question successfully: To create (and thereby send) a message using the Twilio Programmable SMS API, which HTTP method would you use?"
     }
   ],
   "rewards": {

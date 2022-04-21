@@ -1,7 +1,7 @@
 -
   const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
   const worldState = getState(STATE_KEY);
-  let allComplete = worldState.insideCatacombs.keySpellCount === 4 ? true : false;
+  let allComplete = worldState.insideCatacombs.keySpellsObtained.length === 4 ? true : false;
     
 
 mixin personal_intro
@@ -106,7 +106,7 @@ conversation(display_name="Ghost of the Catacombs")
           You've come to the Academy well prepared, with your Twilio account credentials in tow. You may proceed into the Catacombs.
       else
         text.
-          Before you begin, you must be prepared with your Twilio account credentials. Find these and give them to the statue.
+          Before you begin, you must move to the Knight you're ready for the trials ahead. Find your Twilio credentials and give them to the Knight in order to proceed.
 
     statement#proceed 
       text.
@@ -117,13 +117,13 @@ conversation(display_name="Ghost of the Catacombs")
         text.
           Operator, hello again! How are you faring on your journey through the Catacombs?
 
-      else if worldState.insideCatacombs.keySpellCount === 0
+      else if worldState.insideCatacombs.keySpellsObtained.length === 0
         text.
           Operator, hello again! How are you faring on your journey through the Catacombs? It looks like you haven't pieced together any of the spell you must use to get the key to the Sacred Scroll Room.
       
       else 
         text.
-          Operator, hello again! How are you faring on your journey through the Catacombs? It looks like you have only pieced together #{worldState.insideCatacombs.keySpellCount} of the four parts of the spell you must use to get the key to the Sacred Scroll Room.
+          Operator, hello again! How are you faring on your journey through the Catacombs? It looks like you have only pieced together #{worldState.insideCatacombs.keySpellsObtained.length} of the four parts of the spell you must use to get the key to the Sacred Scroll Room.
 
 
     statement#congratulations
@@ -132,7 +132,7 @@ conversation(display_name="Ghost of the Catacombs")
 
     statement#ack
       text.
-        Visit the ultimate API spellbook: the <a href="https://twilio.com/console">Twilio Console</a>. From there you'll be able to find the credentials the Statue needs.
+        Visit the ultimate API spellbook: the <a href="https://twilio.com/console">Twilio Console</a>. From there you'll be able to find the credentials the Knight requires.
 
     statement#help
       text.

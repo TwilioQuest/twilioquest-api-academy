@@ -3,11 +3,11 @@ const assert = require("assert");
 module.exports = async (helper) => {
   const answer1 = helper.getNormalizedInput('answer1');
   const answer2 = helper.getNormalizedInput('answer2');
-  const messageSid = helper.getNormalizedInput('answer3');
+  const { answer3:messageSid } = helper.validationFields;
 
-  const { TQ_ACCOUNT_SID:accountSid, TQ_AUTH_TOKEN: authToken } = helper.env;
+  const { TQ_TWILIO_ACCOUNT_SID:accountSid, TQ_TWILIO_AUTH_TOKEN: authToken } = helper.env;
 
-  if (answer1 === '' || answer2 === '' || !answer3) {
+  if (answer1 === '' || answer2 === '' || !messageSid) {
     return helper.fail(`
       Please answer all questions!
     `);

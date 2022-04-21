@@ -2,11 +2,11 @@ const assert = require("assert");
 
 module.exports = async (helper) => {
   const answer1 = helper.getNormalizedInput('answer1');
-  const messageSid = helper.getNormalizedInput('answer2');
+  const { answer2:messageSid } = helper.validationFields;
 
-  const { TQ_ACCOUNT_SID:accountSid, TQ_AUTH_TOKEN: authToken } = helper.env;
+  const { TQ_TWILIO_ACCOUNT_SID:accountSid, TQ_TWILIO_AUTH_TOKEN: authToken } = helper.env;
 
-  if (answer1 === '' || answer2 === '') {
+  if (answer1 === '' || messageSid === '') {
     return helper.fail(`
       Please answer all questions!
     `);
@@ -24,8 +24,10 @@ module.exports = async (helper) => {
     const message = await client
                     .messages(messageSid)
                     .fetch();
+    
+    console.log(message.body)
 
-    if (message.body !== 'Postman rocks!') {
+    if (message.body !== 'Postman rocks!' && message.body !== 'postman rocks!' && message.body !== 'postman rocks') {
       throw 'Try again, and make sure your message says `Postman rocks!`';
     }          
   } catch (e) {

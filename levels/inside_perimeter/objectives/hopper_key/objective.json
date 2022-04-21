@@ -13,7 +13,7 @@
       "name": "answer2",
       "type": "text",
       "placeholder": "Message SID",
-      "label": "From the Home page of the Postman web interface, click *Workspaces* in the top navigation bar. Once the *Workspaces* page loads, click *New* in the top left corner and then select *HTTP Request*. Use this interface to make a request to the Twilio Programmable SMS API to send a message from your Twilio number to your personal phone number that says `Postman rocks!` If you're having trouble check out the associated video content or blog post. When you get a JSON response in Postman, find the message `sid` and paste it here."
+      "label": "Use Postman to make a request to the Twilio Programmable SMS API that will send a message from your Twilio number to your personal phone number. The message should say `Postman rocks!` Find the message `sid` in the server's response and paste it here. Press HACK so the <hoppper mascot> will let you pass."
     }
   ],
   "rewards": {
