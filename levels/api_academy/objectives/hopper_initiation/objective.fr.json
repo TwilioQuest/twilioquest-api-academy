@@ -1,0 +1,22 @@
+{
+  "title": "Admission à l'Académie des API: les API distantes",
+  "description": "Pour déverrouiller le coffre du savoir de la <strong>Maison Hopper</strong>, vous devez comprendre que certaines API sont <strong>distantes</strong>, c'est-à-dire qu'elles s'exécutent sur un autre ordinateur.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "boolean",
+      "placeholder": "",
+      "label": "Le code et les ressources de calcul nécessaires au traitement d'un appel d'API doivent être physiquement présents sur l'ordinateur à partir duquel l'API est appelée."
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Quel acronyme de quatre lettres décrit un type d'API distante devenue la norme de présentation des API distantes aux développeurs?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

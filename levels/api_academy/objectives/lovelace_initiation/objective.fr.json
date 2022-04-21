@@ -1,0 +1,22 @@
+{
+  "title": "Admission à l'Académie des API: fonctionnement du Web",
+  "description": "Pour déverrouiller le coffre du savoir de la <strong>Maison Lovelace</strong>, vous devez apprendre les bases du fonctionnement du Web.",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Quel acronyme de quatre lettres décrit le protocole le plus couramment utilisé par les clients Web (comme votre navigateur) et les serveurs Web pour transférer des données sur le Web, telles que du contenu HTML ou des images?"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Il arrive qu'un ordinateur client ait besoin d'envoyer des informations supplémentaires quand il fait la requête d'une page Web ou d'une autre ressource à partir d'un serveur (un état ayant besoin d'être maintenu sur toutes les requêtes par exemple, comme les «cookies»). Comment s'appellent ces éléments d'information?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

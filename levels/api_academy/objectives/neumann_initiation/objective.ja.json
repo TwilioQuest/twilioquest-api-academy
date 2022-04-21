@@ -1,0 +1,22 @@
+{
+  "title": "APIアカデミー入学試験: RESTful API",
+  "description": "<strong>House von Neumann</strong>の知識の宝箱の鍵を解除するには、RESTful APIについて学ぶ必要があります。",
+  "show_ide": false,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "URIで参照でき、RESTful APIを使用して送信できるデータの塊を表すチャンクの抽象名をお答えください。"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "RESTful APIでサーバーにデータを新規作成する際に一般的に使用するHTTPメソッド/動詞をお答えください。"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

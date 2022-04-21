@@ -1,0 +1,21 @@
+{
+  "title": "Académie des API",
+  "description": "La prestigieuse Académie Arcane des Arts de l'API est la première institution d'éducation supérieure dans le Cloud. Ici, les étudiants apprennent à maîtriser les incantations magiques que sont les API. Visitez l'école et découvrez si vous avez les qualités requises pour intégrer l'Académie!",
+  "questTitle": "Intégration de l'Académie",
+  "questDescription": "Rendez-vous à l'Académie et faites vos preuves pour pouvoir intégrer l'école!",
+  "navMap": {
+    "x": 70,
+    "y": 45,
+    "sprite": "nav_map/example_planet.png"
+  },
+  "is_mission": false,
+  "priority": 3,
+  "backgroundMusic": "fascinatingarea_108253b",
+  "flavorTextOverrides": {},
+  "objectives": [
+    "hopper_initiation",
+    "lovelace_initiation",
+    "neumann_initiation",
+    "turing_initiation"
+  ]
+}

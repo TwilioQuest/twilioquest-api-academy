@@ -1,0 +1,21 @@
+{
+  "title": "APIアカデミー",
+  "description": "名門校のArcane Academy of API Artsは、The Cloudにおける最高の高等教育機関です。ここでは、学生がAPIという魔法の呪文をコントロールすることを学んでいます。アカデミーを訪れ、入学に必要な資質を備えているか確認しましょう。",
+  "questTitle": "アカデミーへの入学",
+  "questDescription": "アカデミーに向かって進み、入学に必要な資質を備えていることを証明してください。",
+  "navMap": {
+    "x": 70,
+    "y": 45,
+    "sprite": "nav_map/example_planet.png"
+  },
+  "is_mission": false,
+  "priority": 3,
+  "backgroundMusic": "fascinatingarea_108253b",
+  "flavorTextOverrides": {},
+  "objectives": [
+    "hopper_initiation",
+    "lovelace_initiation",
+    "neumann_initiation",
+    "turing_initiation"
+  ]
+}

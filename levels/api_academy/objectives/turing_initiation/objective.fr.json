@@ -1,0 +1,22 @@
+{
+  "title": "Admission à l'Académie des API: définition d'une API",
+  "description": "Pour déverrouiller le coffre du savoir de la <strong>Maison Turing</strong>, vous devez définir ce qu'est une API.",
+  "show_ide": true,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "Complétez la définition: l'acronyme «API» correspond à «Application Programming &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;»."
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "Regardez le code dans l'éditeur de code JavaScript. Pour cela, cliquez sur «Show Code Editor» (Afficher l'éditeur de code) ci-dessus. Quel est le nom de la fonction de chaîne qui fournit une API de conversion du contenu de la chaîne en majuscules?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}

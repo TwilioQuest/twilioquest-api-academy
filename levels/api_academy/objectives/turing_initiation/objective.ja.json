@@ -1,0 +1,22 @@
+{
+  "title": "APIアカデミー入学試験: APIの定義",
+  "description": "<strong>House Turing</strong>の知識の宝箱のロックを解除するには、APIの定義について明確にする必要があります。",
+  "show_ide": true,
+  "validation_fields": [
+    {
+      "name": "answer1",
+      "type": "text",
+      "placeholder": "",
+      "label": "空欄を埋めてください: 「API」は「Application Programming &#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;&#95;」の略称である。"
+    },
+    {
+      "name": "answer2",
+      "type": "text",
+      "placeholder": "",
+      "label": "JavaScriptコードエディタ内のコードを確認してください(上の[Show Code Editor]をクリック)。文字列の内容をすべて大文字に変換するAPIを持つ関数の名前は何ですか?"
+    }
+  ],
+  "rewards": {
+    "xp": 200
+  }
+}
