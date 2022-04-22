@@ -355,7 +355,7 @@
                  "visible":true,
                  "width":48,
                  "x":1152,
-                 "y":204
+                 "y":192
                 }, 
                 {
                  "height":0,
@@ -372,8 +372,8 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":1176,
-                 "y":288
+                 "x":1170,
+                 "y":252
                 }, 
                 {
                  "gid":10028,
@@ -412,7 +412,7 @@
                  "y":240
                 }, 
                 {
-                 "height":156,
+                 "height":132,
                  "id":176,
                  "name":"triggerFogOwlDoor",
                  "properties":[
@@ -425,8 +425,42 @@
                  "type":"triggerArea",
                  "visible":true,
                  "width":174,
-                 "x":1080,
-                 "y":264
+                 "x":1086,
+                 "y":300
+                }, 
+                {
+                 "height":102,
+                 "id":177,
+                 "name":"triggerFogOwlDoor",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"triggerAcademyGates"
+                        }],
+                 "rotation":0,
+                 "type":"triggerArea",
+                 "visible":true,
+                 "width":78,
+                 "x":1050,
+                 "y":252
+                }, 
+                {
+                 "height":102,
+                 "id":178,
+                 "name":"triggerFogOwlDoor",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"triggerAcademyGates"
+                        }],
+                 "rotation":0,
+                 "type":"triggerArea",
+                 "visible":true,
+                 "width":78,
+                 "x":1224,
+                 "y":252
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -599,7 +633,7 @@
          "y":0
         }],
  "nextlayerid":51,
- "nextobjectid":177,
+ "nextobjectid":179,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
