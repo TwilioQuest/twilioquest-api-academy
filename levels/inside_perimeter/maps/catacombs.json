@@ -1390,39 +1390,6 @@
                  "y":1038
                 }, 
                 {
-                 "gid":16349,
-                 "height":48,
-                 "id":211,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"interactable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"scroll_room_door"
-                        }, 
-                        {
-                         "name":"spell_type",
-                         "type":"string",
-                         "value":"unlock"
-                        }, 
-                        {
-                         "name":"spellable",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":720,
-                 "y":696
-                }, 
-                {
                  "gid":16346,
                  "height":24,
                  "id":214,
@@ -1445,57 +1412,6 @@
                  "width":24,
                  "x":876,
                  "y":594
-                }, 
-                {
-                 "gid":16347,
-                 "height":48,
-                 "id":222,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"group",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }, 
-                        {
-                         "name":"initialState",
-                         "type":"string",
-                         "value":"closed"
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":696,
-                 "y":1368
-                }, 
-                {
-                 "gid":16348,
-                 "height":48,
-                 "id":223,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"group",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":720,
-                 "y":1368
                 }, 
                 {
                  "gid":15072,
@@ -1556,6 +1472,118 @@
                  "width":0,
                  "x":720,
                  "y":479
+                }, 
+                {
+                 "gid":16348,
+                 "height":48,
+                 "id":228,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":720,
+                 "y":1368
+                }, 
+                {
+                 "gid":16347,
+                 "height":48,
+                 "id":229,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":1368
+                }, 
+                {
+                 "gid":16359,
+                 "height":48,
+                 "id":230,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"scroll_room_door"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"unlock"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":696
+                }, 
+                {
+                 "gid":16360,
+                 "height":48,
+                 "id":231,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"scroll_room_door"
+                        }, 
+                        {
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"unlock"
+                        }, 
+                        {
+                         "name":"spellable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":720,
+                 "y":696
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1714,7 +1742,7 @@
          "y":0
         }],
  "nextlayerid":39,
- "nextobjectid":228,
+ "nextobjectid":234,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
