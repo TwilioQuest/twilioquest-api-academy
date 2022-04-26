@@ -388,7 +388,6 @@ module.exports = async function (event, world) {
     world.forEachEntities(
       ({ instance }) => instance.layer === "upper",
       (object) => {
-        console.log("upper", { object });
         // To force "upper" layer objects to render above objects
         // they're placed on top of, we must hack their physics
         // body size.
