@@ -290,7 +290,7 @@ module.exports = async function (event, world) {
       "You've obtained your pledge scroll. Head to the Academy building and present it to the headmaster."
     );
 
-    // TODO: actually add item to inventory
+    world.grantItems(["pledge_scroll"]);
     determineHouse();
   };
 
