@@ -241,8 +241,7 @@ module.exports = async function (event, world) {
       return;
     }
 
-    // TODO: open door, get rid of destroy door
-    destroyObject("scroll_room_door");
+    openDoor("scroll_room_door");
   };
 
   const runSpell = (event) => {
