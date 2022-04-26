@@ -430,6 +430,18 @@ module.exports = async function (event, world) {
     runUpdateMagicScore(event);
   }
 
+  /**
+   * Handles Trigger Areas
+   */
+  if (event.name === "triggerAreaWasEntered") {
+    if (
+      event.target.key === "triggerGroundskeeperConversation" &&
+      !worldState.insidePerimeter.groundskeeper_introduction
+    ) {
+      world.startConversation("groundskeeper", "groundskeeper.png");
+    }
+  }
+
   updateQuestLogWhenComplete({
     notification:
       'I\'ve completed everything in the <span class="highlight">API Academy Inside Perimeter</span> for now!',

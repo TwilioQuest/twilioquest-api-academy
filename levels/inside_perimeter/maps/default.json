@@ -1451,6 +1451,23 @@
                  "width":24,
                  "x":1080,
                  "y":325
+                }, 
+                {
+                 "height":312,
+                 "id":138,
+                 "name":"triggerGroundskeeperConversation",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"triggerGroundskeeperConversation"
+                        }],
+                 "rotation":0,
+                 "type":"triggerArea",
+                 "visible":true,
+                 "width":66,
+                 "x":744,
+                 "y":744
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1482,7 +1499,7 @@
          "y":0
         }],
  "nextlayerid":35,
- "nextobjectid":138,
+ "nextobjectid":139,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
