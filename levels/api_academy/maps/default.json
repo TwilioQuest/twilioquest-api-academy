@@ -414,7 +414,7 @@
                 {
                  "height":132,
                  "id":176,
-                 "name":"triggerFogOwlDoor",
+                 "name":"triggerAcademyGates",
                  "properties":[
                         {
                          "name":"key",
@@ -431,7 +431,7 @@
                 {
                  "height":102,
                  "id":177,
-                 "name":"triggerFogOwlDoor",
+                 "name":"triggerAcademyGates",
                  "properties":[
                         {
                          "name":"key",
@@ -448,7 +448,7 @@
                 {
                  "height":102,
                  "id":178,
-                 "name":"triggerFogOwlDoor",
+                 "name":"triggerAcademyGates",
                  "properties":[
                         {
                          "name":"key",
