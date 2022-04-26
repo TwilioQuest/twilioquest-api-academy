@@ -1584,6 +1584,24 @@
                  "width":24,
                  "x":720,
                  "y":696
+                }, 
+                {
+                 "height":0,
+                 "id":234,
+                 "name":"player_entry_dev",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":708,
+                 "y":552
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1611,12 +1629,17 @@
                          "name":"key",
                          "type":"string",
                          "value":"turing_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":624,
+                 "x":623,
                  "y":450
                 }, 
                 {
@@ -1634,13 +1657,18 @@
                          "name":"key",
                          "type":"string",
                          "value":"neumann_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":792,
-                 "y":450
+                 "x":791,
+                 "y":451
                 }, 
                 {
                  "gid":16334,
@@ -1657,13 +1685,18 @@
                          "name":"key",
                          "type":"string",
                          "value":"lovelace_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
                  "x":839,
-                 "y":452
+                 "y":451
                 }, 
                 {
                  "gid":16333,
@@ -1680,12 +1713,17 @@
                          "name":"key",
                          "type":"string",
                          "value":"hopper_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":576,
+                 "x":575,
                  "y":450
                 }],
          "opacity":1,
@@ -1742,7 +1780,7 @@
          "y":0
         }],
  "nextlayerid":39,
- "nextobjectid":234,
+ "nextobjectid":235,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

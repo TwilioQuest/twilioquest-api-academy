@@ -383,6 +383,27 @@ module.exports = async function (event, world) {
       openDoor("catacombs_barrier");
       unhackObject("statue_credentials");
     }
+
+    // Adjust object dimensions
+    world.forEachEntities(
+      ({ instance }) => instance.layer === "upper",
+      (object) => {
+        console.log("upper", { object });
+        // To force "upper" layer objects to render above objects
+        // they're placed on top of, we must hack their physics
+        // body size.
+        //
+        // To do this, we're going to add a hard coded 1000 pixels
+        // to the height of these objects. This is not perfect,
+        // but should function fine for this mission.
+        object.sprite.body.height += 1000;
+
+        // These sprites will all have their bodies disabled.
+        // This new tall sprite body will impede a lot of player
+        // movement space otherwise.
+        object.sprite.body.enable = false;
+      }
+    );
   }
 
   /*
