@@ -1,3 +1,3 @@
 # Documentation
 
-Inside this chest is this the spell scroll that you need for the groundskeeper. In order to obtain it, you must learn _how to learn_ about individual APIs.
+To be granted the House Turing Key Component, you must demonstrate your knowledge of SDKs and Libraries.

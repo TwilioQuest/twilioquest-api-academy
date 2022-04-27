@@ -1,3 +1,3 @@
-# Documentation
+# Making API Requests with Postman
 
-Inside this chest is this the spell scroll that you need for the groundskeeper. In order to obtain it, you must learn _how to learn_ about individual APIs.
+Before the House Hopper mascot will grant you the Hopper Key Component, it must be assured you can weild the powers of Postman. In this objective, you most show you understand the different features of Postman.

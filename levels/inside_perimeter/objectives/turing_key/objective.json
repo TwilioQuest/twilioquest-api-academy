@@ -1,19 +1,25 @@
 {
-  "title": "API Academy: Learn How to Learn About APIs",
-  "description": "To unlock the storage chest and obtain the spell card, you must learn how to learn about APIs. This is achieved through *documentation*.",
+  "title": "API Academy: SDKs and Libraries",
+  "description": "The House Turing Key Component will be granted when the operator demonstrates their knowledge of SDKs and Libraries",
   "show_ide": false,
   "validation_fields": [
     {
       "name": "answer1",
       "type": "text",
       "placeholder": "",
-      "label": "Visit the documentation for the [Twilio Programmable SMS API](https://www.twilio.com/docs/sms). In the left hand menu, look for a heading called *API Reference*. List one of the types of `Resource` objects described under the Programmable SMS API Reference section."
+      "label": "What does SDK stand for?"
     },
     {
       "name": "answer2",
       "type": "text",
-      "placeholder": "",
-      "label": "Look at the documentation for the `Message Resource`. Type the first property listed for the `Message Resource`?"
+      "placeholder": "A, B, C, D, or E",
+      "label": "Which of the following programming languages does Twilio not provide a server-side helper library for? A: Node.js, B: C++, C: PHP, D: Ruby, E: Python"
+    },
+    {
+      "name": "answer3",
+      "type": "text",
+      "placeholder": "true or false",
+      "label": "True or false: One way that libraries can make working with APIs easier is by handling and abstracting away some of the more low level interactions with the server, like authentication."
     }
   ],
   "rewards": {
