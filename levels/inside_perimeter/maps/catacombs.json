@@ -1288,39 +1288,6 @@
                  "y":1038
                 }, 
                 {
-                 "gid":16349,
-                 "height":48,
-                 "id":211,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"interactable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"scroll_room_door"
-                        }, 
-                        {
-                         "name":"spell_type",
-                         "type":"string",
-                         "value":"unlock"
-                        }, 
-                        {
-                         "name":"spellable",
-                         "type":"bool",
-                         "value":true
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":720,
-                 "y":696
-                }, 
-                {
                  "gid":16346,
                  "height":24,
                  "id":214,
@@ -1343,57 +1310,6 @@
                  "width":24,
                  "x":876,
                  "y":594
-                }, 
-                {
-                 "gid":16347,
-                 "height":48,
-                 "id":222,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"group",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }, 
-                        {
-                         "name":"initialState",
-                         "type":"string",
-                         "value":"closed"
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":696,
-                 "y":1368
-                }, 
-                {
-                 "gid":16348,
-                 "height":48,
-                 "id":223,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"group",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"catacombs_barrier"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":720,
-                 "y":1368
                 }, 
                 {
                  "gid":15072,
@@ -1456,17 +1372,58 @@
                  "y":479
                 }, 
                 {
-                 "gid":15033,
-                 "height":24,
+                 "gid":16348,
+                 "height":48,
+                 "id":228,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":720,
+                 "y":1368
+                }, 
+                {
+                 "gid":16347,
+                 "height":48,
+                 "id":229,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"catacombs_barrier"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":1368
+                }, 
+                {
+                 "gid":16359,
+                 "height":48,
                  "id":230,
                  "name":"",
                  "properties":[
                         {
-                         "name":"group",
-                         "type":"string",
-                         "value":"statue_hopper"
-                        }, 
-                        {
                          "name":"interactable",
                          "type":"bool",
                          "value":true
@@ -1474,10 +1431,15 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"statue_hopper"
+                         "value":"scroll_room_door"
                         }, 
                         {
-                         "name":"notify",
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"unlock"
+                        }, 
+                        {
+                         "name":"spellable",
                          "type":"bool",
                          "value":true
                         }],
@@ -1485,33 +1447,16 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":168,
-                 "y":404
+                 "x":696,
+                 "y":696
                 }, 
                 {
-                 "gid":14993,
-                 "height":24,
+                 "gid":16360,
+                 "height":48,
                  "id":231,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":168,
-                 "y":380
-                }, 
-                {
-                 "gid":15032,
-                 "height":24,
-                 "id":232,
                  "name":"",
                  "properties":[
                         {
-                         "name":"group",
-                         "type":"string",
-                         "value":"statue_lovelace"
-                        }, 
-                        {
                          "name":"interactable",
                          "type":"bool",
                          "value":true
@@ -1519,10 +1464,15 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"statue_lovelace"
+                         "value":"scroll_room_door"
                         }, 
                         {
-                         "name":"notify",
+                         "name":"spell_type",
+                         "type":"string",
+                         "value":"unlock"
+                        }, 
+                        {
+                         "name":"spellable",
                          "type":"bool",
                          "value":true
                         }],
@@ -1530,20 +1480,26 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":1248,
-                 "y":402
+                 "x":720,
+                 "y":696
                 }, 
                 {
-                 "gid":14992,
-                 "height":24,
-                 "id":233,
-                 "name":"",
+                 "height":0,
+                 "id":234,
+                 "name":"player_entry_dev",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
                  "rotation":0,
-                 "type":"",
+                 "type":"player",
                  "visible":true,
-                 "width":24,
-                 "x":1248,
-                 "y":378
+                 "width":0,
+                 "x":708,
+                 "y":552
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1571,12 +1527,17 @@
                          "name":"key",
                          "type":"string",
                          "value":"turing_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":624,
+                 "x":623,
                  "y":450
                 }, 
                 {
@@ -1594,13 +1555,18 @@
                          "name":"key",
                          "type":"string",
                          "value":"neumann_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":792,
-                 "y":450
+                 "x":791,
+                 "y":451
                 }, 
                 {
                  "gid":16334,
@@ -1617,13 +1583,18 @@
                          "name":"key",
                          "type":"string",
                          "value":"lovelace_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
                  "x":839,
-                 "y":452
+                 "y":451
                 }, 
                 {
                  "gid":16333,
@@ -1640,12 +1611,17 @@
                          "name":"key",
                          "type":"string",
                          "value":"hopper_flame"
+                        }, 
+                        {
+                         "name":"layer",
+                         "type":"string",
+                         "value":"upper"
                         }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":576,
+                 "x":575,
                  "y":450
                 }],
          "opacity":1,
@@ -1702,7 +1678,7 @@
          "y":0
         }],
  "nextlayerid":39,
- "nextobjectid":234,
+ "nextobjectid":235,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",

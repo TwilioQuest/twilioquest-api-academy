@@ -17,12 +17,18 @@ module.exports = async function (event, world) {
 
   processInitiationEvents(event, world, worldState);
 
-  if (worldState.initiation.lastShownHouseNotification === 4) { 
-    // do stuff
-    world.showEntities('exit_to_inside');
-    world.hideEntities('door');
-  } else {
-    world.hideEntities('exit_to_inside');
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "triggerAcademyGates"
+  ) {
+    if (worldState.initiation.lastShownHouseNotification === 4) {
+      // do stuff
+      world.showEntities("exit_to_inside");
+      // world.hideEntities("door");
+      world.forEachEntities("door", (door) => door.state.fsm.action("open"));
+    } else {
+      world.hideEntities("exit_to_inside");
+    }
   }
 
   updateQuestLogWhenComplete({
