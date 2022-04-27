@@ -6,19 +6,19 @@
     {
       "name": "answer1",
       "type": "text",
-      "placeholder": "True or false?",
-      "label": "True or false: Some APIs require authentication when making a request. Twilio Programmable SMS is one of these APIs. To make a request to Twilio Programmable SMS you must provide your Account SID and an Auth Token in the request."
+      "placeholder": "True or false",
+      "label": "True or false: To make a request to Twilio Programmable SMS you must provide your Account SID and an Auth Token in the request."
     },
     {
       "name": "answer2",
       "type": "text",
       "placeholder": "What's the third required parameter?",
-      "label": "When creating a message with the Twilio Programmable SMS API, there are three required parameters. The first is either `From` or `MessagingServiceSid`, the second is either `Body` or `MediaUrl`. The third is:"
+      "label": "When creating a message with the Twilio Programmable SMS API, there are three required parameters. One, either `From` or `MessagingServiceSid`; Two, either `Body` or `MediaUrl`. The third is:"
     },
     {
       "name": "answer3",
       "type": "text",
-      "placeholder": "`What's the sid of your new message?",
+      "placeholder": "`What's the SID of your new message?",
       "label": "From your command line, use cURL to create a message with the Twilio Programmable SMS API. Find the `sid` of the message in the server's response and submit it here to earn the House Lovelace Key Spell Component."
     }
   ],

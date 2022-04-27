@@ -21,7 +21,7 @@ module.exports = async (helper) => {
     `);
   }
 
-  if (answer2 !== 'B') {
+  if (answer2 !== 'b') {
     return helper.fail(`
       Incorrect, Twilio does offer a server-side helper library for users of that programming language.
     `);

@@ -156,7 +156,7 @@ module.exports = async function (event, world) {
       env.hasOwnProperty("TQ_TWILIO_ACCOUNT_SID") &&
       env.hasOwnProperty("TQ_TWILIO_AUTH_TOKEN")
     )
-      twilio_api_setup_complete();
+      twilioApiSetupComplete();
   };
 
   const runNpcChecks = (event) => {

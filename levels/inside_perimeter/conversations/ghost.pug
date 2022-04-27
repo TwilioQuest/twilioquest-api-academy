@@ -96,9 +96,9 @@ conversation(display_name="Ghost of the Catacombs")
       text.
         Each hallway in these Catacombs belongs to one of the four houses of the Arcane Academy of API Arts. In each hallway you will uncover new information and face new challenges.  <br><br>
 
-        When you complete the challenge for each house, you will receive one part of a spell that when combined, will give you a key to the Sacred Scroll Room.<br><br>
+        To you complete the challenge for each house, you must face its mascot. Prove to each mascot your capabilities, and you will be granted one part of a spell. When combined, these spell components will yield a key to the Sacred Scroll Room.<br><br>
         
-        Inside the Sacred Scroll Room is a Pledge Scroll, that will be infused with the magic you reveal as you move through the Catacombs. Present this scroll to the Headmaster at the Academy and discover which House you belong to.   
+        Inside the Sacred Scroll Room is a Pledge Scroll that will be infused with the magic you reveal as you move through the Catacombs. Present this scroll to the Headmaster at the Academy and discover to which House you belong.   
 
     statement#get_started
       if worldState.insideCatacombs.hasCredentials
@@ -106,7 +106,7 @@ conversation(display_name="Ghost of the Catacombs")
           You've come to the Academy well prepared, with your Twilio account credentials in tow. You may proceed into the Catacombs.
       else
         text.
-          Before you begin, you must move to the Knight you're ready for the trials ahead. Find your Twilio credentials and give them to the Knight in order to proceed.
+          Before you begin, you must prove to the Knight you're ready for the trials ahead. Find your Twilio credentials and give them to the Knight in order to proceed.
 
     statement#proceed 
       text.
