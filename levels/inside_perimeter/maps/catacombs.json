@@ -1962,6 +1962,11 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"hidden",
                          "type":"bool",
                          "value":true
@@ -1989,6 +1994,11 @@
                  "id":204,
                  "name":"",
                  "properties":[
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
                         {
                          "name":"hidden",
                          "type":"bool",
@@ -2018,6 +2028,11 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"hidden",
                          "type":"bool",
                          "value":true
@@ -2045,6 +2060,11 @@
                  "id":206,
                  "name":"",
                  "properties":[
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
                         {
                          "name":"hidden",
                          "type":"bool",
