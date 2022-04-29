@@ -5,7 +5,7 @@ module.exports = async (helper) => {
 
   if (answer1 === '' || answer2 === '' || answer3 === '') {
     return helper.fail(`
-      Please answer all of the questions!
+      Please answer all of the challenge questions!
     `);
   }
 
@@ -17,19 +17,19 @@ module.exports = async (helper) => {
 
   if (answer1 !== 'software development kit') {
     return helper.fail(`
-      The correct answer is Software Development Kit.
+      The correct answer to the first challenge question is Software Development Kit.
     `);
   }
 
   if (answer2 !== 'b') {
     return helper.fail(`
-      Incorrect, Twilio does offer a server-side helper library for users of that programming language.
+      The second challenge question is incorrect, Twilio does offer a server-side helper library for users of that programming language.
     `);
   }
 
   if (answer3 !== 'true') {
     return helper.fail(`
-      Incorrect, libraries do make working with APIs easier by handling common and repetitive low-level interactions with the server.
+      The third challenge question is ncorrect, libraries do make working with APIs easier by handling common and repetitive low-level interactions with the server.
     `);
   }
 
@@ -42,6 +42,6 @@ module.exports = async (helper) => {
   // }
 
   return helper.success(`
-    You've got it! You've opened the chest and received the Spell Scroll, bring it back to the Groundskeeper!
+    You've got it! You've received your House Turing Key Spell Component!
   `);
 };

@@ -1,6 +1,6 @@
 {
   "title": "API Academy: HTTP Methods",
-  "description": "To unlock the storage chest and obtain the key spell, you must demonstrate knowledge of HTTP methods.",
+  "description": "To win over the Neumann mascot and obtain the key spell component, you must demonstrate knowledge of HTTP methods.",
   "show_ide": false,
   "validation_fields": [
     {
@@ -19,7 +19,7 @@
       "name": "answer3",
       "type": "text",
       "placeholder": "",
-      "label": "Finally, to truly prove your worthiness to the <House Neumann mascot>, answer this question successfully: To create (and thereby send) a message using the Twilio Programmable SMS API, which HTTP method would you use?"
+      "label": "Finally, to truly prove your worthiness to the House Neumann mascot, answer this question successfully: To create (and thereby send) a message using the Twilio Programmable SMS API, which HTTP method would you use?"
     }
   ],
   "rewards": {

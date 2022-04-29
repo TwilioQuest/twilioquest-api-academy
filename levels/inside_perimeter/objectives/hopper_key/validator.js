@@ -11,31 +11,31 @@ module.exports = async (helper) => {
 
   if (answer1 === '' || answer2 === '' || answer3 === '' || answer4 === '') {
     return helper.fail(`
-      Please answer all questions!
+      Please answer all the challenge questions!
     `);
   }
 
   if (answer1 !== "confirm") {
     return helper.fail(`
-      Please type 'confirm' to confirm you've successfully created a Postman account and opened the web interface or the app. If you're having trouble, checkout the linked video or blog content.
+      Please type 'confirm' for the first challenge question to confirm you've successfully created a Postman account and opened the web interface or the app. If you're having trouble, checkout the linked video or blog content.
     `);
   }
 
   if (answer2 !== "false") {
     return helper.fail(`
-      This is false - a Postman "collection" is a group of related HTTP requests that you can reuse easily.
+      The second challenge question is false - a Postman "collection" is a group of related HTTP requests that you can reuse easily.
     `);
   }
 
   if (answer3 !== "authorization") {
     return helper.fail(`
-      That's not quite right. Maybe the statue in the hallway can help you with this one...
+      The third challenge question is not quite right. Maybe the statue in the hallway can help you with this one...
     `);
   }
 
   if (answer4 !== "b") {
     return helper.fail(`
-      That's incorrect. Try again.
+      The fourth challenge question is incorrect. Try again.
     `);
   }
 
