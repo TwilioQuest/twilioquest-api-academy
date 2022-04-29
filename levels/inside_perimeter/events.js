@@ -234,8 +234,10 @@ module.exports = async function (event, world) {
     if (!worldState.insideCatacombs.keySpellsObtained.includes(object))
       worldState.insideCatacombs.keySpellsObtained.push(object);
 
-    if (worldState.insideCatacombs.keySpellsObtained.length == 4)
+    if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
+      grantItems(["magic_key"]);
       unlockObject("magic_key");
+    }
   };
 
   const runObjectiveEffects = ({ objective }) => {
