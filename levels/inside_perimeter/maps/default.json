@@ -928,8 +928,8 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":1506,
-                 "y":402
+                 "x":1308,
+                 "y":600
                 }],
          "opacity":1,
          "type":"objectgroup",

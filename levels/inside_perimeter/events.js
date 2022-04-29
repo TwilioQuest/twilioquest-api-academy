@@ -114,6 +114,45 @@ module.exports = async function (event, world) {
     });
   };
 
+  const applyDisappearTween = (group) => {
+    const { game } = world.__internals.level;
+
+    const tweenPromises = [];
+
+    world.forEachEntities(
+      ({ instance }) => instance.group === group || instance.key == group,
+      ({ sprite }) => {
+        const tweenPromise = new Promise((resolve) => {
+          const tween = game.add
+            .tween(sprite)
+            .to(
+              {
+                alpha: 0.6,
+              },
+              400, // time
+              Phaser.Easing.Exponential.In,
+              undefined,
+              0, // delay
+              1, // repeat once
+              true // yoyo
+            )
+            .to(
+              { alpha: 0 },
+              400, // time
+              Phaser.Easing.Exponential.In
+            );
+
+          tween.onComplete.add(resolve);
+          tween.start();
+        });
+
+        tweenPromises.push(tweenPromise);
+      }
+    );
+
+    return Promise.all(tweenPromises);
+  };
+
   /*
    *
    * INTERACTION FUNCTION DEFINITIONS
@@ -225,10 +264,16 @@ module.exports = async function (event, world) {
   };
 
   const disappear = (event) => {
-    destroyObject(event.target.group);
-    if (event.target.unlocksObject) unlockObject(event.target.unlocksObject);
-    if (event.target.unlocksTransition)
-      unlockTransition(event.target.unlocksTransition);
+    applyDisappearTween(event.target.group).then(() => {
+      destroyObject(event.target.group);
+
+      if (event.target.unlocksObject) unlockObject(event.target.unlocksObject);
+      if (event.target.unlocksTransition)
+        unlockTransition(event.target.unlocksTransition);
+
+      world.stopUsingTool();
+      world.enablePlayerMovement();
+    });
   };
 
   const move = (event) => {}; // coming soon
@@ -256,6 +301,9 @@ module.exports = async function (event, world) {
       world.showNotification("You haven't learned this spell yet!");
       return;
     }
+
+    world.disablePlayerMovement();
+    world.useTool("wand");
 
     spells[event.target.spell_type](event);
   };
