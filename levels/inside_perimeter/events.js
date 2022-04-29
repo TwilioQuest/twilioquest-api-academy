@@ -287,6 +287,12 @@ module.exports = async function (event, world) {
     }
 
     openDoor("scroll_room_door");
+
+    // Stop using tool after a second
+    world.wait(1000).then(() => {
+      world.stopUsingTool();
+      world.enablePlayerMovement();
+    });
   };
 
   const runSpell = (event) => {
