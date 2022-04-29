@@ -1943,6 +1943,96 @@
                  "width":24,
                  "x":718,
                  "y":239
+                }, 
+                {
+                 "gid":15033,
+                 "height":24,
+                 "id":284,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"statue_hopper"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"statue_hopper"
+                        }, 
+                        {
+                         "name":"notify",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":168,
+                 "y":408
+                }, 
+                {
+                 "gid":14993,
+                 "height":24,
+                 "id":285,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":168,
+                 "y":384
+                }, 
+                {
+                 "gid":15032,
+                 "height":24,
+                 "id":286,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"statue_lovelace"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"statue_lovelace"
+                        }, 
+                        {
+                         "name":"notify",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":1248,
+                 "y":408
+                }, 
+                {
+                 "gid":14992,
+                 "height":24,
+                 "id":287,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":1248,
+                 "y":384
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2141,7 +2231,7 @@
          "y":0
         }],
  "nextlayerid":40,
- "nextobjectid":284,
+ "nextobjectid":288,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
