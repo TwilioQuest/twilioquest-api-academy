@@ -1,7 +1,8 @@
 const merge = require("lodash.merge");
 const processInitiationEvents = require("./events/initiation");
 const packageInfo = require("../../package.json");
-const updateQuestLogWhenComplete = require("./events/updateQuestLogWhenComplete");
+const updateQuestLogWhenComplete = require("../../scripts/updateQuestLogWhenComplete");
+const { WORLD_STATE_KEY } = require("../../scripts/config");
 
 const LEVEL_STATE = {
   destroyedEntities: [],
@@ -59,8 +60,6 @@ const CLEAR_STATE = {
     tweenRunning: false,
   },
 };
-
-const WORLD_STATE_KEY = "TQ_API_ACADEMY_WORLD_STATE";
 
 module.exports = async function (event, world) {
   const worldState = merge(LEVEL_STATE, world.getState(WORLD_STATE_KEY));
@@ -501,7 +500,7 @@ module.exports = async function (event, world) {
   updateQuestLogWhenComplete({
     notification:
       'I\'ve completed everything in the <span class="highlight">API Academy Inside Perimeter</span> for now!',
-    log: "I've completed everything in the API Academy Inside Perimeter for now!",
+    log: "I was sorted into one of the great houses! I'm done here for now.",
     event,
     world,
     worldStateKey: WORLD_STATE_KEY,

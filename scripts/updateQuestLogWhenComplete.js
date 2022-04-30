@@ -5,6 +5,8 @@ async function updateQuestLogWhenComplete({
   world,
   worldStateKey,
   version,
+  questKey,
+  questTitle,
 }) {
   if (
     !(
@@ -31,8 +33,8 @@ async function updateQuestLogWhenComplete({
   if (!worldState.shownCompletionVersion) {
     world.showNotification(notification);
     world.updateQuestStatus(
-      world.__internals.level.levelName,
-      world.__internals.level.levelProperties.questTitle,
+      questKey || world.__internals.level.levelName,
+      questTitle || world.__internals.level.levelProperties.questTitle,
       log,
       true
     );

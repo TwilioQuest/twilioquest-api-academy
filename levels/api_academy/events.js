@@ -1,7 +1,6 @@
 const merge = require("lodash.merge");
 const processInitiationEvents = require("./events/initiation");
-const packageInfo = require("../../package.json");
-const updateQuestLogWhenComplete = require("./events/updateQuestLogWhenComplete");
+const { WORLD_STATE_KEY } = require("../../scripts/config");
 
 const INITIAL_STATE = {
   initiation: {
@@ -9,8 +8,6 @@ const INITIAL_STATE = {
     enteredMazeFirstTime: false,
   },
 };
-
-const WORLD_STATE_KEY = "TQ_API_ACADEMY_WORLD_STATE";
 
 module.exports = async function (event, world) {
   const worldState = merge(INITIAL_STATE, world.getState(WORLD_STATE_KEY));
@@ -33,8 +30,8 @@ module.exports = async function (event, world) {
 
   updateQuestLogWhenComplete({
     notification:
-      'I\'ve completed everything in the <span class="highlight">API Academy</span> for now!',
-    log: "I've completed everything in the API Academy for now!",
+      'I\'ve gained entrance to the <span class="highlight">API Academy Inside Perimeter</span>!',
+    log: 'I\'ve gained entrance to the <span class="highlight">API Academy Inside Perimeter</span>!',
     event,
     world,
     worldStateKey: WORLD_STATE_KEY,
