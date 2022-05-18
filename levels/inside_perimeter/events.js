@@ -234,7 +234,7 @@ module.exports = async function (event, world) {
       worldState.insideCatacombs.keySpellsObtained.push(object);
 
     if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
-      grantItems(["magic_key"]);
+      world.grantItems(["magic_key"]);
       unlockObject("magic_key");
     }
   };
