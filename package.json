@@ -1,11 +1,12 @@
 {
   "name": "twilioquest-api-academy",
   "description": "This is the API Academy extension for TwilioQuest.",
-  "version": "1.0.5",
+  "version": "1.2.0-rc2",
   "engines": {
     "twilioquest": "3.1.44"
   },
   "dependencies": {
-    "lodash.merge": "^4.6.2"
+    "lodash.merge": "^4.6.2",
+    "twilio": "^3.74.0"
   }
 }
