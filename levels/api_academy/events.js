@@ -28,15 +28,5 @@ module.exports = async function (event, world) {
     }
   }
 
-  updateQuestLogWhenComplete({
-    notification:
-      'I\'ve gained entrance to the <span class="highlight">API Academy Inside Perimeter</span>!',
-    log: 'I\'ve gained entrance to the <span class="highlight">API Academy Inside Perimeter</span>!',
-    event,
-    world,
-    worldStateKey: WORLD_STATE_KEY,
-    version: packageInfo.version,
-  });
-
   world.setState(WORLD_STATE_KEY, worldState);
 };
