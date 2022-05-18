@@ -67,6 +67,11 @@ function processInitiationEvents(event, world, worldState) {
       } more to go!
       `;
 
+      // Initial message before any chests have been found
+      if (completedHouses.length === 0) {
+        completedHousesNotification = `I need to search for 4 chests in these woods to gain entrance to the API Academy!`;
+      }
+
       if (completedHouses.length === 4) {
         // Victory message once all chests found
         completedHousesNotification = `I completed all the houses' ceremonies! I should head back to the castle gates now!`;
