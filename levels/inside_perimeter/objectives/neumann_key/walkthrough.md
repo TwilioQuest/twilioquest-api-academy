@@ -7,3 +7,5 @@ Watch the embedded video below to learn more about remote APIs. Also, feel free 
   src="https://www.youtube.com/embed/GZvSYJDk-us?start=775" 
   frameborder="0" allowfullscreen>
 </iframe>
+
+[Learn about HTTP Methods and using cURL](https://www.twilio.com/blog/http-methods-requests-curl) from Dr. van Hoek, the head of House Von Neumann, on the Twilio Blog!
