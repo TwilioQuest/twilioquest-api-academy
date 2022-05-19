@@ -6,7 +6,9 @@
   "is_mission": false,
   "priority": 3,
   "backgroundMusic": "fascinatingarea_108253b",
-  "flavorTextOverrides": {},
+  "flavorTextOverrides": {
+    "lockedDoor": "This door won't budge!"
+  },
   "objectives": [
     "obtain_wand",
     "hopper_key",
