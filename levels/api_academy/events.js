@@ -4,7 +4,7 @@ const { WORLD_STATE_KEY } = require("../../scripts/config");
 
 const INITIAL_STATE = {
   initiation: {
-    lastShownHouseNotification: 4,
+    lastShownHouseNotification: 0,
     enteredMazeFirstTime: false,
   },
 };
