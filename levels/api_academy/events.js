@@ -1,6 +1,8 @@
 const merge = require("lodash.merge");
+const packageInfo = require("../../package.json");
 const processInitiationEvents = require("./events/initiation");
 const { WORLD_STATE_KEY } = require("../../scripts/config");
+const updateQuestLogWhenComplete = require("../../scripts/updateQuestLogWhenComplete");
 
 const INITIAL_STATE = {
   initiation: {
@@ -31,7 +33,7 @@ module.exports = async function (event, world) {
   updateQuestLogWhenComplete({
     notification:
       'I\'ve ready to enter <span class="highlight">API Academy</span>! I should make my way to the gates!',
-    log: "I've proved I'm worthy to enter the <span class=\"highlight\">API Academy</span>!",
+    log: "I've proved I'm worthy to enter the API Academy!",
     event,
     world,
     worldStateKey: WORLD_STATE_KEY,

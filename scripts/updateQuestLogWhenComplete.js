@@ -1,4 +1,4 @@
-import compareVersions from "compare-versions";
+const compareVersions = require("compare-versions");
 
 async function updateQuestLogWhenComplete({
   notification,
@@ -11,13 +11,12 @@ async function updateQuestLogWhenComplete({
   questTitle,
   minimumTargetVersion,
 }) {
-  if (
-    !(
-      event.name === "levelDidLoad" ||
-      event.name === "mapDidLoad" ||
-      event.name === "objectiveDidClose"
-    )
-  ) {
+  const notValidEventTypes = [
+    "levelDidLoad",
+    "mapDidLoad",
+    "objectiveDidClose",
+  ];
+  if (notValidEventTypes.includes(event.name)) {
     return;
   }
 
@@ -30,7 +29,7 @@ async function updateQuestLogWhenComplete({
   // have already above might be stale by now.
   const worldState = world.getState(worldStateKey);
 
-  if (hasMinimumTargetVersionLogged(worldState, minimumTargetVersion)) {
+  if (!hasMinimumTargetVersionLogged(worldState, minimumTargetVersion)) {
     world.showNotification(notification);
     world.updateQuestStatus(
       questKey || world.__internals.level.levelName,
