@@ -122,62 +122,6 @@
                  "y":162
                 }, 
                 {
-                 "gid":9356,
-                 "height":24,
-                 "id":7,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"hackable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"spell_chest"
-                        }, 
-                        {
-                         "name":"objectiveName",
-                         "type":"string",
-                         "value":"obtain_wand"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":168,
-                 "y":120
-                }, 
-                {
-                 "gid":9456,
-                 "height":24,
-                 "id":8,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"hackable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"spell_chest"
-                        }, 
-                        {
-                         "name":"objectiveName",
-                         "type":"string",
-                         "value":"obtain_wand"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":168,
-                 "y":144
-                }, 
-                {
                  "height":6,
                  "id":10,
                  "name":"exit_to_inside_perimeter",
@@ -203,6 +147,34 @@
                  "width":47,
                  "x":192,
                  "y":281
+                }, 
+                {
+                 "gid":10003,
+                 "height":24,
+                 "id":20,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"hackable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"spell_chest"
+                        }, 
+                        {
+                         "name":"objectiveName",
+                         "type":"string",
+                         "value":"obtain_wand"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":168,
+                 "y":132
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -449,7 +421,7 @@
          "y":0
         }],
  "nextlayerid":20,
- "nextobjectid":20,
+ "nextobjectid":21,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
