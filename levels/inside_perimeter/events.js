@@ -1,7 +1,4 @@
 const merge = require("lodash.merge");
-const processInitiationEvents = require("./events/initiation");
-const packageInfo = require("../../package.json");
-const updateQuestLogWhenComplete = require("../../scripts/updateQuestLogWhenComplete");
 const { WORLD_STATE_KEY } = require("../../scripts/config");
 
 const LEVEL_STATE = {
@@ -362,8 +359,18 @@ module.exports = async function (event, world) {
 
     worldState.sortedHouse = chosenHouse.name;
 
-    // TODO: delete this notification (this will be revealed in chapter 3?)
-    world.showNotification(`Your house is: ${chosenHouse.name}`);
+    // After assigning house, tell player they've completed the
+    // current content. They'll learn their house later.
+    // TODO: Update this notification on future release version.
+    world.showNotification(
+      'I\'ve gotten my pledge scroll! That means everything in the <span class="highlight">API Academy Inside Perimeter</span> is completed for now!'
+    );
+    world.updateQuestStatus(
+      world.__internals.level.levelName,
+      world.__internals.level.levelProperties.questTitle,
+      "I got my pledge scroll! I'm done here until the rest of the API Academy grounds open up.",
+      true
+    );
   };
 
   const runAddItem = (event) => {
@@ -496,16 +503,6 @@ module.exports = async function (event, world) {
       world.startConversation("groundskeeper", "groundskeeper.png");
     }
   }
-
-  updateQuestLogWhenComplete({
-    notification:
-      'I\'ve completed everything in the <span class="highlight">API Academy Inside Perimeter</span> for now!',
-    log: "I was sorted into one of the great houses! I'm done here for now.",
-    event,
-    world,
-    worldStateKey: WORLD_STATE_KEY,
-    version: packageInfo.version,
-  });
 
   world.setState(WORLD_STATE_KEY, worldState);
 };
