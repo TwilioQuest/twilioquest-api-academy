@@ -1,6 +1,6 @@
 {
   "title": "API Academy: Learn How to Learn About APIs",
-  "description": "To unlock the storage chest and obtain your wand, you must learn how to learn about APIs. This is achieved through *documentation*.",
+  "description": "To unlock the storage chest and obtain your wand, you must learn how to learn about APIs. This is achieved through <span class=\"highlight\">documentation</span>.",
   "show_ide": false,
   "validation_fields": [
     {
