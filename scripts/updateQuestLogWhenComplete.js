@@ -30,9 +30,6 @@ async function updateQuestLogWhenComplete({
   // have already above might be stale by now.
   const worldState = world.getState(worldStateKey);
 
-  // We check if any version at all is set for now.
-  // We can check against specific versions as necessary
-  // in the future.
   if (hasMinimumTargetVersionLogged(worldState, minimumTargetVersion)) {
     world.showNotification(notification);
     world.updateQuestStatus(
