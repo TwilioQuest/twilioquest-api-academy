@@ -1,3 +1,5 @@
+import compareVersions from "compare-versions";
+
 async function updateQuestLogWhenComplete({
   notification,
   log,
@@ -7,6 +9,7 @@ async function updateQuestLogWhenComplete({
   version,
   questKey,
   questTitle,
+  minimumTargetVersion,
 }) {
   if (
     !(
@@ -30,7 +33,7 @@ async function updateQuestLogWhenComplete({
   // We check if any version at all is set for now.
   // We can check against specific versions as necessary
   // in the future.
-  if (!worldState.shownCompletionVersion) {
+  if (hasMinimumTargetVersionLogged(worldState, minimumTargetVersion)) {
     world.showNotification(notification);
     world.updateQuestStatus(
       questKey || world.__internals.level.levelName,
@@ -42,6 +45,24 @@ async function updateQuestLogWhenComplete({
     worldState.shownCompletionVersion = version;
     world.setState(worldStateKey, worldState);
   }
+}
+
+function hasMinimumTargetVersionLogged(worldState, minimumTargetVersion) {
+  const { shownCompletionVersion } = worldState;
+
+  // We have logged nothing yet
+  if (!shownCompletionVersion) {
+    return false;
+  }
+
+  // If no minimum target version is specified, we will
+  // not make the version target check.
+  if (!minimumTargetVersion) {
+    return true;
+  }
+
+  // Have we saved a shownNotification for the minimum or greater version
+  return compareVersions(shownCompletionVersion, minimumTargetVersion) >= 0;
 }
 
 module.exports = updateQuestLogWhenComplete;

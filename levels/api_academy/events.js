@@ -28,5 +28,16 @@ module.exports = async function (event, world) {
     }
   }
 
+  updateQuestLogWhenComplete({
+    notification:
+      'I\'ve ready to enter <span class="highlight">API Academy</span>! I should make my way to the gates!',
+    log: "I've proved I'm worthy to enter the <span class=\"highlight\">API Academy</span>!",
+    event,
+    world,
+    worldStateKey: WORLD_STATE_KEY,
+    version: packageInfo.version,
+    minimumTargetVersion: "1.2.6",
+  });
+
   world.setState(WORLD_STATE_KEY, worldState);
 };
