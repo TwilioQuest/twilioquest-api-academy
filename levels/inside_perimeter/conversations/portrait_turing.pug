@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Portrait of Surprised Sorceress Susan")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        Those lucky JavaScript students... Twilio gives them server-side helper libraries and browser SDKs too?
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

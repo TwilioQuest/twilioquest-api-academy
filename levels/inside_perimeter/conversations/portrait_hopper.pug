@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Portrait of a Pretentious Princess's Palace")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        I heard that some sneaky students make use of Postman variables to keep track of their credentials across requests. Can you believe it?
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

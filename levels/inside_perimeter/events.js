@@ -155,16 +155,6 @@ module.exports = async function (event, world) {
    *
    */
   const objectNotifications = {
-    statue_credentials:
-      "Welcome to the Catacombs. Now that I have your Twilio credentials, you may complete the challenges before you.",
-    portrait_hopper:
-      "I heard that some sneaky students make use of Postman variables to keep track of their credentials across requests. Can you believe it?",
-    portrait_lovelace:
-      "Every SMS must go to someone... could it really be that you're messaging me? It's been so long since anyone has sent a missive my way...",
-    portrait_neumann:
-      "A whisper in the wind said that students who use GET requests to send messages with the Twilio Programmable SMS API aren't getting the results they want.",
-    portrait_turing:
-      "Those lucky JavaScript students... Twilio gives them server-side helper libraries and browser SDKs too?",
     statue_hopper:
       "In House Hopper, you will find that knowing how to weild tools is the best way to achieve success. For example, to send auth credentials in an API request in Postman, you must use the Authorization tab. This knowledge will magnify the magic of House Hopper.",
     statue_lovelace:
@@ -177,7 +167,7 @@ module.exports = async function (event, world) {
   };
 
   const runObjectNotification = ({ target: { key = "default" } }) => {
-    world.showNotification(objectNotifications[key]);
+    world.startConversation(key, key + ".png");
   };
 
   const npcChecks = {

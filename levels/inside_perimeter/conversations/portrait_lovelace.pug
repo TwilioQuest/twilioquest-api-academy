@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Portrait of a Lonely Lady")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        Every SMS must go to someone... could it really be that you're messaging me? It's been so long since anyone has sent a missive my way...
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

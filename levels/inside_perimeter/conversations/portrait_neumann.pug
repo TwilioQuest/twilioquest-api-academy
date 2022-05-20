@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Portrait of a Whispering Windy Wall")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        A whisper in the wind said that students who use GET requests to send messages with the Twilio Programmable SMS API aren't getting the results they want.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);
