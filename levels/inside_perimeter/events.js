@@ -154,12 +154,6 @@ module.exports = async function (event, world) {
    * INTERACTION FUNCTION DEFINITIONS
    *
    */
-  const objectNotifications = {
-    statue_turing:
-      "In House Turing, you will find that humans are at the core of all code. Humans of House Turing specialize in creating Software Development Kits and Libraries to make working with APIs easier for students of every programming language.",
-    default: "Hello, operator!",
-  };
-
   const runObjectNotification = ({ target: { key = "default" } }) => {
     world.startConversation(key, key + ".png");
   };
@@ -263,7 +257,7 @@ module.exports = async function (event, world) {
   const unlock = (event) => {
     if (!worldState.insideCatacombs.hasKey) {
       world.showNotification(
-        "You need to the magic key to unlock the Scroll Room. Conquer the objectives inside these catacombs before returning."
+        "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these catacombs before returning."
       );
       return;
     }
@@ -280,13 +274,15 @@ module.exports = async function (event, world) {
   const runSpell = (event) => {
     if (!worldState.insidePerimeter.hasWand) {
       world.showNotification(
-        "Go find the toolshed and see if there is an extra wand inside!"
+        "I should go find the toolshed and see if there is an extra wand inside!"
       );
       return;
     }
 
     if (!worldState.spellsEarned.includes(event.target.spell_type)) {
-      world.showNotification("You haven't learned this spell yet!");
+      world.showNotification(
+        "I think I need to learn a spell later to do anything here!"
+      );
       return;
     }
 
@@ -312,7 +308,7 @@ module.exports = async function (event, world) {
       worldState.spellsEarned.push("unlock");
     destroyObject("magic_key");
     world.showNotification(
-      "You've obtained the magic key, go forth and claim your pledge scroll."
+      "I've obtained the magic key, I should go and claim my pledge scroll!"
     );
 
     // TODO: actually add item to inventory
@@ -323,7 +319,7 @@ module.exports = async function (event, world) {
     worldState.insideCatacombs.hasPledgeScroll = true;
     destroyObject("pledge_scroll");
     world.showNotification(
-      "You've obtained your pledge scroll. Head to the Academy building and present it to the headmaster."
+      "I've obtained my pledge scroll. Time to head to the Academy building and present it to the headmaster."
     );
 
     world.grantItems(["pledge_scroll"]);
