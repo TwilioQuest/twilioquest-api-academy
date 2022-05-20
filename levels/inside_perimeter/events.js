@@ -155,12 +155,6 @@ module.exports = async function (event, world) {
    *
    */
   const objectNotifications = {
-    statue_hopper:
-      "In House Hopper, you will find that knowing how to weild tools is the best way to achieve success. For example, to send auth credentials in an API request in Postman, you must use the Authorization tab. This knowledge will magnify the magic of House Hopper.",
-    statue_lovelace:
-      "In House Lovelace, you will learn that understanding is key to expression. To enhance the power of House Lovelace, explore an API's documentation to find the answers you seek.",
-    statue_neumann:
-      "In House Neumann, you will discover that efficiency and logic are at the core of your magic. Knowing that GET requests are used to retrieve information and POST requests are used to send information is necessary to maximize the efficiency of your API code.",
     statue_turing:
       "In House Turing, you will find that humans are at the core of all code. Humans of House Turing specialize in creating Software Development Kits and Libraries to make working with APIs easier for students of every programming language.",
     default: "Hello, operator!",

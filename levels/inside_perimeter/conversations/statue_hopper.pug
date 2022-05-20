@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Dusty Statue of Grace Hopper")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        In House Hopper, you will find that knowing how to wield tools is the best way to achieve success. For example, to send auth credentials in an API request in Postman, you must use the Authorization tab. This knowledge will magnify the magic of House Hopper.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

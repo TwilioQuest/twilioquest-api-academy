@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Dusty Statue of Ada Lovelace")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        In House Lovelace, you will learn that understanding is key to expression. To enhance the power of House Lovelace, explore an API's documentation to find the answers you seek.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

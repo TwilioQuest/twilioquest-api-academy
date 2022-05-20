@@ -1,0 +1,15 @@
+-
+  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);
+
+conversation(display_name="Dusty Statue of John von Neumann")
+  statement#default
+  responses
+
+  statements
+    statement#default
+      text.
+        In House Turing, you will find that humans are at the core of all code. Humans of House Turing specialize in creating Software Development Kits and Libraries to make working with APIs easier for students of every programming language.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);
