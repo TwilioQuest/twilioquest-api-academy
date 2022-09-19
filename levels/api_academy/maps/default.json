@@ -211,6 +211,12 @@
                  "height":32,
                  "id":151,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"professor-default"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -636,7 +642,7 @@
  "nextobjectid":179,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -666,6 +672,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":62
 }

@@ -4,7 +4,7 @@
 
 mixin excavation
   response#excavation.
-    Why does the academy have an excavation crew?
+    Why does the Academy have an excavation crew?
 
 conversation(display_name="Arcane Academy Groundskeeper")
   case lastResponse
@@ -20,10 +20,10 @@ conversation(display_name="Arcane Academy Groundskeeper")
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. I've sent a raven requesting the academy excavation crew arrive as soon as possible.
+        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
     statement#excavation
       text.
-        Our catacombs couldn't dig themselves! We have not needed the crew in some time though. It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

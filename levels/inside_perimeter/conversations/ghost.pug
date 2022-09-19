@@ -24,19 +24,31 @@ mixin pledge_scroll
   response#pledge_scroll.
     I've received my pledge scroll, what do I do now?
 
+mixin houses
+  response#houses.
+    Can you tell me more about Arcane’s houses?
+
 conversation(display_name="Ghost of the Catacombs")
   case lastResponse
+    when "houses"
+      statement#houses
+      responses
+        +get_started
+        +catacombs_introduction
+      
     when "personal_intro"
       statement#personal_intro
       responses
         +get_started
         +catacombs_introduction
+        +houses 
 
     when "catacombs_introduction"
       statement#catacombs_introduction
       responses
         +get_started
         +personal_intro
+        +houses
 
     when "proceed"
       statement#proceed
@@ -46,11 +58,13 @@ conversation(display_name="Ghost of the Catacombs")
       responses
         +catacombs_introduction
         +personal_intro
+        +houses
 
     when "help"
       statement#help
       responses
         +catacombs_introduction
+        +houses
 
     when "pledge_scroll"
       statement#congratulations
@@ -62,9 +76,10 @@ conversation(display_name="Ghost of the Catacombs")
           +proceed
           +catacombs_introduction
           +personal_intro
+          +houses
         else
           response#ack.
-            Understood. I must give my Twilio Credentials to the statue before continuing on into the Catacombs. 
+            Understood. I must give my Twilio Credentials to the statue before continuing on into the Catacombs.
 
     default
       if !worldState.insidePerimeter.ghost_introduction
@@ -73,6 +88,7 @@ conversation(display_name="Ghost of the Catacombs")
         responses
           +catacombs_introduction
           +get_started
+          +houses 
 
       else
         statement#follow_up_greeting
@@ -80,6 +96,7 @@ conversation(display_name="Ghost of the Catacombs")
           if allComplete
             +pledge_scroll
             +personal_intro
+            +houses 
           else 
             +catacombs_introduction
             response#help.
@@ -88,25 +105,35 @@ conversation(display_name="Ghost of the Catacombs")
   statements
     statement#default
       text.
-        Oh my, we haven't had a visitor to the Catacombs in quite a long while! I am Professor Hattip Restapi, but you can call me Professor Hattie. I'm here to guide you through these Catacombs and help you face the challenges ahead. <br><br>
-        
-        The challenges you'll face inside these Catacombs will not only test your ability to wield the power of APIs, but help you discover where your magic aligns. Is it in using code to express yourself? Solving problems with code? Harnessing the theory and science underneath the code? Or using code to push the boundaries of everyday life?  
+        Oh my, we haven't had a visitor to the Catacombs in quite a long while! I am Professor Hattip Restapi, but you can call me Professor Hattie. 
+        I'm here to guide you through these Catacombs and help you face the challenges ahead. <br><br>
+        The challenges you'll face inside these Catacombs will not only test your ability to wield the power of APIs, 
+        but help you discover where your magic aligns. Is it in using code to express yourself? Solving problems with code? 
+        Harnessing the theory and science underneath the code? Or using code to push the boundaries of everyday life?  
 
+    statement#houses 
+      text.
+        Each house specializes in unique strengths and subject matters. 
+        To be honest, it's hard for me to keep up with all their activities.
+        You're better off asking them directly.
+        
     statement#catacombs_introduction
       text.
-        Each hallway in these Catacombs belongs to one of the four houses of the Arcane Academy of API Arts. In each hallway you will uncover new information and face new challenges.  <br><br>
-
-        To complete the challenge for each house, you must face its mascot. Prove to each mascot your capabilities, and you will be granted one part of a spell. When combined, these spell components will yield a key to the Sacred Scroll Room.<br><br>
-        
-        Inside the Sacred Scroll Room is a Pledge Scroll that will be infused with the magic you reveal as you move through the Catacombs. Present this scroll to the Headmaster at the Academy and discover to which House you belong.   
+       The Catacomb chambers belong to the mascots of Arcane’s four houses. 
+       In each chamber, you will face new challenges to prove your abilities. 
+       In turn, each mascot will grant you a portion of an Unlocking Spell that will 
+       summon the key needed to enter the Sacred Scroll Room in the Catacombs’ center.<BR><BR>
+       Enter this room with this key to retrieve your pledge scroll infused with the magic you have mastered.
 
     statement#get_started
       if worldState.insideCatacombs.hasCredentials
         text.
-          You've come to the Academy well prepared, with your Twilio account credentials in tow. You may proceed into the Catacombs.
+          You've come to the Academy well prepared, with your Twilio account credentials in tow. 
+          You may proceed into the Catacombs. Good luck, dear Operator!
       else
         text.
-          Before you begin, you must prove to the Knight you're ready for the trials ahead. Find your Twilio credentials and give them to the Knight in order to proceed.
+          Before you begin, you must prove to the Knight you're ready for the trials ahead. 
+          Find your Twilio credentials and give them to the Knight in order to proceed. 
 
     statement#proceed 
       text.
@@ -119,20 +146,28 @@ conversation(display_name="Ghost of the Catacombs")
 
       else if worldState.insideCatacombs.keySpellsObtained.length === 0
         text.
-          Operator, hello again! How are you faring on your journey through the Catacombs? It looks like you haven't pieced together any of the spell you must use to get the key to the Sacred Scroll Room.
+          Operator, hello again! How are you faring on your journey through the Catacombs? 
+          It looks like you haven't pieced together any of the spell you must use to get the key to the Sacred Scroll Room.
       
       else 
         text.
-          Operator, hello again! How are you faring on your journey through the Catacombs? It looks like you have only pieced together #{worldState.insideCatacombs.keySpellsObtained.length} of the four parts of the spell you must use to get the key to the Sacred Scroll Room.
+          Operator, hello again! How are you faring on your journey through the Catacombs? 
+          It looks like you have only pieced together #{worldState.insideCatacombs.keySpellsObtained.length} of the four parts of the spell 
+          you must use to get the key to the Sacred Scroll Room.
 
 
     statement#congratulations
       text.
-        Well done! Take your pledge scroll to the Headmaster at the entrance of the Academy and find out to which House you belong! I hear that the House Gauntlet is happening soon. The House Gauntlet is a riveting competition of code between each House. Better get there, before it begins!
+        Well done! Now you must take your pledge scroll to 
+        the Head of House up on the Academy’s grounds to officially join a house. <br><br> 
+        I hear that the House Gauntlet is happening soon. 
+        The House Gauntlet is a riveting competition of code between each house. Now that you have proven your skill as a true Arcanian, 
+        you should consider entering!
 
     statement#ack
       text.
-        Visit the ultimate API spellbook: the <a href="https://twilio.com/console">Twilio Console</a>. From there you'll be able to find the credentials the Knight requires.
+        Visit the ultimate API spellbook: the <a href="https://twilio.com/console">Twilio Console</a>. 
+        From there you'll be able to find the credentials the Knight requires.
 
     statement#help
       text.
@@ -140,7 +175,9 @@ conversation(display_name="Ghost of the Catacombs")
 
     statement#personal_intro
       text.
-        I am Professor Hattip Restapi, but you can call me Professor Hattie. I'm here to guide you through these Catacombs and help you face the challenges ahead.
+        I am Professor Hattip Restapi, but you can call me Professor Hattie. 
+        I'm here to guide you through these Catacombs and help you face the challenges ahead.
+
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

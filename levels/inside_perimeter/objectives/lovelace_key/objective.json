@@ -19,7 +19,7 @@
       "name": "answer3",
       "type": "text",
       "placeholder": "`What's the SID of your new message?",
-      "label": "From your command line, use cURL to create a message with the Twilio Programmable SMS API. Find the `sid` of the message in the server's response and submit it here to earn the House Lovelace Key Spell Component."
+      "label": "From your command line, use cURL to create a message with the Twilio Programmable SMS API. Find the `SID` of the message in the server's response and submit it here to earn the House Lovelace Key Spell Component."
     }
   ],
   "rewards": {
