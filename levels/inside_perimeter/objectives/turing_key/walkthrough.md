@@ -13,7 +13,7 @@ IF ONLY THERE WAS A LIST FOR TWILIO’S HELPER LIBRARIES…
 </p>
 
 <p>
-THERE IS A <a href="HTTPS://WWW.TWILIO.COM/DOCS/LIBRARIES">LIST!</a>
+THERE IS A <a href="HTTPS://WWW.TWILIO.COM/DOCS/LIBRARIES" target="blank" rel="noreferrer noopener">LIST!</a>
 </p>
 </blockquote>
 
