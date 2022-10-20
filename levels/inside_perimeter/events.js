@@ -107,6 +107,13 @@ module.exports = async function (event, world) {
   const openDoor = (group) => {
     world.forEachEntities(group, (door) => {
       door.state.fsm.action("open");
+      // prevents door from being marked as "inRangeObject" for the Player and
+      // stops the exclamation point from showing up
+      door.interactable = false;
+      // prevents the player from casting spells on the door, which would cause
+      // an animation to play as though the player was opening the door, even though it was
+      // already open
+      door.spellable = false;
     });
   };
 
