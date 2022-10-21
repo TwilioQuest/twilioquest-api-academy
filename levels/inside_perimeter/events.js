@@ -270,6 +270,8 @@ module.exports = async function (event, world) {
     }
 
     openDoor("scroll_room_door");
+    // Forces the player's exclamation point to become hidden after opening the door
+    event.target.level.player.inRangeObject = null;
 
     // Stop using tool after a second
     world.wait(1000).then(() => {
