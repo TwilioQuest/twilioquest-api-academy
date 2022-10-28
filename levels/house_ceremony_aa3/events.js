@@ -47,8 +47,12 @@ module.exports = async function (event, world) {
   // LEVEL FUNCTIONALITY OVERVIEW
 
   // House Ceremony
-  // The player selects their house by interacting with the House Fire in the Main Hall.
-  // This selection triggers the unlocking of the avatar uniform.
+  // The player selects their house by interacting with main House Fire in the Main Hall.
+  // Fire dialogues opens four house options.
+  // Operator response to conversation triggers "choice"
+  // This selection in conversation branch triggers the unlocking of the avatar uniform.
+  // Fire changes after they close the conversation
+  // Once the player closes the conversation, the "choice" conversation is no longer available.
   // This selection also triggers the interrupting professor dialogue.
 
   // Starting House Gauntlet
