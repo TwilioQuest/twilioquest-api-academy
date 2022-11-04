@@ -1,0 +1,74 @@
+-
+  const STATE_KEY = 'TQ_HOUSE_CEREMONY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);    
+
+mixin help
+  response#help.
+    Can I help in some way?
+
+mixin start  
+  response#start.
+    I would be happy to fill in. 
+    What do I have to do for the House Gauntlet? Where do I start? 
+
+mixin student 
+  response#student.
+    Are you going to look for the missing student?
+
+conversation(display_name="Professor Kimberley Heapsort")
+  case lastResponse
+    
+    when "help"
+      statement#help
+        responses
+          +start 
+          +student
+
+    when "start"
+      statement#start
+        responses
+          +help 
+          +student
+
+    when "student"
+      statement#student
+        responses 
+          +start
+
+    default
+      statement#default
+      responses
+        +help
+        +student
+
+  statements
+    statement#default
+      text.
+        Oh my, colleagues and students! A most terrible thing has happened. 
+        The Gauntleter who was supposed to represent House [INSERT CHOSEN HOUSE] 
+        in the House Gauntlet has gone missing!
+
+  statement#help
+      text.
+        Well, you’ve just joined the Academy, right? 
+        And you’ve just joined House [INSERT CHOSEN HOUSE]? 
+        Now that you mention it… I think you could help. 
+        Would you be able to take the place of House [INSERT CHOSEN HOUSE]’s Gauntleter?
+  
+  statement#start
+      text.
+        The House Gauntlet will take place in each of the four houses. 
+        You will begin in House Lovelace, where you will earn a spell that will open the next House, 
+        and so on. Each house can be accessed from the four corridors leading off the Main Hall.
+
+  statement#student
+      text.
+        Of course! We’ll begin the search immediately. I’m sure it’s nothing...<br><br>
+        *swallows nervously*<br><br>
+        She’s bound to turn up any minute now. It’s definitely nothing to be concerned about, 
+        especially if you are able to undertake the challenges of the House Gauntlet. 
+        I’m sure it’s nothing... too... malicious… Yes, no, certainly not.
+
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

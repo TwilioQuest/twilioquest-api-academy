@@ -1,40 +1,16 @@
 const merge = require("lodash.merge");
-const { WORLD_STATE_KEY } = require("../../scripts/config");
+const { LOVELACE_TOWER_STATE_KEY } = require("../../scripts/config");
 
-// const INITIAL_STATE = {
-//   gauntletSpellsEarned: [],
-//   playerHouses: [
-//     { name: "lovelace", id: 1 },
-//     { name: "turing", id: 2 },
-//     { name: "neumann", id: 3 },
-//     { name: "hopper", id: 4 },
-//   ],
-//   houseGauntletComplete: {
-//     gauntletSpellsObtained: [],
-//   },
-// };
-
-// const CLEAR_STATE = {
-//   gauntletSpellsEarned: [],
-//   playerHouses: [
-//     { name: "lovelace", id: 1 },
-//     { name: "turing", id: 2 },
-//     { name: "neumann", id: 3 },
-//     { name: "hopper", id: 4 },
-//   ],
-//   houseGauntletComplete: {
-//     gauntletSpellsObtained: [
-//       "lovelace_spell",
-//       "hopper_spell",
-//       "turing_spell",
-//       "neumann_spell",
-//     ],
-//   },
-// };
+const INITIAL_STATE = {
+  obj1Complete: false,
+  obj2Complete: false,
+  obj3Complete: false,
+  obj4Complete: false,
+  obj5Compelte: false,
+};
 
 module.exports = async function (event, world) {
-  const worldState = merge(INITIAL_STATE, world.getState(WORLD_STATE_KEY));
-  //const worldState = CLEAR_STATE;
+  const worldState = merge(INITIAL_STATE, world.getState(LOVELACE_TOWER_STATE_KEY));
 
   console.log(`event: ${event.name}`);
   console.log(`event target ${event.target}`);
@@ -42,26 +18,37 @@ module.exports = async function (event, world) {
 
   // LEVEL FUNCTIONALITY OVERVIEW
 
-  // Lovelace Tower objectives
-  // The player enters the Tower map and must complete 4 mission objectives linearly to progress
-  // When they arrive at the end of the Tower path, they can use the earned spell to open the secret Library
+// Has player completed Objective 1/2/3? (obj1Compelete x3)
 
-  // Secret Library
-  // Interacting with the library door, once the spell has been earned, triggers spell animation and opens door
-  // Inside the library is a final misison objective
-  // Hacking the mission objective reveals a secret message from Fredric
-  // The player exits the library from a second door that returns them back to the main hall.
-  // The original library-tower door becomes locked.
-  
-  // Load Levels and Doors
-  // When the player walks through Secret Library door, the Secret Library map loads.
-  // The door they use to enter the library becomes locked and if the player tries to return, they observe that they can only go forward now.
-  // The second door leading back to the Main Hall is locked until the player hacks the library objective.
-  // Once they have received Fredric's message, the library-main hall door is spellable.
+// If No: 
+// - Door 1/2/3 is locked with Operator observation
 
-  // Spells
-  // Once the player has earned the Lovelace Spell, they will be able to open the next house door back in the Main Hall 
-  // (so spell variables) on Main Hall level should be updated.
+// If Yes: 
+// - Door 1/2/3 is open
+
+
+// Has player completed all four Tower objectives? (obj4Complete)
+
+// If No:
+// - Secret Library Door is locked with Operator observation
+// - Groundskeeper says dialogue 1
+
+// If Yes: 
+// - Spell in inventory
+// - Shine animation appears on secret Library door
+// - Groundskeeper says dialogue 2
+// - Library door is unlocked
+
+
+// Has the player completed the final objective? (obj5Complete)
+
+// If No: 
+// - Exit door from library is locked with Operator observation
+
+// If Yes:
+// - Spell shine animation appears on exit door
+// - Player can perform spell and go through exit door
+// - Entry door back into Tower is locked
 
 // UNLOCKING
 
@@ -362,5 +349,5 @@ module.exports = async function (event, world) {
     }
   }
 
-  world.setState(WORLD_STATE_KEY, worldState);
+  world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };

@@ -1,5 +1,5 @@
 const merge = require("lodash.merge");
-const { WORLD_STATE_KEY } = require("../../scripts/config");
+const { PRE_ACADEMY_STATE_KEY } = require("../../scripts/config");
 
 const LEVEL_STATE = {
   destroyedEntities: [],
@@ -59,7 +59,7 @@ const CLEAR_STATE = {
 };
 
 module.exports = async function (event, world) {
-  const worldState = merge(LEVEL_STATE, world.getState(WORLD_STATE_KEY));
+  const worldState = merge(LEVEL_STATE, world.getState(PRE_ACADEMY_STATE_KEY));
   //const worldState = CLEAR_STATE;
 
   console.log(`event: ${event.name}`);
@@ -484,5 +484,5 @@ module.exports = async function (event, world) {
     }
   }
 
-  world.setState(WORLD_STATE_KEY, worldState);
+  world.setState(PRE_ACADEMY_STATE_KEY, worldState);
 };

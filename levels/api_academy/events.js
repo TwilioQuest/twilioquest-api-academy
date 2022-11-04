@@ -1,7 +1,7 @@
 const merge = require("lodash.merge");
 const packageInfo = require("../../package.json");
 const processInitiationEvents = require("./events/initiation");
-const { WORLD_STATE_KEY } = require("../../scripts/config");
+const { PRE_ACADEMY_STATE_KEY } = require("../../scripts/config");
 const updateQuestLogWhenComplete = require("../../scripts/updateQuestLogWhenComplete");
 
 const INITIAL_STATE = {
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 };
 
 module.exports = async function (event, world) {
-  const worldState = merge(INITIAL_STATE, world.getState(WORLD_STATE_KEY));
+  const worldState = merge(INITIAL_STATE, world.getState(PRE_ACADEMY_STATE_KEY));
 
   processInitiationEvents(event, world, worldState);
 
@@ -36,10 +36,10 @@ module.exports = async function (event, world) {
     log: "I've proved I'm worthy to enter the API Academy!",
     event,
     world,
-    worldStateKey: WORLD_STATE_KEY,
+    worldStateKey: PRE_ACADEMY_STATE_KEY,
     version: packageInfo.version,
     minimumTargetVersion: "1.2.6",
   });
 
-  world.setState(WORLD_STATE_KEY, worldState);
+  world.setState(PRE_ACADEMY_STATE_KEY, worldState);
 };

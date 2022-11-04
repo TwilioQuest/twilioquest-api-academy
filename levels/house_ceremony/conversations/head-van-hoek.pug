@@ -1,0 +1,86 @@
+-
+  const STATE_KEY = 'TQ_HOUSE_CEREMONY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);    
+
+mixin unique
+  response#unique.
+    Could you remind me what makes House von Neumann unique?
+
+mixin join  
+  response#join.
+    I would like to join House von Neumann!
+
+mixin deciding 
+  response#deciding.
+    I’m still deciding which house to join.
+
+mixin getting_started 
+  response#getting_started.
+    I’m excited to explore the von Neumann Labs when the time comes. 
+
+conversation(display_name="Professor van Hoek, Head of House von Neumann")
+  case lastResponse
+    
+    when "unique"
+      statement#unique
+        responses 
+          +join 
+          +deciding
+
+    when "join"
+      statement#join
+
+    when "deciding"
+      statement#deciding
+
+    when "getting_started"
+      statement#getting_started
+
+    default
+      if !worldState.playerHouse
+        - worldState.playerHouse = null;
+        statement#default
+        responses
+          +unique 
+          +join 
+          +deciding 
+
+      else
+        statement#gauntlet_default
+        responses
+            +getting_started
+
+  statements
+    statement#default
+      text.
+        Welcome to Arcane, Operator! Will you be joining House von Neumann?
+
+  statement#unique
+      text.
+        House von Neumann is characterized by our attention to productivity 
+        and efficiency. By which I mean, potions! House von Neumann students 
+        are particularly strong at discovering effective solutions to 
+        productivity and efficiency problems down in the chemistry labs. 
+
+  statement#join
+      text.
+        That’s excellent news! Now that you’ve decided, 
+        take your pledge scroll to the #[span.highlight House Fire] to confirm your choice.
+
+  statement#deciding
+      text.
+        That’s no problem. Whenever you decide, 
+        just take your pledge scroll to the #[span.highlight House Fire].
+
+  statement#gauntlet_default 
+    text.
+      House von Neumann usually ends the House Gauntlet – just by chance. 
+      It’s always a fun ceremony to see the order in which the houses are 
+      randomly selected. Part of the fun, don’t you think?
+
+  statement#getting_started 
+    text.
+      Yes, yes, we’ll get down there at some point during the Gauntlet, that’s for sure.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);
