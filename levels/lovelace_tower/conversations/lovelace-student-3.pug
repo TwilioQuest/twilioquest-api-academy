@@ -1,12 +1,12 @@
 -
-  const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
+  const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
 mixin excavation
   response#excavation.
     Why does the Academy have an excavation crew?
 
-conversation(display_name="House YY Student")
+conversation(display_name="House Lovelace Student")
   case lastResponse
     
     when "excavation"

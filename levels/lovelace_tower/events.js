@@ -50,6 +50,7 @@ module.exports = async function (event, world) {
 // - Player can perform spell and go through exit door
 // - Entry door back into Tower is locked
 
+
 // UNLOCKING
 
   const unlockObject = (group) => {
