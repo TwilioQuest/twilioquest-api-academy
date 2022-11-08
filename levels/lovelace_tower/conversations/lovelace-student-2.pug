@@ -2,30 +2,74 @@
   const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
-mixin excavation
-  response#excavation.
-    Why does the Academy have an excavation crew?
+mixin busy
+  response#busy.
+    I’d love to help but I’m only halfway through my own objectives!
+
+mixin wrong_1
+  response#wrong_1.
+    Have you tried...
+
+mixin wrong_2
+  response#wrong_2.
+    What about...
+
+mixin right
+  response#right.
+    The answer should be...
 
 conversation(display_name="House Lovelace Student")
   case lastResponse
     
-    when "excavation"
-      statement#excavation
+    when "busy"
+      statement#busy
+    
+    when "wrong_1"
+      statement#wrong_1 
+      responses 
+        +busy
+        +right
+        +wrong_2  
+
+    when "wrong_2"
+      statement#wrong_2 
+      responses 
+        +busy 
+        +right
+        +wrong_1 
+
+    when "right"
+      statement#right
 
     default
       statement#default
       responses
-        +excavation
+        +busy
+        +wrong_2
+        +right
+        +wrong_1 
 
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. 
-        I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
-    statement#excavation
+        Thank goodness you made it through the second door. This API problem set is due in an hour, and I’m barely through the first question.<br><br>
+        How many…
+
+    statement#busy
       text.
-        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. 
-        It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        Ah, that’s too bad. I wanted to be able to say that a real, live Operator helped me with my homework problems. Maybe next time!
+
+    statement#wrong_1
+      text.
+        I’m pretty sure it’s something different.
+
+    statement#wrong_2
+      text.
+        That answer doesn’t quite work.
+
+    statement#right
+      text.
+        I didn’t even think of that! But, yes, that’s right. Thank you so much for helping.
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

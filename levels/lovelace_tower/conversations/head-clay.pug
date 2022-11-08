@@ -2,30 +2,34 @@
   const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
-mixin excavation
-  response#excavation.
-    Why does the Academy have an excavation crew?
+mixin anything_else
+  response#anything_else.
+    Great! Is there anything else I should know?
 
-conversation(display_name="Professor Elizabeth Clay, Head of House Lovelace")
+conversation(display_name="Professor Clay, Head of House Lovelace")
   case lastResponse
     
-    when "excavation"
-      statement#excavation
+    when "anything_else"
+      statement#anything_else
 
     default
       statement#default
       responses
-        +excavation
+        +anything_else
 
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. 
-        I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
-    statement#excavation
+        Welcome to Lovelace Tower, Operator! We can’t thank you enough for jumping right into the House Gauntlet.<br><br>
+        As you know, House Lovelace is kicking off the Gauntlet this year. 
+        The challenges ahead will test you on your skills in the practical application of your API knowledge, 
+        resulting in your own #[span.highlight Divination Spell] that will allow you to access the next house in the Gauntlet.
+
+    statement#anything_else
       text.
-        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. 
-        It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        In Lovelace Tower you will find books and resources filled with documentation – 
+        as befits House Lovelace, of course. You‘ll also find some eager Lovelace students here to cheer you on... 
+        though they may also just want help on their homework.
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

@@ -2,30 +2,57 @@
   const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
-mixin excavation
-  response#excavation.
-    Why does the Academy have an excavation crew?
+mixin secret
+  response#secret.
+    The secret what?
 
-conversation(display_name="Groundskeeper")
+mixin library
+  response#library.
+    What’s in the secret Lovelace Library?
+
+conversation(display_name="Arcane Academy Groundskeeper")
   case lastResponse
     
-    when "excavation"
-      statement#excavation
+    when "secret"
+      statement#secret
+
+    when "library"
+      statement#library
 
     default
-      statement#default
-      responses
-        +excavation
+      if worldState.obj4Complete === false
+        statement#default
+        responses
+          +secret
+
+      else if worldState.obj4Complete === true 
+        statement#secret_default 
+        responses
+          +library
+
 
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. 
-        I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
-    statement#excavation
+        You’ve almost completed Lovelace Tower! Just one more objective to go...<br><br> 
+        Behind me is the door to the secret... Oh, actually, you should probably finish the last objective first.
+
+    statement#secret
       text.
-        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. 
-        It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        You’ll need the #[span.highlight Divination Spell] to get through there… that’s all I’ll say for now.
+
+    statement#secret_default
+      text.
+        You made the Divination Spell. Great work, Operator! Behind me is the door to the secret Lovelace Library. 
+        To access the library, use the Divination Spell. This spell will also help you get through to the next part of the House Gauntlet 
+        once you make your way back to the Main Hall. Just look for the glowing blue marker.
+
+    statement#library
+      text.
+        Arcane Academy is full of secret doors and rooms and other hidden areas... 
+        Each house has their own special area that can be accessed only by achieving the corresponding house spells. I shouldn’t say more...<br><br> 
+        Good luck on the rest of the House Gauntlet, Operator!
+
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

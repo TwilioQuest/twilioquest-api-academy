@@ -2,30 +2,76 @@
   const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
-mixin excavation
-  response#excavation.
-    Why does the Academy have an excavation crew?
+mixin busy
+  response#busy.
+    I can’t stop right now. I’m on a roll!
 
-conversation(display_name="House YY Student")
+mixin wrong_1
+  response#wrong_1.
+    Have you tried...
+
+mixin wrong_2
+  response#wrong_2.
+    What about...
+
+mixin right
+  response#right.
+    The answer should be...
+
+conversation(display_name="House Lovelace Student")
   case lastResponse
     
-    when "excavation"
-      statement#excavation
+    when "busy"
+      statement#busy
+    
+    when "wrong_1"
+      statement#wrong_1 
+      responses 
+        +busy 
+        +wrong_2 
+        +right 
+
+    when "wrong_2"
+      statement#wrong_2 
+      responses 
+        +busy 
+        +wrong_1 
+        +right
+
+    when "right"
+      statement#right
 
     default
       statement#default
       responses
-        +excavation
+        +busy
+        +wrong_1 
+        +wrong_2 
+        +right
 
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. 
-        I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
-    statement#excavation
+        Wow, you only have one more room in Lovelace Tower. You are just racing through the House Gauntlet!<br><br>
+        Do you think you’d have time to help me with an assignment? It’s due in like an hour…<br><br>
+        What is... 
+
+    statement#busy
       text.
-        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. 
-        It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        That’s alright. You can always come back into Lovelace Tower once you’ve finished all the Gauntlet challenges. 
+        I’ll be here, just trying to crack this problem… Please come back and find me!
+
+    statement#wrong_1
+      text.
+        It couldn’t be that, I don’t think…
+
+    statement#wrong_2
+      text.
+        That’s the first answer I tried, but it’s not quite right.
+
+    statement#right
+      text.
+        You got it! See, I knew an Operator competing in the House Gauntlet would be able to solve these problems!
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);
