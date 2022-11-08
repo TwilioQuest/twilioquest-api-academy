@@ -262,50 +262,30 @@
                 {
                  "gid":13724,
                  "height":24,
-                 "id":389,
-                 "name":"book",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":648.5,
-                 "y":780
-                }, 
-                {
-                 "gid":13724,
-                 "height":24,
                  "id":390,
                  "name":"book",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"book-1"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"Book_Lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
-                 "type":"",
+                 "type":"conversationResponder",
                  "visible":true,
                  "width":24,
                  "x":625.333333333333,
                  "y":946.333333333333
-                }, 
-                {
-                 "gid":13724,
-                 "height":24,
-                 "id":391,
-                 "name":"book",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":241,
-                 "y":562.5
-                }, 
-                {
-                 "gid":13724,
-                 "height":24,
-                 "id":392,
-                 "name":"book",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":936.75,
-                 "y":347.5
                 }, 
                 {
                  "gid":14057,
@@ -1038,6 +1018,90 @@
                  "width":24,
                  "x":931.5,
                  "y":326.375
+                }, 
+                {
+                 "gid":13724,
+                 "height":24,
+                 "id":510,
+                 "name":"book",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"book-2"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"Book_Lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":648.5,
+                 "y":780
+                }, 
+                {
+                 "gid":13724,
+                 "height":24,
+                 "id":511,
+                 "name":"book",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"book-3"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"Book_Lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":241,
+                 "y":564.75
+                }, 
+                {
+                 "gid":13724,
+                 "height":24,
+                 "id":512,
+                 "name":"book",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"book-4"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"Book_Lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":936.666333333333,
+                 "y":347.666333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1403,7 +1467,7 @@
          "y":0
         }],
  "nextlayerid":55,
- "nextobjectid":510,
+ "nextobjectid":513,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",

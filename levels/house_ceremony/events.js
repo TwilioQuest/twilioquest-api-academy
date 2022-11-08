@@ -2,7 +2,7 @@ const merge = require("lodash.merge");
 const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 
 const INITIAL_STATE = {
-  playerHouse: null,
+  playerHouse: undefined,
   playerHouses: [
     { name: "lovelace", id: 1 },
     { name: "turing", id: 2 },
