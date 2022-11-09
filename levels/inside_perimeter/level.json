@@ -15,6 +15,7 @@
     "lovelace_key",
     "neumann_key",
     "turing_key",
-    "twilio_api_setup"
+    "twilio_api_setup",
+    "api-05-get-post"
   ]
 }
