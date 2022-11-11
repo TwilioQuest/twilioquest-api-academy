@@ -1,24 +1,24 @@
 async function getAndProcessDivinationData(pageCount) {
-  // API endpoint: endpoint/goes/here
+  // API https://twilio.com/quest/magic/divination/books
   // TODO: get the divination data, process it, and return the result!
 }
 
 (async function () {
   console.log("Test case 1:");
-  console.log((await getAndProcessDivinationData(5)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(5)));
 
   console.log("Test case 2:");
-  console.log((await getAndProcessDivinationData(1)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(1)));
 
   console.log("Test case 3:");
-  console.log((await getAndProcessDivinationData(12)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(12)));
 
   console.log("Test case 4:");
-  console.log((await getAndProcessDivinationData(100)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(100)));
 
   console.log("Test case 5:");
-  console.log((await getAndProcessDivinationData(32)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(32)));
 
   console.log("Test case 6:");
-  console.log((await getAndProcessDivinationData(50)).toString());
+  console.log(JSON.stringify(await getAndProcessDivinationData(24)));
 })();
