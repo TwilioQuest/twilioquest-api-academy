@@ -1,12 +1,12 @@
 {
   "title": "API Academy: Fetch Request",
-  "description": "Write an async function that fetches data from a Web API.",
+  "description": "Write an async function that fetches and returns data from a Web API.",
   "show_ide": true,
   "validation_fields": [
     {
       "name": "prompt",
       "type": "prompt",
-      "label": "Write a function called \"getDivinationData\" that makes a fetch request to the \"divination\" Web API and returns the books from the response as an array."
+      "label": "Write a function called \"getDivinationData\" that fetches data from the \"divination\" Web API and returns the response data."
     }
   ],
   "rewards": {

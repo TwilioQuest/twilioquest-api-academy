@@ -5,8 +5,7 @@
 <ul>
   <li>Create an async function called `getDivinationData`.</li>
   <li>Use `window.fetch` to get json data from the "divination" endpoint.</li>
-  <li>Use the `json` method to parse the json response.</li>
-  <li>Get the books from the object and return them in the form of an array.</li>
+  <li>Return the data from the response.</li>
   <li>Once you're done, press <em>HACK</em>.</li>
 </ul>
 </div>

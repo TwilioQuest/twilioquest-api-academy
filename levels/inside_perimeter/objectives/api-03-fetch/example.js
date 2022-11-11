@@ -1,4 +1,9 @@
 async function getDivinationData() {
-  // API endpoint: endpoint/goes/here
-  // TODO: get and return books from the "divination" API!
+  // Web API endpoint: https://twilio.com/quest/magic/divination
+  // TODO: fetch data from the endpoint and return it!
 }
+
+(async function () {
+  console.log("Test case:");
+  console.log((await getDivinationData()).toString());
+})();

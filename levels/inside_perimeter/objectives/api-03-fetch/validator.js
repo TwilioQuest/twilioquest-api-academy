@@ -10,9 +10,6 @@ const assertTestCase = (testFunction) => async (expected) => {
   );
 };
 
-// TODO: replace with actual API endpoint
-const DIVINATION_API_ENDPOINT = "endpoint/goes/here";
-
 module.exports = async function (helper) {
   let context;
 
@@ -28,10 +25,7 @@ module.exports = async function (helper) {
     );
 
     const test = assertTestCase(context.getDivinationData);
-    const response = await fetch(DIVINATION_API_ENDPOINT);
-    const payload = await response.json();
-    // TODO: Implement test that compares correct output from API to user's return value
-    // await test(correctData);
+    await test("ALAKAZAM");
   } catch (err) {
     helper.fail(err);
     return;
