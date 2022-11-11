@@ -222,7 +222,9 @@ module.exports = async function (event, world) {
   };
 
   const runObjectiveEffects = ({ objective }) => {
-    objectives[objective]();
+    if (objectives[objective]) {
+      objectives[objective]();
+    }
   };
 
   const runUpdateMagicScore = ({ objective }) => {
