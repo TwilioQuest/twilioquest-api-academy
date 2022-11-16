@@ -24,55 +24,56 @@ module.exports = async function (event, world) {
 
   // LEVEL FUNCTIONALITY OVERVIEW
 
-  // Has the player chosen their house? (playerHouse)
+  // Has the player chosen their house? (playerHouse === undefined)
 
-  // If No: 
-  // - Heads of house say dialogue 1
-  // - Fire is interactable
-  // - House corridors are blocked off with Operator observation 1
+  // If undefined: 
+  // [x] Heads of house say dialogue 1
+  // [] Fire is interactable
+  // [] House corridors are blocked off with Operator observation: "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
 
-  // If Yes: 
-  // - Give avatar item based on chosen house
-  // - Fire is no longer interactable
-  // - Heads of house say dialogue 2
-  // - Professor Heapsort's dialogue is triggered (interrupting professor) / Camera pan?
-  // - House Lovelace corridor is accessible
-  // - Other house corridors not accessible with Operator observation 2
-  // - Quest Log updates
+  // If !undefined: 
+  // [] Give avatar item based on chosen house
+  // [] Fire is no longer interactable
+  // [x] Heads of house say dialogue 2
+  // [] Professor Heapsort's dialogue is triggered (interrupting professor) with Camera pan
+  // [] House Lovelace corridor is accessible
+  // [] Other house corridors not accessible with Operator observation: "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
+  // [] Quest Log updates
+  // [] Fires change to color of chosen house (show/hide entities on map)
+  // [] Pledge scroll fade animation is triggered
 
-  // Has the player completed Lovelace Tower? (houseLovelaceComplete)
+  // Has the player completed Lovelace Tower? (houseLovelaceComplete === false)
 
   // If No:
-  // - Fire is no longer interactable
-  // - Heads of house say dialogue 2
-  // - House Lovelace corridor is accessible
-  // - Other house corridors not accessible with Operator observation 2
+  // [] Fire is no longer interactable
+  // [x] Heads of house say dialogue 2
+  // [] House Lovelace corridor is accessible
+  // [] Other house corridors not accessible with Operator observation 2
 
   // If Yes (AND Next House is Ready):
-  // - Heads of houses say dialogue 3
-  // - Blue shine annimation appears on next house door
+  // [] Heads of houses say dialogue 3
+  // [] Lovelace blue sparkle annimation appears on next house door
 
   // Which house has the player chosen? (playerHouse)
   
   // Dependencies: 
-  // - avatar item
-  // - house of the missing student
-  // - fire color
+  // [] avatar item
+  // [] house of the missing student (Heapsort dialogue)
+  // [] fire color
 
 
   // If player tries to enter a house corridor without having chosen a house.
   // Tiled corridors need "unlock" type trigger boxes.
-  // Ideally "this house area" should be replaced by Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs depending on which corridor the player is trying to access.
   const unlock = (event) => {
     if (!worldState.playerHouse) {
       world.showNotification(
-        "I think I have to choose my house before I can explore this house area."
+        "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
       );
       return;
     // If the player has chosen their house and they are trying to access a corridor that is not Lovelace Tower
     } else if (!worldState.playerHouse !== null) {
         world.showNotification(
-          "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!."
+          "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
         );
         return;
       };  

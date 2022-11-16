@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   obj2Complete: false,
   obj3Complete: false,
   obj4Complete: false,
-  obj5Compelte: false,
+  obj5Complete: false,
 };
 
 module.exports = async function (event, world) {
@@ -18,37 +18,36 @@ module.exports = async function (event, world) {
 
   // LEVEL FUNCTIONALITY OVERVIEW
 
-// Has player completed Objective 1/2/3? (obj1Compelete x3)
+// Has player completed Objective 1/2/3? (obj1Compelete, obj2Complete, obj3Complete)
 
 // If No: 
-// - Door 1/2/3 is locked with Operator observation
+// [] Doors 1/2/3 are locked respectively with Operator observation: "I need to complete the next objective first."
 
 // If Yes: 
-// - Door 1/2/3 is open
+// [] Door 1/2/3 is open (door objects should be hidden from view on the map)
 
 
 // Has player completed all four Tower objectives? (obj4Complete)
 
 // If No:
-// - Secret Library Door is locked with Operator observation
-// - Groundskeeper says dialogue 1
+// [x] Secret Library Door is locked and triggers library-door.pug dialogue
+// [x] Groundskeeper says dialogue 1
 
 // If Yes: 
-// - Spell in inventory
-// - Shine animation appears on secret Library door
-// - Groundskeeper says dialogue 2
-// - Library door is unlocked
+// [] Spell in inventory
+// [] Sparkle animation appears on secret Library door
+// [x] Groundskeeper says dialogue 2
+// [] Library door is unlocked and player can teleport to library map
 
 
 // Has the player completed the final objective? (obj5Complete)
 
 // If No: 
-// - Exit door from library is locked with Operator observation
+// [] Exit door from library is locked with Operator observation
 
 // If Yes:
-// - Spell shine animation appears on exit door
-// - Player can perform spell and go through exit door
-// - Entry door back into Tower is locked
+// [] Sparkle animation appears on exit door and is interactable
+// [] Previous entry door back into Tower becomes locked
 
 
 // UNLOCKING
