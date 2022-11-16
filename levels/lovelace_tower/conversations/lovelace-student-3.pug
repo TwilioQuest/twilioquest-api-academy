@@ -1,0 +1,76 @@
+-
+  const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
+  const worldState = getState(STATE_KEY);    
+
+mixin busy
+  response#busy.
+    How about you find me after the House Gauntlet and I’ll help you out.
+
+mixin wrong_1
+  response#wrong_1.
+    Have you tried...
+
+mixin wrong_2
+  response#wrong_2.
+    What about...
+
+mixin right
+  response#right.
+    The answer should be...
+
+conversation(display_name="House Lovelace Student")
+  case lastResponse
+    
+    when "busy"
+      statement#busy
+    
+    when "wrong_1"
+      statement#wrong_1 
+      responses 
+        +busy 
+        +wrong_2 
+        +right 
+
+    when "wrong_2"
+      statement#wrong_2 
+      responses 
+        +busy  
+        +right
+        +wrong_1
+
+    when "right"
+      statement#right
+
+    default
+      statement#default
+      responses
+        +busy
+        +wrong_2
+        +right
+        +wrong_1 
+
+
+  statements
+    statement#default
+      text.
+        If you made it this far into Lovelace Tower, you must know what you’re doing. Could you help me with this problem from Advanced Divination?<br><br>
+        What is... 
+
+    statement#busy
+      text.
+        Okay, Operator! Good luck on the challenges.
+
+    statement#wrong_1
+      text.
+        Maybe it’s something else…?
+
+    statement#wrong_2
+      text.
+        No, that can’t be it.
+
+    statement#right
+      text.
+        I knew you’d be able to solve it for me. Thanks, Operator!
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);

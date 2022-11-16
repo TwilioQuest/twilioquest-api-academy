@@ -1,76 +1,57 @@
 const merge = require("lodash.merge");
-const { PRE_ACADEMY_STATE_KEY } = require("../../scripts/config");
+const { LOVELACE_TOWER_STATE_KEY } = require("../../scripts/config");
 
-const LEVEL_STATE = {
-  destroyedEntities: [],
-  unlockedEntities: [],
-  unlockedTransitions: [],
-  unhackableEntities: [],
-  spellsEarned: [],
-  sortedHouse: null,
-  houses: [
-    { name: "hopper", id: 1, magicScore: 0 },
-    { name: "lovelace", id: 2, magicScore: 0 },
-    { name: "turing", id: 3, magicScore: 0 },
-    { name: "neumann", id: 4, magicScore: 0 },
-  ],
-  insidePerimeter: {
-    hasWand: false,
-    enteredPerimeterFirstTime: false,
-  },
-  insideCatacombs: {
-    keySpellsObtained: [],
-    hasCredentials: false,
-    hasKey: false,
-    hasPledgeScroll: false,
-    tweenRunning: false,
-  },
-};
-
-const CLEAR_STATE = {
-  destroyedEntities: [],
-  unlockedEntities: ["magic_key"],
-  unlockedTransitions: [],
-  unhackableEntities: [],
-  spellsEarned: ["disappear"],
-  sortedHouse: null,
-  houses: [
-    { name: "hopper", id: 1, magicScore: 0 },
-    { name: "lovelace", id: 2, magicScore: 0 },
-    { name: "turing", id: 3, magicScore: -1 },
-    { name: "neumann", id: 4, magicScore: 0 },
-  ],
-  insidePerimeter: {
-    hasWand: true,
-    enteredPerimeterFirstTime: true,
-  },
-  insideCatacombs: {
-    keySpellsObtained: [
-      "lovelace_flame",
-      "hopper_flame",
-      "turing_flame",
-      "neumann_flame",
-    ],
-    hasCredentials: false,
-    hasKey: false,
-    hasPledgeScroll: false,
-    tweenRunning: false,
-  },
+const INITIAL_STATE = {
+  obj1Complete: false,
+  obj2Complete: false,
+  obj3Complete: false,
+  obj4Complete: false,
+  obj5Complete: false,
 };
 
 module.exports = async function (event, world) {
-  const worldState = merge(LEVEL_STATE, world.getState(PRE_ACADEMY_STATE_KEY));
-  //const worldState = CLEAR_STATE;
+  const worldState = merge(INITIAL_STATE, world.getState(LOVELACE_TOWER_STATE_KEY));
 
   console.log(`event: ${event.name}`);
   console.log(`event target ${event.target}`);
   console.log(worldState);
 
-  /*
-   *
-   * HELPER FUNCTION DEFINITIONS
-   *
-   */
+  // LEVEL FUNCTIONALITY OVERVIEW
+
+// Has player completed Objective 1/2/3? (obj1Compelete, obj2Complete, obj3Complete)
+
+// If No: 
+// [] Doors 1/2/3 are locked respectively with Operator observation: "I need to complete the next objective first."
+
+// If Yes: 
+// [] Door 1/2/3 is open (door objects should be hidden from view on the map)
+
+
+// Has player completed all four Tower objectives? (obj4Complete)
+
+// If No:
+// [x] Secret Library Door is locked and triggers library-door.pug dialogue
+// [x] Groundskeeper says dialogue 1
+
+// If Yes: 
+// [] Spell in inventory
+// [] Sparkle animation appears on secret Library door
+// [x] Groundskeeper says dialogue 2
+// [] Library door is unlocked and player can teleport to library map
+
+
+// Has the player completed the final objective? (obj5Complete)
+
+// If No: 
+// [] Exit door from library is locked with Operator observation
+
+// If Yes:
+// [] Sparkle animation appears on exit door and is interactable
+// [] Previous entry door back into Tower becomes locked
+
+
+// UNLOCKING
+
   const unlockObject = (group) => {
     world.showEntities(
       ({ instance }) => instance.group === group || instance.key == group
@@ -110,99 +91,30 @@ module.exports = async function (event, world) {
     });
   };
 
-  const applyDisappearTween = (group) => {
-    const { game } = world.__internals.level;
 
-    const tweenPromises = [];
+// NPC CONVERSATIONS
 
-    world.forEachEntities(
-      ({ instance }) => instance.group === group || instance.key == group,
-      ({ sprite }) => {
-        const tweenPromise = new Promise((resolve) => {
-          const tween = game.add
-            .tween(sprite)
-            .to(
-              {
-                alpha: 0.6,
-              },
-              400, // time
-              Phaser.Easing.Exponential.In,
-              undefined,
-              0, // delay
-              1, // repeat once
-              true // yoyo
-            )
-            .to(
-              { alpha: 0 },
-              400, // time
-              Phaser.Easing.Exponential.In
-            );
-
-          tween.onComplete.add(resolve);
-          tween.start();
-        });
-
-        tweenPromises.push(tweenPromise);
-      }
-    );
-
-    return Promise.all(tweenPromises);
-  };
-
-  /*
-   *
-   * INTERACTION FUNCTION DEFINITIONS
-   *
-   */
   const runObjectNotification = ({ target: { key = "default" } }) => {
     world.startConversation(key, key + ".png");
-  };
-
-  const npcChecks = {
-    ghost: () => checkCredentials(),
-  };
-
-  const checkCredentials = () => {
-    const { env } = world.getContext();
-
-    if (
-      env.hasOwnProperty("TQ_TWILIO_ACCOUNT_SID") &&
-      env.hasOwnProperty("TQ_TWILIO_AUTH_TOKEN")
-    )
-      twilioApiSetupComplete();
   };
 
   const runNpcChecks = (event) => {
     npcChecks[event.target.key]();
   };
 
-  /*
-   *
-   * OBJECTIVE COMPLETE FUNCTION DEFINITIONS
-   *
-   */
+// MISSION OBJECTIVES
+
+// Add specific objectives for Lovelace Tower and Secret Lovelace Library
   const objectives = {
-    twilio_api_setup: () => twilioApiSetupComplete(),
-    obtain_wand: () => obtainWandComplete(),
-    lovelace_key: () => obtainKeySpellComplete("lovelace_flame"),
-    hopper_key: () => obtainKeySpellComplete("hopper_flame"),
-    neumann_key: () => obtainKeySpellComplete("neumann_flame"),
-    turing_key: () => obtainKeySpellComplete("turing_flame"),
+    lovelace_key: () => obtainKeySpellComplete("lovelace_spell"),
+    hopper_key: () => obtainKeySpellComplete("hopper_spell"),
+    neumann_key: () => obtainKeySpellComplete("neumann_spell"),
+    turing_key: () => obtainKeySpellComplete("turing_spell"),
   };
 
-  const twilioApiSetupComplete = () => {
-    worldState.insideCatacombs.hasCredentials = true;
-    unhackObject("statue_credentials");
-    // destroyObject('catacombs_barrier');
-
-    // TODO: make this work, get rid of destroy object
-    openDoor("catacombs_barrier");
-  };
-
-  const obtainWandComplete = () => {
-    worldState.insidePerimeter.hasWand = true;
-  };
-
+// When the player has retrieved the House Lovelace spell, they are able to enter the Secret Library
+// They are also able to open the library door that leads back to the Main Hall
+// Eventually they will also be able to use the spell to gain access to the next house from the Main Hall
   const obtainKeySpellComplete = (object) => {
     unlockObject(object);
     if (!worldState.insideCatacombs.keySpellsObtained.includes(object))
@@ -218,21 +130,10 @@ module.exports = async function (event, world) {
     objectives[objective]();
   };
 
-  const runUpdateMagicScore = ({ objective }) => {
-    worldState.houses.map((house) => {
-      if (objective.includes(house.name)) {
-        house.magicScore += 1;
-      }
 
-      return house;
-    });
-  };
+// SPELLS
 
-  /*
-   *
-   * SPELL FUNCTION DEFINITIONS
-   *
-   */
+// This level only requires Lovelace spell animation to be used on two library doors.
   const spells = {
     disappear: (event) => disappear(event),
     move: (event) => move(event),
@@ -292,11 +193,9 @@ module.exports = async function (event, world) {
     spells[event.target.spell_type](event);
   };
 
-  /*
-   *
-   * ITEM RELATED FUNCTION DEFINITIONS
-   *
-   */
+// COLLECTIBLES 
+
+// ?? Does this level have collectibles?
   const items = {
     magic_key: (event) => addMagicKey(event),
     pledge_scroll: (event) => addPledgeScroll(event),
@@ -326,32 +225,7 @@ module.exports = async function (event, world) {
     determineHouse();
   };
 
-  const determineHouse = () => {
-    console.log("determining house");
-    const bestScore = Math.min(
-      ...worldState.houses.map((house) => house.magicScore)
-    );
-    const bestHouses = worldState.houses.filter(
-      (house) => house.magicScore == bestScore
-    );
-    const randomIndex = Math.floor(Math.random() * bestHouses.length);
-    const chosenHouse = bestHouses[randomIndex];
-
-    worldState.sortedHouse = chosenHouse.name;
-
-    // After assigning house, tell player they've completed the
-    // current content. They'll learn their house later.
-    // TODO: Update this notification on future release version.
-    world.showNotification(
-      'I\'ve gotten my pledge scroll! That means everything in the <span class="highlight">API Academy Inside Perimeter</span> is completed for now!'
-    );
-    world.updateQuestStatus(
-      world.__internals.level.levelName,
-      world.__internals.level.levelProperties.questTitle,
-      "I got my pledge scroll! I'm done here until the rest of the API Academy grounds open up.",
-      true
-    );
-  };
+  // OTHER???
 
   const runAddItem = (event) => {
     console.log(event);
@@ -382,15 +256,9 @@ module.exports = async function (event, world) {
     });
   };
 
-  /*
-   *
-   * EVENT HANDLING
-   *
-   */
+// EVENT HANDLING
 
-  /*
-   * Handles returning level to last object state
-   */
+// Handles returning level to last object state
   if (event.name === "mapDidLoad") {
     console.log("Resetting map after load");
 
@@ -446,9 +314,7 @@ module.exports = async function (event, world) {
     );
   }
 
-  /*
-   * Handles object interactions
-   */
+// Handles object interactions
   if (event.name === "playerDidInteract") {
     console.log(`Interacting with ${event.target.key}`);
 
@@ -458,9 +324,7 @@ module.exports = async function (event, world) {
     if (event.target.item) runAddItem(event);
   }
 
-  /*
-   * Handles objective completions & failures
-   */
+// Handles objective completions & failures
   if (
     event.name === "objectiveCompleted" ||
     event.name === "objectiveCompletedAgain"
@@ -472,9 +336,10 @@ module.exports = async function (event, world) {
     runUpdateMagicScore(event);
   }
 
-  /**
-   * Handles Trigger Areas
-   */
+// Handles Trigger Areas.
+// This functionality should be updated so that choosing the house in the House Ceremony 
+// triggers interrupting professor dialogue and camera pan
+// This should also trigger the opening of Lovelace Tower
   if (event.name === "triggerAreaWasEntered") {
     if (
       event.target.key === "triggerGroundskeeperConversation" &&
@@ -484,5 +349,5 @@ module.exports = async function (event, world) {
     }
   }
 
-  world.setState(PRE_ACADEMY_STATE_KEY, worldState);
+  world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
