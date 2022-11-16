@@ -87,17 +87,17 @@
                         {
                          "name":"levelName",
                          "type":"string",
-                         "value":"api_academy"
+                         "value":"house_ceremony"
                         }, 
                         {
                          "name":"mapName",
                          "type":"string",
-                         "value":"default"
+                         "value":"lovelacehallway"
                         }, 
                         {
                          "name":"playerEntryPoint",
                          "type":"string",
-                         "value":"player_entry3"
+                         "value":"player_entry2"
                         }],
                  "rotation":0,
                  "type":"levelChange",
@@ -125,7 +125,7 @@
                  "y":1014
                 }, 
                 {
-                 "height":18,
+                 "height":12,
                  "id":497,
                  "name":"exit_to_lovelace_library",
                  "properties":[
@@ -147,9 +147,27 @@
                  "rotation":0,
                  "type":"levelChange",
                  "visible":true,
-                 "width":48,
-                 "x":1236,
+                 "width":36,
+                 "x":1242,
                  "y":180
+                }, 
+                {
+                 "height":0,
+                 "id":703,
+                 "name":"player_entry2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":1242,
+                 "y":234
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -937,6 +955,12 @@
                  "height":32,
                  "id":515,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"head-clay"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -3236,7 +3260,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -3258,13 +3282,13 @@
                  "value":true
                 }],
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":71,
          "x":0,
          "y":0
         }],
  "nextlayerid":56,
- "nextobjectid":703,
+ "nextobjectid":704,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",

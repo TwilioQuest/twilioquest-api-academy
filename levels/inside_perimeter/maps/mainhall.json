@@ -414,6 +414,78 @@
                  "width":24,
                  "x":281,
                  "y":575
+                }, 
+                {
+                 "gid":15391,
+                 "height":32,
+                 "id":325,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":210,
+                 "y":480
+                }, 
+                {
+                 "gid":15392,
+                 "height":32,
+                 "id":326,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":426,
+                 "y":480
+                }, 
+                {
+                 "gid":15382,
+                 "height":32,
+                 "id":327,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":204,
+                 "y":630
+                }, 
+                {
+                 "gid":15390,
+                 "height":32,
+                 "id":328,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":432,
+                 "y":630
+                }, 
+                {
+                 "gid":15395,
+                 "height":32,
+                 "id":329,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":246,
+                 "y":414
+                }, 
+                {
+                 "gid":15396,
+                 "height":32,
+                 "id":330,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":276,
+                 "y":414
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -461,6 +533,78 @@
                  "width":0,
                  "x":336,
                  "y":623
+                }, 
+                {
+                 "height":0,
+                 "id":322,
+                 "name":"player_entry2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"right"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":126,
+                 "y":264
+                }, 
+                {
+                 "height":54,
+                 "id":323,
+                 "name":"exit_to_lovelace_corridor",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"house_ceremony"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"lovelacehallway"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry1"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":12,
+                 "x":72,
+                 "y":222
+                }, 
+                {
+                 "height":30,
+                 "id":324,
+                 "name":"exit_to_courtyard",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"house_ceremony"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"courtyard"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry2"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":90,
+                 "x":294,
+                 "y":720
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -707,10 +851,10 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":322,
+ "nextobjectid":332,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -748,6 +892,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":33
 }

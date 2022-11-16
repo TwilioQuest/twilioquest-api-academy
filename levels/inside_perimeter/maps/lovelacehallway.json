@@ -64,24 +64,6 @@
          "name":"Objects",
          "objects":[
                 {
-                 "height":0,
-                 "id":24,
-                 "name":"player_entry1",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"initialFacing",
-                         "type":"string",
-                         "value":"down"
-                        }],
-                 "rotation":0,
-                 "type":"player",
-                 "visible":true,
-                 "width":0,
-                 "x":611,
-                 "y":401
-                }, 
-                {
                  "gid":16399,
                  "height":48,
                  "id":25,
@@ -296,6 +278,179 @@
                  "width":24,
                  "x":382,
                  "y":121
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":28,
+         "name":"Entries and Exits",
+         "objects":[
+                {
+                 "height":18,
+                 "id":66,
+                 "name":"exit_to_lovelace_tower",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"lovelace_tower"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"default"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry1"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":36,
+                 "x":402,
+                 "y":126
+                }, 
+                {
+                 "height":0,
+                 "id":67,
+                 "name":"player_entry1",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"left"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":594,
+                 "y":402
+                }, 
+                {
+                 "height":0,
+                 "id":68,
+                 "name":"player_entry3",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":276,
+                 "y":408
+                }, 
+                {
+                 "height":18,
+                 "id":69,
+                 "name":"exit_to_secret_library",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"lovelace_tower"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"library"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry2"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":36,
+                 "x":258,
+                 "y":342
+                }, 
+                {
+                 "height":18,
+                 "id":70,
+                 "name":"exit_to_secret_library",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"lovelace_tower"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"library"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry2"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":36,
+                 "x":546,
+                 "y":342
+                }, 
+                {
+                 "height":0,
+                 "id":71,
+                 "name":"player_entry2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":420,
+                 "y":180
+                }, 
+                {
+                 "height":54,
+                 "id":72,
+                 "name":"exit_to_main_hall",
+                 "properties":[
+                        {
+                         "name":"levelName",
+                         "type":"string",
+                         "value":"house_ceremony"
+                        }, 
+                        {
+                         "name":"mapName",
+                         "type":"string",
+                         "value":"mainhall"
+                        }, 
+                        {
+                         "name":"playerEntryPoint",
+                         "type":"string",
+                         "value":"player_entry2"
+                        }],
+                 "rotation":0,
+                 "type":"levelChange",
+                 "visible":true,
+                 "width":12,
+                 "x":636,
+                 "y":366
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -551,11 +706,11 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":28,
- "nextobjectid":65,
+ "nextlayerid":29,
+ "nextobjectid":73,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -589,6 +744,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":30
 }

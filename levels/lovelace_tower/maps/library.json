@@ -146,7 +146,7 @@
                         {
                          "name":"levelName",
                          "type":"string",
-                         "value":"api_academy"
+                         "value":"lovelace_tower"
                         }, 
                         {
                          "name":"mapName",
@@ -156,7 +156,7 @@
                         {
                          "name":"playerEntryPoint",
                          "type":"string",
-                         "value":"player_entry3"
+                         "value":"player_entry2"
                         }],
                  "rotation":0,
                  "type":"levelChange",
@@ -174,7 +174,7 @@
                         {
                          "name":"initialFacing",
                          "type":"string",
-                         "value":"up"
+                         "value":"down"
                         }],
                  "rotation":0,
                  "type":"player",
@@ -187,22 +187,27 @@
                  "gid":13504,
                  "height":36,
                  "id":494,
-                 "name":"library_door_exit",
+                 "name":"exit_door",
                  "properties":[
                         {
                          "name":"conversation",
                          "type":"string",
-                         "value":""
+                         "value":"library-door"
                         }, 
                         {
                          "name":"conversationAvatar",
                          "type":"string",
-                         "value":""
+                         "value":"door_lovelace.png"
                         }, 
                         {
                          "name":"interactable",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"obj5Complete",
+                         "type":"bool",
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
@@ -212,7 +217,7 @@
                  "y":720
                 }, 
                 {
-                 "height":18,
+                 "height":12,
                  "id":495,
                  "name":"exit_to_lovelace_corridor",
                  "properties":[
@@ -234,9 +239,27 @@
                  "rotation":0,
                  "type":"levelChange",
                  "visible":true,
-                 "width":48,
-                 "x":636,
+                 "width":36,
+                 "x":642,
                  "y":708
+                }, 
+                {
+                 "height":0,
+                 "id":541,
+                 "name":"player_entry2",
+                 "point":true,
+                 "properties":[
+                        {
+                         "name":"initialFacing",
+                         "type":"string",
+                         "value":"down"
+                        }],
+                 "rotation":0,
+                 "type":"player",
+                 "visible":true,
+                 "width":0,
+                 "x":660,
+                 "y":762
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -633,7 +656,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -655,13 +678,13 @@
                  "value":true
                 }],
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":71,
          "x":0,
          "y":0
         }],
  "nextlayerid":66,
- "nextobjectid":541,
+ "nextobjectid":542,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",
