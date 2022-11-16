@@ -8,15 +8,15 @@ mixin busy
 
 mixin wrong_1
   response#wrong_1.
-    Have you tried...
+    PUT isn’t actually an HTTP verb.
 
 mixin wrong_2
   response#wrong_2.
-    What about...
+    PUT allows you to delete resources.
 
 mixin right
   response#right.
-    The answer should be...
+    PUT is a request to modify a resource state.
 
 conversation(display_name="House Lovelace Student")
   case lastResponse
@@ -52,24 +52,34 @@ conversation(display_name="House Lovelace Student")
   statements
     statement#default
       text.
-        Thank goodness you made it through the second door. This API problem set is due in an hour, and I’m barely through the first question.<br><br>
-        How many…
-
+        Thank goodness you made it through the second door. 
+        This API problem set is due in an hour, and I’m barely through the first question.<br><br>
+        “What is the definition of #[span.highlight PUT] in HTTP Protocol Semantics?” That’s the question, 
+        but now I’m not sure I even understand what it’s asking!
+       
     statement#busy
       text.
-        Ah, that’s too bad. I wanted to be able to say that a real, live Operator helped me with my homework problems. Maybe next time!
+        Ah, that’s too bad. I wanted to be able to say that a real, 
+        live Operator helped me with my homework problems. Maybe next time!
 
     statement#wrong_1
       text.
-        I’m pretty sure it’s something different.
+        I’m pretty sure the answer is something else. 
+        PUT is definitely an HTTP verb, like GET and POST, but it does something a little different.<br><br>
+        What is PUT used for?
 
     statement#wrong_2
       text.
-        That answer doesn’t quite work.
+        That answer doesn’t quite work. DELETE is its own HTTP verb that allows you to delete resources.<br><br>
+        But PUT is…?
 
     statement#right
       text.
-        I didn’t even think of that! But, yes, that’s right. Thank you so much for helping.
+        Yes, that’s right, I remember now! When you make a PUT request, 
+        the client takes the representation (the explanation of the resource state) 
+        then modifies the resource. PUT requests update a resource by replacing the entire entity, 
+        whereas PATCH only updates a portion of the resource without changing other fields.<br><br>
+        Thank you so much for helping!
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

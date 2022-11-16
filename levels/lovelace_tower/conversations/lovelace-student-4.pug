@@ -8,15 +8,15 @@ mixin busy
 
 mixin wrong_1
   response#wrong_1.
-    Have you tried...
+    A local API is one that’s in the same area code, whereas remotes work from anywhere in The Cloud.
 
 mixin wrong_2
   response#wrong_2.
-    What about...
+    There’s no difference. Local and remote mean the same thing when it comes to APIs.
 
 mixin right
   response#right.
-    The answer should be...
+    Local APIs execute directly on your machine or device, whereas remote APIs run on a server that you (likely) don’t own.
 
 conversation(display_name="House Lovelace Student")
   case lastResponse
@@ -54,8 +54,8 @@ conversation(display_name="House Lovelace Student")
       text.
         Wow, you only have one more room in Lovelace Tower. You are just racing through the House Gauntlet!<br><br>
         Do you think you’d have time to help me with an assignment? It’s due in like an hour…<br><br>
-        What is... 
-
+        What is the difference between #[span.highlight local] and #[span.highlight remote] APIs?
+        
     statement#busy
       text.
         That’s alright. You can always come back into Lovelace Tower once you’ve finished all the Gauntlet challenges. 
@@ -63,15 +63,22 @@ conversation(display_name="House Lovelace Student")
 
     statement#wrong_1
       text.
-        It couldn’t be that, I don’t think…
+        Hmm, I think it’s a bit different than that. You’re right that remote APIs will work from anywhere, 
+        but that's because they don’t need to be on your local machine. But local APIs work a bit differently…<br><br>
+        Could you help me figure out the difference between remote and local APIs?
 
     statement#wrong_2
       text.
-        That’s the first answer I tried, but it’s not quite right.
+        That’s the first answer I tried, but it’s not quite right. 
+        I think the difference depends on where the code is actually running – and there definitely is a difference. But what is it? 
 
     statement#right
       text.
-        You got it! See, I knew an Operator competing in the House Gauntlet would be able to solve these problems!
+        You got it! The implementation of remote APIs never executes on your machine, but elsewhere, 
+        which gives you computing power and scale that you might not have locally. 
+        Instead, local APIs might be in your programming language or in a package that you can download from the internet, 
+        but they run locally on your machine or device.<br><br>
+        See, I knew an Operator competing in the House Gauntlet would be able to solve these problems!
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);
