@@ -26,10 +26,11 @@ module.exports = async function (helper) {
     );
 
     const test = assertTestCase(context.findLastFileInDir);
-    const dir = readdirSync("./houses");
+    const testDirectory = `${__dirname}/houses`;
+    const dir = readdirSync(testDirectory);
     const lastEntry = dir[dir.length - 1];
 
-    await test("./houses", lastEntry);
+    await test(testDirectory, lastEntry);
   } catch (err) {
     helper.fail(err);
     return;
