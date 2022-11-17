@@ -1,12 +1,12 @@
 const assert = require("assert");
 
-const assertTestCase = (testFunction) => (input, expected) => {
-  const testResult = testFunction(input);
+const assertTestCase = (testFunction) => (input1, input2, input3, expected) => {
+  const testResult = testFunction(input1, input2, input3);
 
   assert.strictEqual(
     testResult,
     expected,
-    `Expected "${expected}" from input "${input}", but received "${testResult}".`
+    `Expected "${expected}" from input "${input1}", "${input2}", and "${input3}", but received "${testResult}".`
   );
 };
 

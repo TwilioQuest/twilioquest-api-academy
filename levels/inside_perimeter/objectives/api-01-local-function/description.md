@@ -4,13 +4,26 @@
 <h3>Requirements</h3>
 <ul>
   <li>Create a function called `wordSwapper`.</li>
-  <li>This function receives a source string, target string, and replacement string.</li>
-  <li>Replace all instances of the "target" string in the "source" string with the "replacement" string, using the replaceAll function.</li>
+  <li>This function receives 3 string arguments.</li>
+  <li>Replace all instances of the "target" string in the "source" string with the "replacement" string, using the `replaceAll` function.</li>
   <li>Return the resulting string.</li>
   <li>Once you're done, press <em>HACK</em>.</li>
 </ul>
 </div>
 
-Content goes here...
+Before we jump into working with Web APIs let's try interacting with a function locally. For this, we'll use the `String.replaceAll` method to replace all instances of a particular string with something else.
 
-Once you've writen this function, click the _HACK_ button!
+For example:
+
+```js
+const myString = "one two one two one two";
+const swappedString = myString.replaceAll("two", "zero");
+
+console.log(swappedString);
+```
+
+would print `one zero one zero one zero` to the console.
+
+Create a function called `wordSwapper` that takes 3 string arguments -- `sourceString`, `targetWord`, and `replacementWord`. Then replace all instances of `targetWord` in the `sourceString` with `replacementWord` and return the result.
+
+Once finished, click the _HACK_ button!

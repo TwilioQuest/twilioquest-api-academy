@@ -21,12 +21,12 @@ console.log(
 
 console.log("Test case 4:");
 console.log(
-  wordSwapper("My *bug* code *bug* is *bug* bug *bug* free!", "*bug*", "")
+  wordSwapper("My*bug*code*bug*is*bug*bug*bug*free!", "\\*bug\\*", " ")
 );
 
 console.log("Test case 5:");
 console.log(
-  wordSwapper("Thatspacewasspacereallyspacehardspacetospaceread.", "space", " ")
+  wordSwapper("Thatspacewasspacereallyspacehardspacetospaceread!", "space", " ")
 );
 
 console.log("Test case 6:");
