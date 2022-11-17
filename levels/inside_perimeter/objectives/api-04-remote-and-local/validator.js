@@ -23,8 +23,7 @@ const assertTestCase = (testFunction, helper) => async (input, expected) => {
   }
 };
 
-const DIVINATION_API_ENDPOINT =
-  "https://twilio.com/quest/magic/divination/books";
+const DIVINATION_API_ENDPOINT = "https://twilio.com/quest/magic/divination";
 
 function getBooksByPageCount(pageCountThreshold, books) {
   const filteredBooks = books.filter(
@@ -49,7 +48,7 @@ module.exports = async function (helper) {
 
     const test = assertTestCase(context.getAndProcessDivinationData, helper);
     const response = await fetch(DIVINATION_API_ENDPOINT);
-    const books = await response.json();
+    const books = (await response.json()).data;
     await test(5, getBooksByPageCount(5, books));
     await test(100, getBooksByPageCount(100, books));
     await test(30, getBooksByPageCount(30, books));
