@@ -10,6 +10,8 @@ const assertTestCase = (testFunction) => async (expected) => {
   );
 };
 
+const DIVINATION_API_ENDPOINT = "https://twilio.com/quest/magic";
+
 module.exports = async function (helper) {
   let context;
 
@@ -24,8 +26,9 @@ module.exports = async function (helper) {
       "The function getDivinationData is not defined!"
     );
 
+    const response = await fetch(DIVINATION_API_ENDPOINT);
     const test = assertTestCase(context.getDivinationData);
-    await test("ALAKAZAM");
+    await test(response);
   } catch (err) {
     helper.fail(err);
     return;
