@@ -9,12 +9,5 @@
   "flavorTextOverrides": {
     "lockedDoor": "This door won't budge!"
   },
-  "objectives": [
-    "obtain_wand",
-    "hopper_key",
-    "lovelace_key",
-    "neumann_key",
-    "turing_key",
-    "twilio_api_setup"
-  ]
+  "objectives": []
 }
