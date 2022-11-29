@@ -802,6 +802,108 @@
                  "width":32,
                  "x":431,
                  "y":481
+                }, 
+                {
+                 "height":78,
+                 "id":377,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":60,
+                 "y":558
+                }, 
+                {
+                 "height":78,
+                 "id":382,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":60,
+                 "y":204
+                }, 
+                {
+                 "height":78,
+                 "id":383,
+                 "name":"locked-door-2",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"wrongHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":60,
+                 "y":558
+                }, 
+                {
+                 "height":78,
+                 "id":384,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":582,
+                 "y":564
+                }, 
+                {
+                 "height":78,
+                 "id":386,
+                 "name":"locked-door-2",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"wrongHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":582,
+                 "y":564
+                }, 
+                {
+                 "height":24,
+                 "id":387,
+                 "name":"locked-door-2",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"wrongHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":66,
+                 "x":558,
+                 "y":216
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -921,6 +1023,57 @@
                  "width":90,
                  "x":290.333333333333,
                  "y":729.666666666667
+                }, 
+                {
+                 "height":78,
+                 "id":379,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":582,
+                 "y":564
+                }, 
+                {
+                 "height":30,
+                 "id":380,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":66,
+                 "x":558,
+                 "y":210
+                }, 
+                {
+                 "height":30,
+                 "id":385,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"flavorText",
+                         "type":"string",
+                         "value":"noHouse"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":66,
+                 "x":558,
+                 "y":210
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1091,7 +1244,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1177,7 +1330,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":373,
+ "nextobjectid":388,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",

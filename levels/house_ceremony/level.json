@@ -7,7 +7,9 @@
   "priority": 3,
   "backgroundMusic": "fascinatingarea_108253b",
   "flavorTextOverrides": {
-    "lockedDoor": "This door won't budge!"
+    "lockedDoor": "This door won't budge!",
+    "noHouse": "I have to choose my house before I can explore the house areas.",
+    "wrongHouse": "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
   },
   "objectives": []
 }

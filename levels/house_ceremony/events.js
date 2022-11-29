@@ -4,10 +4,10 @@ const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 const INITIAL_STATE = {
   playerHouse: undefined,
   playerHouses: [
-    { name: "lovelace", id: 1 },
-    { name: "turing", id: 2 },
-    { name: "neumann", id: 3 },
-    { name: "hopper", id: 4 },
+    { name: "Lovelace", id: 1 },
+    { name: "Turing", id: 2 },
+    { name: "von Neumann", id: 3 },
+    { name: "Hopper", id: 4 },
   ],
   houseLovelaceComplete: false,
   houseHopperComplete: false,
@@ -67,7 +67,7 @@ module.exports = async function (event, world) {
   const unlock = (event) => {
     if (!worldState.playerHouse) {
       world.showNotification(
-        "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
+        "I have to choose my house before I can explore the house areas."
       );
       return;
     // If the player has chosen their house and they are trying to access a corridor that is not Lovelace Tower

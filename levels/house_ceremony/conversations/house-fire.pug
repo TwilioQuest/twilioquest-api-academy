@@ -61,6 +61,7 @@ conversation(display_name="Arcane Academy House Fire")
 
     when "yes"
       statement#congratulations
+      //- let worldState.playerHouse === [ID]
 
     when "no"
       statement#choose 
@@ -101,7 +102,7 @@ conversation(display_name="Arcane Academy House Fire")
 
     statement#congratulations 
       text.
-        Congratulations on joining House {INSERT HOUSE}!
+        Congratulations on joining House {INSERT HOUSE based on ID}!
 
     statement#choose 
       text.
