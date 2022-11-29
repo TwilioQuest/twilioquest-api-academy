@@ -35,7 +35,7 @@ module.exports = async (helper) => {
     return helper.fail(`
       Uh oh, the first challenge question is incorrect, "${
         answer1OptionsMap[answer1] || answer1.toUpperCase()
-      }" *is* an HTTP Method. Visit the [MDN documentation to learn more about HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) or check out the information provided here in the hack interface.
+      }" <a>is</a> an HTTP Method. Visit the [MDN documentation to learn more about HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) or check out the information provided here in the hack interface.
     `);
   }
 
