@@ -15,7 +15,6 @@
     "lovelace_key",
     "neumann_key",
     "turing_key",
-    "twilio_api_setup",
-    "api-02-async-await"
+    "twilio_api_setup"
   ]
 }
