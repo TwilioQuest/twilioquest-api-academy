@@ -462,24 +462,6 @@
                  "y":480
                 }, 
                 {
-                 "gid":15389,
-                 "height":32,
-                 "id":326,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"conversation",
-                         "type":"string",
-                         "value":"head-van-hoek"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":32,
-                 "x":426,
-                 "y":480
-                }, 
-                {
                  "gid":15379,
                  "height":32,
                  "id":327,
@@ -802,6 +784,24 @@
                  "width":24,
                  "x":264,
                  "y":540
+                }, 
+                {
+                 "gid":15389,
+                 "height":32,
+                 "id":372,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"head-van-hoek"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":431,
+                 "y":481
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -829,8 +829,8 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":335,
-                 "y":693
+                 "x":318,
+                 "y":666
                 }, 
                 {
                  "height":0,
@@ -866,7 +866,7 @@
                  "visible":true,
                  "width":0,
                  "x":126,
-                 "y":264
+                 "y":240
                 }, 
                 {
                  "height":54,
@@ -891,7 +891,7 @@
                  "rotation":0,
                  "type":"levelChange",
                  "visible":true,
-                 "width":12,
+                 "width":18,
                  "x":72,
                  "y":222
                 }, 
@@ -919,8 +919,8 @@
                  "type":"levelChange",
                  "visible":true,
                  "width":90,
-                 "x":294,
-                 "y":720
+                 "x":290.333333333333,
+                 "y":729.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1091,7 +1091,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1177,10 +1177,10 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":372,
+ "nextobjectid":373,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -1214,6 +1214,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":33
 }

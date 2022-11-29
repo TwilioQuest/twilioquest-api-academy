@@ -22,19 +22,19 @@ conversation(display_name="Professor Taifa, Head of House Turing")
   case lastResponse
     
     when "unique"
-      statement#unique
+      statement#unique_resp
         responses 
           +join 
           +deciding
 
     when "join"
-      statement#join
+      statement#join_resp
 
     when "deciding"
-      statement#deciding
+      statement#deciding_resp
 
     when "getting_started"
-      statement#getting_started
+      statement#getting_started_resp
 
     default
       if !worldState.playerHouse
@@ -47,7 +47,7 @@ conversation(display_name="Professor Taifa, Head of House Turing")
       else
         statement#gauntlet_default
         responses
-            +getting_started
+          +getting_started
 
   statements
     statement#default
@@ -55,19 +55,19 @@ conversation(display_name="Professor Taifa, Head of House Turing")
         A House Ceremony and the House Gauntlet taking place in the same week! 
         It is certainly an exciting time to be at Arcane Academy.
 
-  statement#unique
+  statement#unique_resp
       text.
         House Turing prides itself on its commitment to problem-solving and innovation. 
         Students in House Turing enjoy participating in activities across the Academy, 
         from codeball to extracurriculars to career events.
 
-  statement#join
+  statement#join_resp
       text.
         House Turing is lucky to have you! The last step in the House Ceremony 
         involves confirming your choice by taking your pledge scroll to the 
         #[span.highlight House Fire] at the center of the Hall.
 
-  statement#deciding
+  statement#deciding_resp
       text.
         By all means! As soon as you choose, you’ll be able to attend the House Gauntlet, 
         which is one of Arcane’s most exciting annual events.
@@ -78,7 +78,7 @@ conversation(display_name="Professor Taifa, Head of House Turing")
       last year and the year before. Who knows, maybe once you’ve completed 
       House Lovelace, House Turing might be selected as the second! 
 
-  statement#getting_started 
+  statement#getting_started_resp 
     text.
       Good luck in Lovelace Tower for now.
 

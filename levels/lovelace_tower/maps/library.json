@@ -489,7 +489,7 @@
          "name":"Entries and Exits",
          "objects":[
                 {
-                 "height":18,
+                 "height":48,
                  "id":78,
                  "name":"exit_to_lovelace_tower",
                  "properties":[
@@ -513,7 +513,7 @@
                  "visible":true,
                  "width":48,
                  "x":516,
-                 "y":950
+                 "y":912
                 }, 
                 {
                  "height":0,
@@ -524,14 +524,14 @@
                         {
                          "name":"initialFacing",
                          "type":"string",
-                         "value":"down"
+                         "value":"right"
                         }],
                  "rotation":0,
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":563.879013000796,
-                 "y":865.258082856385
+                 "x":540,
+                 "y":888
                 }, 
                 {
                  "height":12,
@@ -563,7 +563,7 @@
                  "visible":true,
                  "width":36,
                  "x":642,
-                 "y":685
+                 "y":708
                 }, 
                 {
                  "height":0,
@@ -581,7 +581,7 @@
                  "visible":true,
                  "width":0,
                  "x":660,
-                 "y":762
+                 "y":756
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1105,7 +1105,7 @@
  "nextobjectid":579,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -1147,6 +1147,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":71
 }
