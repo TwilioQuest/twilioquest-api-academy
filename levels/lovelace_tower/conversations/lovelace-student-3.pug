@@ -16,7 +16,7 @@ mixin wrong_2
 
 mixin right
   response#right.
-    Are there perhaps asynchronous promises?
+    Are there perhaps asynchronous functions?
 
 conversation(display_name="House Lovelace Student")
   case lastResponse
@@ -75,10 +75,10 @@ conversation(display_name="House Lovelace Student")
 
     statement#right
       text.
-        Oh, that’s it! I’m making two HTTP requests and I should use the #[span.highlight then() method] of the promise 
-        to get the value back. #[span.highlight Promises] allow you to initiate actions that finish later and return 
-        an eventual value.<br><br>
+        Oh, that’s it! I’m making two HTTP requests and I should use the await keyword after an asynchronous 
+        function to get the value back before my code keeps going.<br><br>
         I knew you’d be able to solve it for me. Thanks, Operator!
+
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

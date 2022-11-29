@@ -54,7 +54,7 @@ conversation(display_name="House Lovelace Student")
       text.
         Wow, you only have one more room in Lovelace Tower. You are just racing through the House Gauntlet!<br><br>
         Do you think you’d have time to help me with an assignment? It’s due in like an hour…<br><br>
-        What is the difference between #[span.highlight local] and #[span.highlight remote] APIs?
+        What is the difference between a #[span.highlight local] and #[span.highlight remote] API?
         
     statement#busy
       text.
@@ -63,22 +63,23 @@ conversation(display_name="House Lovelace Student")
 
     statement#wrong_1
       text.
-        Hmm, I think it’s a bit different than that. You’re right that remote APIs will work from anywhere, 
-        but that's because they don’t need to be on your local machine. But local APIs work a bit differently…<br><br>
-        Could you help me figure out the difference between remote and local APIs?
+        Hmm… something tells me it’s a bit different than that. You’re right that remote APIs will work from anywhere, 
+        but that’s because they don’t need to be on your local machine. But local APIs work in another way…?<br><br>
+        What could the difference be?
 
     statement#wrong_2
       text.
-        That’s the first answer I tried, but it’s not quite right. 
-        I think the difference depends on where the code is actually running – and there definitely is a difference. But what is it? 
+        That’s the first answer I tried, but it’s not right! I think the difference depends on where the code is actually running, right?<br><br>
+        And the difference is…? If only I had paid attention during my classes…
 
     statement#right
       text.
-        You got it! The implementation of remote APIs never executes on your machine, but elsewhere, 
-        which gives you computing power and scale that you might not have locally. 
-        Instead, local APIs might be in your programming language or in a package that you can download from the internet, 
-        but they run locally on your machine or device.<br><br>
-        See, I knew an Operator competing in the House Gauntlet would be able to solve these problems!
+        Ah, yes! The implementation of remote APIs never executes on your machine, 
+        but elsewhere, which gives you computing power and scale that you might not have locally. 
+        Instead, local APIs might be in your programming language or in a package that you can 
+        download from the internet, but they run locally on your machine or device.<br><br>
+        All I needed was to stand next to you and it would all come back to me! Thanks, Operator!
+
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);
