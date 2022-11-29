@@ -2,30 +2,34 @@
   const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
   const worldState = getState(STATE_KEY);    
 
-mixin excavation
-  response#excavation.
-    Why does the Academy have an excavation crew?
+mixin gauntlet
+  response#gauntlet.
+    What's the House Gauntlet like?
 
 conversation(display_name="Arcane Academy Groundskeeper")
   case lastResponse
     
-    when "excavation"
-      statement#excavation
+    when "gauntlet"
+      statement#gauntlet
 
     default
       statement#default
       responses
-        +excavation
+        +gauntlet
 
   statements
     statement#default
       text.
-        Oh, this is embarrassing! I'm sorry, but the way forward is blocked right now. 
-        I've sent a raven requesting the Academy excavation crew arrive as soon as possible.
-    statement#excavation
+        Well, this is exciting! You're just in time for the House Gauntlet, which is set to start in no time! 
+        Head straight on to the Main Hall, where you will find the House Fire being prepared for the House Ceremony. 
+        I hope you've been thinking about which house you'd like to join!
+
+    statement#gauntlet
       text.
-        Our Catacombs couldn't dig themselves! We have not needed the crew in some time, though. 
-        It will take a #[span.highlight new version of TwilioQuest] for them to get here. Please check back later!
+        The House Gauntlet is a series of advanced API challenges set within each of the four house areas: 
+        Lovelace Tower, Hopper Greenhouse, Neumann Labs, and Turing Fields. 
+        You can get to them all from the Main Hall straight past the courtyard... 
+        though some areas might be out of bounds because of the Gauntlet. 
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

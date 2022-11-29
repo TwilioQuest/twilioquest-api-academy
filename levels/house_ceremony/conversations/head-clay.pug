@@ -1,0 +1,83 @@
+-
+  const STATE_KEY = 'TQ_HOUSE_CEREMONY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);    
+
+mixin unique
+  response#unique.
+    Could you remind me what makes House Lovelace unique?
+
+mixin join  
+  response#join.
+    I would like to join House Lovelace!
+
+mixin deciding 
+  response#deciding.
+    I’m still deciding which house to join.
+
+mixin getting_started 
+  response#getting_started.
+    I’ll see you there!
+
+conversation(display_name="Professor Clay, Head of House Lovelace")
+  case lastResponse
+    
+    when "unique"
+      statement#unique
+        responses 
+          +join 
+          +deciding
+
+    when "join"
+      statement#join
+
+    when "deciding"
+      statement#deciding
+
+    when "getting_started"
+      statement#getting_started
+
+    default
+      if !worldState.playerHouse
+        statement#default
+        responses
+          +unique 
+          +join 
+          +deciding 
+
+      else
+        statement#gauntlet_default
+        responses
+            +getting_started
+
+  statements
+    statement#default
+      text.
+        Welcome to the House Ceremony, Operator. 
+        Have you decided to join House Lovelace?
+
+  statement#unique
+      text.
+        House Lovelace is known as the house of artists, 
+        where we explore the beauty and art of code, as well as the art of documentation.
+
+  statement#join
+      text.
+        We’re so glad to hear this. To confirm your choice, 
+        please proceed to the #[span.highlight House Fire] with your pledge scroll.
+
+  statement#deciding
+      text.
+        Completely understandable, Operator. It’s an important decision to make!
+
+  statement#gauntlet_default 
+    text.
+      House Lovelace is an exciting place to begin the House Gauntlet. 
+      I hope you enjoy exploring Lovelace Tower! I’ll meet you up there whenever 
+      you are ready for further instructions.
+
+  statement#getting_started 
+    text.
+      You have my full support!
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);
