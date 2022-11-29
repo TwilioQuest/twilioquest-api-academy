@@ -9,7 +9,5 @@
   "flavorTextOverrides": {
     "lockedDoor": "This door won't budge!"
   },
-  "objectives": [
-
-  ]
+  "objectives": []
 }
