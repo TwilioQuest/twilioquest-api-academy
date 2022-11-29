@@ -1,37 +1,86 @@
 const merge = require("lodash.merge");
+const handleTriggerDoors = require("../../scripts/handleTriggerDoors");
 const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 
-const INITIAL_STATE = {
-  playerHouse: undefined,
-  playerHouses: [
-    { name: "lovelace", id: 1 },
-    { name: "turing", id: 2 },
-    { name: "neumann", id: 3 },
-    { name: "hopper", id: 4 },
-  ],
-  houseLovelaceComplete: false,
-  houseHopperComplete: false,
-  houseTuringComplete: false,
-  houseVonNeumannComplete: false,
-};
+const INITIAL_STATE = {};
+
+// Returns the elements that are part of a comma delimited string collection.
+// For example, "hello, world, foo, bar" would return ["hello", "world", "foo", "bar"]
+function getArrayFromCommaDelimitedCollection(commaDelimitedCollection = []) {
+  const output = commaDelimitedCollection
+    .replace(/\s/g, "")
+    .split(",")
+    .filter((requiredLevel) => !!requiredLevel);
+
+  return output;
+}
+
+// Gets the keys for any entities that have the "requiresCompletedLevels" property in which the specified levels have
+// not all been completed, and returns them together in an array. For example, if "requireCompletedLevels" is set to
+// "challenge-questions, house_ceremony", then if either of those levels hasn't been completed, the target object
+// is marked for deletion
+async function getEntitiesMarkedForDeletion(world) {
+  const entitiesMarkedForDeletion = [];
+
+  // Awaiting the "world.isLevelCompleted" calls, in order to hault execution of the "world.destroyEntities"
+  // invocation. Not doing so will lead to entitiesMarkedForDeletion always being empty, even if it shouldn't be
+  await Promise.all(
+    world.entityService
+      // Using "getAll" and "filter", since the "world.forEachEntity" method cannot be awaited
+      .getAll()
+      .filter(({ instance }) => instance.requiresCompletedLevels)
+      // Mapping each remaining element into a promise that will be apart of "Promise.all"
+      .map(async ({ instance }) => {
+        if (instance.requiresCompletedLevels) {
+          const completedRequiredLevels =
+            await getArrayFromCommaDelimitedCollection(
+              instance.requiresCompletedLevels
+            ).reduce(async (allCompleted, requiredLevel) => {
+              return (
+                allCompleted && (await world.isLevelCompleted(requiredLevel))
+              );
+            }, true);
+
+          if (!completedRequiredLevels) {
+            entitiesMarkedForDeletion.push(instance.key);
+          }
+        }
+      })
+  );
+
+  return entitiesMarkedForDeletion;
+}
 
 module.exports = async function (event, world) {
-  const worldState = merge(INITIAL_STATE, world.getState(HOUSE_CEREMONY_STATE_KEY));
+  const worldState = merge(
+    INITIAL_STATE,
+    world.getState(HOUSE_CEREMONY_STATE_KEY)
+  );
 
-  console.log(`event: ${event.name}`);
-  console.log(`event target ${event.target}`);
-  console.log(worldState);
+  if (event.name === "mapDidLoad") {
+    const entitiesMarkedForDeletion = await getEntitiesMarkedForDeletion(world);
+
+    world.destroyEntities(({ instance }) => {
+      const instanceIsMarkedForDeletion = entitiesMarkedForDeletion.some(
+        (entityKey) => instance.key === entityKey
+      );
+
+      return instanceIsMarkedForDeletion;
+    });
+  }
+
+  handleTriggerDoors(event, world, worldState);
 
   // LEVEL FUNCTIONALITY OVERVIEW
 
   // Has the player chosen their house? (playerHouse === undefined)
 
-  // If undefined: 
+  // If undefined:
   // [x] Heads of house say dialogue 1
   // [] Fire is interactable
   // [] House corridors are blocked off with Operator observation: "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
 
-  // If !undefined: 
+  // If !undefined:
   // [] Give avatar item based on chosen house
   // [] Fire is no longer interactable
   // [x] Heads of house say dialogue 2
@@ -55,155 +104,11 @@ module.exports = async function (event, world) {
   // [] Lovelace blue sparkle annimation appears on next house door
 
   // Which house has the player chosen? (playerHouse)
-  
-  // Dependencies: 
+
+  // Dependencies:
   // [] avatar item
   // [] house of the missing student (Heapsort dialogue)
   // [] fire color
-
-
-  // If player tries to enter a house corridor without having chosen a house.
-  // Tiled corridors need "unlock" type trigger boxes.
-  const unlock = (event) => {
-    if (!worldState.playerHouse) {
-      world.showNotification(
-        "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
-      );
-      return;
-    // If the player has chosen their house and they are trying to access a corridor that is not Lovelace Tower
-    } else if (!worldState.playerHouse !== null) {
-        world.showNotification(
-          "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
-        );
-        return;
-      };  
-  };
-
-// COLLECTIBLES 
-
-// The only collectibles in this level so far are the avatar uniforms once the player chooses the house.
-  const items = {
-    magic_key: (event) => addMagicKey(event),
-    pledge_scroll: (event) => addPledgeScroll(event),
-  };
-
-  const addMagicKey = (event) => {
-    worldState.insideCatacombs.hasKey = true;
-    if (!worldState.spellsEarned.includes("unlock"))
-      worldState.spellsEarned.push("unlock");
-    destroyObject("magic_key");
-    world.showNotification(
-      "I've obtained the magic key, I should go and claim my pledge scroll!"
-    );
-
-    // TODO: actually add item to inventory
-    tweenToScroll();
-  };
-
-  const addPledgeScroll = (event) => {
-    worldState.insideCatacombs.hasPledgeScroll = true;
-    destroyObject("pledge_scroll");
-    world.showNotification(
-      "I've obtained my pledge scroll. Time to head to the Academy building and present it to the headmaster."
-    );
-
-    world.grantItems(["pledge_scroll"]);
-    determineHouse();
-  };
-
-
-// EVENT HANDLING
-
-// Handles returning level to last object state
-  if (event.name === "mapDidLoad") {
-    console.log("Resetting map after load");
-
-    // destroy all previously destroyed objects
-    world.destroyEntities(({ instance }) =>
-      worldState.destroyedEntities.includes(instance.group || instance.key)
-    );
-
-    // show all previously unlocked objects
-    world.showEntities(({ instance }) =>
-      worldState.unlockedEntities.includes(instance.group || instance.key)
-    );
-
-    // show all previously unlocked transitions
-    world.enableTransitionAreas(({ instance }) =>
-      worldState.unlockedTransitions.includes(instance.name)
-    );
-
-    // change hack status of all no longer hackable items
-    world.forEachEntities(
-      ({ instance }) =>
-        worldState.unhackableEntities.includes(instance.group || instance.key),
-      (entity) => {
-        entity.hackable = false;
-      }
-    );
-
-    // for first run though
-    if (worldState.insideCatacombs.hasCredentials) {
-      // destroyObject("catacombs_barrier");
-      openDoor("catacombs_barrier");
-      unhackObject("statue_credentials");
-    }
-
-    // Adjust object dimensions
-    world.forEachEntities(
-      ({ instance }) => instance.layer === "upper",
-      (object) => {
-        // To force "upper" layer objects to render above objects
-        // they're placed on top of, we must hack their physics
-        // body size.
-        //
-        // To do this, we're going to add a hard coded 1000 pixels
-        // to the height of these objects. This is not perfect,
-        // but should function fine for this mission.
-        object.sprite.body.height += 1000;
-
-        // These sprites will all have their bodies disabled.
-        // This new tall sprite body will impede a lot of player
-        // movement space otherwise.
-        object.sprite.body.enable = false;
-      }
-    );
-  }
-
-// Handles object interactions
-  if (event.name === "playerDidInteract") {
-    console.log(`Interacting with ${event.target.key}`);
-
-    if (event.target.spellable) runSpell(event);
-    if (event.target.notify) runObjectNotification(event);
-    if (event.target.npc) runNpcChecks(event);
-    if (event.target.item) runAddItem(event);
-  }
-
-// Handles objective completions & failures
-  if (
-    event.name === "objectiveCompleted" ||
-    event.name === "objectiveCompletedAgain"
-  ) {
-    runObjectiveEffects(event);
-  }
-
-  if (event.name === "objectiveFailed") {
-    runUpdateMagicScore(event);
-  }
-
-// Handles Trigger Areas.
-// This functionality should be updated so that choosing the house in the House Ceremony 
-// triggers interrupting professor dialogue and camera pan
-// This should also trigger the opening of Lovelace Tower
-  if (event.name === "triggerAreaWasEntered") {
-    if (
-      event.target.key === "triggerGroundskeeperConversation" &&
-      !worldState.insidePerimeter.groundskeeper_introduction
-    ) {
-      world.startConversation("groundskeeper", "groundskeeper.png");
-    }
-  }
 
   world.setState(HOUSE_CEREMONY_STATE_KEY, worldState);
 };
