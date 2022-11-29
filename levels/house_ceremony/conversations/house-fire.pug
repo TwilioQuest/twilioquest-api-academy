@@ -1,0 +1,112 @@
+-
+  const STATE_KEY = 'TQ_HOUSE_CEREMONY_WORLD_STATE';
+  const worldState = getState(STATE_KEY);    
+
+//- This dialogue box needs to track which house the player chooses and then their confirmation, 
+//- so that the specific choice triggers other dependencies in the game (e.g. house avatar uniform, house of missing student)
+
+//- worldstate.playerHouse ID = 1 (put this inside of the when clicked yes)
+//- have one conversational branch that checks variable and then use variable to fill in the conversation
+
+mixin hopper
+  response#hopper.
+    House Hopper
+
+mixin lovelace
+  response#lovelace.
+    House Lovelace
+
+mixin turing
+  response#turing.
+    House Turing
+
+mixin neumann
+  response#neumann.
+    House von Neumann
+
+mixin yes
+  response#yes.
+    I am certain.
+
+mixin no
+  response#no.
+    No, I want to keep thinking.
+
+conversation(display_name="Arcane Academy House Fire")
+  case lastResponse
+    
+    when "hopper"
+      statement#hopper
+      responses 
+        +yes 
+        +no
+
+    when "lovelace"
+      statement#lovelace
+      responses 
+        +yes 
+        +no
+
+    when "turing"
+      statement#turing
+      responses 
+        +yes 
+        +no
+
+    when "neumann"
+      statement#neumann
+      responses 
+        +yes 
+        +no
+
+    when "yes"
+      statement#congratulations
+
+    when "no"
+      statement#choose 
+      responses
+        +hopper 
+        +lovelace 
+        +turing 
+        +neumann 
+
+    default
+      statement#default
+      responses
+        +hopper 
+        +lovelace 
+        +turing 
+        +neumann 
+
+  statements
+    statement#default
+      text.
+        In our most sacred House Ceremony, Arcane Academy invites you to join a house. Choose your house by submitting your pledge scroll to my fire.
+        
+    statement#hopper
+      text.
+        Are you certain you wish to join House Hopper?
+
+    statement#lovelace
+      text.
+        Are you certain you wish to join House Lovelace?
+
+    statement#turing
+      text.
+        Are you certain you wish to join House Turing?
+
+    statement#neumann
+      text.
+        Are you certain you wish to join House von Neumann?
+
+    statement#congratulations 
+      text.
+        Congratulations on joining House {INSERT HOUSE}!
+
+    statement#choose 
+      text.
+        When you are ready, choose your house by submitting your pledge scroll to my fire. If you are still unsure, 
+        Arcane's Heads of Houses can give you more information about each house.
+
+// Flush world state changes, if any
+- setState(STATE_KEY, worldState);
