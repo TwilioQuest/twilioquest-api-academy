@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   obj3Complete: false,
   obj4Complete: false,
   obj5Complete: false,
+  fredricNoteTriggered: false,
 };
 
 module.exports = async function (event, world) {
@@ -14,43 +15,70 @@ module.exports = async function (event, world) {
 
   console.log(`event: ${event.name}`);
   console.log(`event target ${event.target}`);
+  console.log(`event target ${event.target && event.target.key}`);
   console.log(worldState);
 
-  // LEVEL FUNCTIONALITY OVERVIEW
+// Library exit not accessible until obj5Complete === true
+world.disableTransitionAreas("exit_to_library_corridor");
 
-// Has player completed Objective 1/2/3? (obj1Compelete, obj2Complete, obj3Complete)
+// Operator observations on barriers
+if (event.name === "triggerAreaWasEntered" && event.target.key === "lockedDoorLibrary" && worldState.obj5Complete === false){
+  world.showNotification(
+    "I should complete the last objective to clean up this mess!"
+  );
+};
 
-// If No: 
-// [] Doors 1/2/3 are locked respectively with Operator observation: "I need to complete the next objective first."
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier1" && worldState.obj1Complete === false){
+  world.showNotification(
+    "I need to complete the next objective before I can pass through to the next area."
+  );
+};
 
-// If Yes: 
-// [] Door 1/2/3 is open (door objects should be hidden from view on the map)
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier2" && worldState.obj2Complete === false){
+  world.showNotification(
+    "I need to complete the next objective before I can pass through to the next area."
+  );
+};
 
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier3" && worldState.obj3Complete === false){
+  world.showNotification(
+    "I need to complete the next objective before I can pass through to the next area."
+  );
+};
 
-// Has player completed all four Tower objectives? (obj4Complete)
+// Remove objective barriers
+if (worldState.obj1Complete === true){
+  world.hideEntities(`api-hidden-door-1`);
+};
+if (worldState.obj2Complete === true){
+  world.hideEntities(`api-hidden-door-2`);
+};
+if (worldState.obj3Complete === true){
+  world.hideEntities(`api-hidden-door-3`);
+};
 
-// If No:
-// [x] Secret Library Door is locked and triggers library-door.pug dialogue
-// [x] Groundskeeper says dialogue 1
+// Once the final objective has been hacked and closed, hide books and empty shelves
+if (worldState.obj5Complete === true){
+  if (event.name === "objectiveDidClose" && event.target.objectiveName === "api-05-get-patch"){
+    world.hideEntities(`bad-book`);
+  };
+  
+  world.enableTransitionAreas("exit_to_library_corridor");
 
-// If Yes: 
-// [] Spell in inventory
-// [] Sparkle animation appears on secret Library door
-// [x] Groundskeeper says dialogue 2
-// [] Library door is unlocked and player can teleport to library map
+  // As player tries to leave, trigger Fredric conversation
+  if (event.name === "triggerAreaWasEntered" && event.target.key === "fredricTrigger" && worldState.fredricNoteTriggered === false){
+    world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
+  };
 
-
-// Has the player completed the final objective? (obj5Complete)
-
-// If No: 
-// [] Exit door from library is locked with Operator observation
-
-// If Yes:
-// [] Sparkle animation appears on exit door and is interactable
-// [] Previous entry door back into Tower becomes locked
-
-
-
+  // When Fredric trigger closes, Fredric letter becomes interactable 
+  if (event.name === "conversationDidEnd" && event.npc.conversation === "fredric-threat-lovelace"){
+    world.forEachEntities("fredricNote", note => {
+      note.interactable = true;
+    });
+    worldState.fredricNoteTriggered = true;
+    // world.getState(HOUSE_CEREMONY_STATE_KEY.houseLovelaceComplete) = true;
+  };
+};
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
