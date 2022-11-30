@@ -9,7 +9,7 @@
  "name":"ApiAcademyObjects",
  "spacing":0,
  "tilecount":3,
- "tiledversion":"1.6.0",
+ "tiledversion":"1.8.0",
  "tileheight":32,
  "tiles":[
         {
@@ -90,7 +90,6 @@
          "objectgroup":
             {
              "draworder":"index",
-             "id":2,
              "name":"",
              "objects":[
                     {
@@ -114,7 +113,7 @@
                 {
                  "name":"conversation",
                  "type":"string",
-                 "value":"professor-default"
+                 "value":""
                 }, 
                 {
                  "name":"conversationAvatar",
@@ -130,5 +129,5 @@
         }],
  "tilewidth":32,
  "type":"tileset",
- "version":"1.6"
+ "version":"1.8"
 }
