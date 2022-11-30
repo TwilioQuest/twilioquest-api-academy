@@ -76,7 +76,7 @@ if (worldState.obj5Complete === true){
       note.interactable = true;
     });
     worldState.fredricNoteTriggered = true;
-    // world.getState(HOUSE_CEREMONY_STATE_KEY.houseLovelaceComplete) = true;
+    // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
   };
 };
 
