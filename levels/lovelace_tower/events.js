@@ -65,17 +65,6 @@ module.exports = async function (event, world) {
     world.getState(LOVELACE_TOWER_STATE_KEY)
   );
 
-  // Top object pieces need to be longer so they always depth sort
-  // above the player, even when the player would normally be depth
-  // sorted above them.
-  // Taken from https://github.com/TwilioQuest/twilioquest-dev-fundamentals/blob/main/levels/tower_of_knowledge/events.js#:~:text=//%20Top%20shelf%20pieces,)%3B
-  world.forEachEntities(
-    ({ instance }) => instance.isTopObject,
-    (shelf) => {
-      shelf.sprite.body.height *= 2;
-    }
-  );
-
   // Taken fom https://github.com/TwilioQuest/twilioquest-dev-fundamentals/blob/main/levels/tower_of_knowledge/events.js#:~:text=%7D-,//%20Match%20objectives%20to%20shelves%20they%20should%20unlock%20when%20an,%7D,-//%20Hide%20entities
   const unlockPairs = [
     ["api-01-local-function", "api-hidden-door-1"],
@@ -90,13 +79,19 @@ module.exports = async function (event, world) {
     event.name === "objectiveCompletedAgain"
   ) {
     unlockPairs.forEach(([objectiveKey, hiddenDoorKey]) => {
-      if (event.objective === objectiveKey) {
+      if (
+        event.objective === objectiveKey &&
+        !worldState.insideLovelaceTower.hiddenEntities.includes(hiddenDoorKey)
+      ) {
         worldState.insideLovelaceTower.hiddenEntities.push(hiddenDoorKey);
       }
     });
 
     doorPairs.forEach(([objectiveKey, doorKey]) => {
-      if (event.objective === objectiveKey) {
+      if (
+        event.objective === objectiveKey &&
+        !worldState.insideLovelaceTower.openedDoors.includes(doorKey)
+      ) {
         worldState.insideLovelaceTower.openedDoors.push(doorKey);
       }
     });
