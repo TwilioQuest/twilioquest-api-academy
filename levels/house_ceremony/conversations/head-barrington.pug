@@ -23,9 +23,9 @@ conversation(display_name="Professor Barrington, Head of House Hopper")
     
     when "unique"
       statement#unique
-        responses 
-          +join 
-          +deciding
+      responses 
+        +join 
+        +deciding
 
     when "join"
       statement#join
@@ -47,7 +47,7 @@ conversation(display_name="Professor Barrington, Head of House Hopper")
       else
         statement#gauntlet_default
         responses
-            +getting_started
+          +getting_started
 
   statements
     statement#default
@@ -55,30 +55,31 @@ conversation(display_name="Professor Barrington, Head of House Hopper")
         We’re so excited you’ve decided to join the Academy, Operator!
         House Hopper welcomes you.
 
-  statement#unique
+    statement#unique
       text.
         House Hopper’s strengths are boldness and a willingness to try new APIs.
 
-  statement#join
+    statement#join
       text.
         Wonderful! We’re thrilled to welcome you to House Hopper. 
         Just take your pledge scroll to the #[span.highlight House Fire] in the center of the hall to confirm your choice.
 
-  statement#deciding
+    statement#deciding
       text.
         Take your time, but you should know that after you confirm your choice, the House Gauntlet will begin. 
         It’s a very exciting time at the Academy!
 
-  statement#gauntlet_default 
-    text.
-      Did you know that the Hopper Greenhouse has actually never 
-      launched the House Gauntlet? The first house, chosen completely at random, 
-      will be House Lovelace. Once you complete the first house, 
-      the next one will be revealed to you. Perhaps it’ll be House Hopper!
+    statement#gauntlet_default 
+      text.
+        Congratulations on choosing #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}]!<br><br>
+        Did you know that the Hopper Greenhouse has actually never 
+        launched the House Gauntlet? Yet again, the first house, chosen completely at random, 
+        is House Lovelace. Once you've made your way through Lovelace Tower 
+        the next house will be revealed to you. Perhaps it’ll be House Hopper!
 
-  statement#getting_started 
-    text.
-      Good luck, Operator!
+    statement#getting_started 
+      text.
+        Good luck, Operator!
         
 
 // Flush world state changes, if any
