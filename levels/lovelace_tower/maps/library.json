@@ -110,6 +110,12 @@
                  "height":24,
                  "id":525,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -122,6 +128,12 @@
                  "height":24,
                  "id":526,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -134,6 +146,12 @@
                  "height":24,
                  "id":527,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -158,6 +176,12 @@
                  "height":24,
                  "id":544,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -170,6 +194,12 @@
                  "height":24,
                  "id":545,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -182,6 +212,12 @@
                  "height":24,
                  "id":546,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -194,6 +230,12 @@
                  "height":24,
                  "id":547,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -230,6 +272,12 @@
                  "height":24,
                  "id":550,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -242,6 +290,12 @@
                  "height":24,
                  "id":551,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -266,6 +320,12 @@
                  "height":24,
                  "id":553,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -277,19 +337,46 @@
                  "gid":5936,
                  "height":24,
                  "id":554,
-                 "name":"bad-book",
+                 "name":"fredricNote",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"fredric-threat-lovelace"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"fredricNeutral.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"fredricNote"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":714,
-                 "y":798
+                 "x":672,
+                 "y":786
                 }, 
                 {
                  "gid":5934,
                  "height":24,
                  "id":555,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -302,6 +389,12 @@
                  "height":24,
                  "id":556,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -314,6 +407,12 @@
                  "height":24,
                  "id":557,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -326,6 +425,12 @@
                  "height":24,
                  "id":558,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -338,6 +443,12 @@
                  "height":24,
                  "id":559,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -350,6 +461,12 @@
                  "height":24,
                  "id":560,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -362,18 +479,30 @@
                  "height":24,
                  "id":561,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
                  "x":672,
-                 "y":792
+                 "y":798
                 }, 
                 {
                  "gid":17703,
                  "height":24,
                  "id":562,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -386,6 +515,12 @@
                  "height":24,
                  "id":563,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -398,6 +533,12 @@
                  "height":24,
                  "id":564,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -410,6 +551,12 @@
                  "height":24,
                  "id":565,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -422,6 +569,12 @@
                  "height":24,
                  "id":566,
                  "name":"bad-book",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -489,7 +642,7 @@
          "name":"Entries and Exits",
          "objects":[
                 {
-                 "height":18,
+                 "height":48,
                  "id":78,
                  "name":"exit_to_lovelace_tower",
                  "properties":[
@@ -513,7 +666,7 @@
                  "visible":true,
                  "width":48,
                  "x":516,
-                 "y":950
+                 "y":912
                 }, 
                 {
                  "height":0,
@@ -524,24 +677,29 @@
                         {
                          "name":"initialFacing",
                          "type":"string",
-                         "value":"down"
+                         "value":"right"
                         }],
                  "rotation":0,
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":563.879013000796,
-                 "y":865.258082856385
+                 "x":540,
+                 "y":888
                 }, 
                 {
                  "height":12,
                  "id":495,
-                 "name":"exit_to_lovelace_corridor",
+                 "name":"exit_to_library_corridor",
                  "properties":[
+                        {
+                         "name":"disabled",
+                         "type":"bool",
+                         "value":true
+                        }, 
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"exit_to_lovelace_corridor"
+                         "value":"exit_to_library_corridor"
                         }, 
                         {
                          "name":"levelName",
@@ -563,7 +721,7 @@
                  "visible":true,
                  "width":36,
                  "x":642,
-                 "y":685
+                 "y":688
                 }, 
                 {
                  "height":0,
@@ -581,7 +739,7 @@
                  "visible":true,
                  "width":0,
                  "x":660,
-                 "y":762
+                 "y":756
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -713,40 +871,243 @@
                  "y":720
                 }, 
                 {
-                 "gid":16437,
-                 "height":49,
-                 "id":569,
-                 "name":"empty-shelf",
+                 "height":24,
+                 "id":579,
+                 "name":"locked-door",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"lockedDoorLibrary"
+                        }],
+                 "rotation":0,
+                 "type":"triggerArea",
+                 "visible":true,
+                 "width":54,
+                 "x":633.25,
+                 "y":704.75
+                }, 
+                {
+                 "gid":20981,
+                 "height":24,
+                 "id":584,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":480.090909090909,
-                 "y":728.909090909091
+                 "x":480,
+                 "y":696
                 }, 
                 {
-                 "gid":16440,
-                 "height":49,
-                 "id":572,
-                 "name":"empty-shelf",
+                 "gid":21021,
+                 "height":24,
+                 "id":585,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":48,
-                 "x":576,
-                 "y":729.04347826087
+                 "width":24,
+                 "x":480,
+                 "y":720
                 }, 
                 {
-                 "gid":16437,
-                 "height":49,
-                 "id":574,
-                 "name":"empty-shelf",
+                 "gid":21061,
+                 "height":24,
+                 "id":586,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":480,
+                 "y":744
+                }, 
+                {
+                 "gid":20860,
+                 "height":24,
+                 "id":588,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":576,
+                 "y":696
+                }, 
+                {
+                 "gid":20941,
+                 "height":24,
+                 "id":593,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":600,
+                 "y":744
+                }, 
+                {
+                 "gid":20940,
+                 "height":24,
+                 "id":594,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":576,
+                 "y":744
+                }, 
+                {
+                 "gid":20860,
+                 "height":24,
+                 "id":597,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":576,
+                 "y":696
+                }, 
+                {
+                 "gid":20900,
+                 "height":24,
+                 "id":598,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":576,
+                 "y":720
+                }, 
+                {
+                 "gid":20901,
+                 "height":24,
+                 "id":599,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":600,
+                 "y":720
+                }, 
+                {
+                 "gid":20860,
+                 "height":24,
+                 "id":600,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":576,
+                 "y":696
+                }, 
+                {
+                 "gid":20861,
+                 "height":24,
+                 "id":601,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"badBook"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":600,
+                 "y":696
+                }, 
+                {
+                 "gid":20981,
+                 "height":24,
+                 "id":604,
+                 "name":"",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":24,
                  "x":720,
-                 "y":729
+                 "y":696
+                }, 
+                {
+                 "gid":21021,
+                 "height":24,
+                 "id":605,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":720,
+                 "y":720
+                }, 
+                {
+                 "gid":21061,
+                 "height":24,
+                 "id":606,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":720,
+                 "y":744
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -864,6 +1225,33 @@
                  "width":24,
                  "x":648,
                  "y":708
+                }, 
+                {
+                 "height":30,
+                 "id":608,
+                 "name":"fredricTrigger",
+                 "properties":[
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"fredricTrigger"
+                        }],
+                 "rotation":0,
+                 "type":"triggerArea",
+                 "visible":true,
+                 "width":168,
+                 "x":576,
+                 "y":732
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1102,7 +1490,7 @@
          "y":0
         }],
  "nextlayerid":66,
- "nextobjectid":579,
+ "nextobjectid":609,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -1144,6 +1532,10 @@
         {
          "firstgid":17336,
          "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_DevFundamentals-Interior.json"
+        }, 
+        {
+         "firstgid":20836,
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_API-Interior.json"
         }],
  "tilewidth":24,
  "type":"map",
