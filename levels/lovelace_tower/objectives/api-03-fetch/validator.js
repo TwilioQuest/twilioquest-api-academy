@@ -1,38 +1,27 @@
-const assert = require("assert");
-
-const assertTestCase = (testFunction) => async (expected) => {
-  const testResult = await testFunction();
-
-  assert.strictEqual(
-    testResult,
-    expected,
-    `Expected "${expected}", but received "${testResult}".`
-  );
-};
-
-const DIVINATION_API_ENDPOINT = "https://twilio.com/quest/magic";
+const { DIVINATION_API_ENDPOINT } = require("../../../../scripts/config");
 
 module.exports = async function (helper) {
-  let context;
-
   try {
-    context = await helper.pullVarsFromQuestIdeUserCodeLocalScope(
-      ["getDivinationData"],
-      "api-03-fetch"
-    );
+    const { magicalPhrase } = helper.validationFields;
+    const correctMagicPhrase = await fetch(DIVINATION_API_ENDPOINT);
 
-    assert(
-      context.getDivinationData,
-      "The function getDivinationData is not defined!"
-    );
+    if (!magicalPhrase) {
+      return helper.fail(
+        "TwilioQuest couldn't find your magical phrase! Make sure it's pasted in the input and try again!"
+      );
+    }
 
-    const response = await fetch(DIVINATION_API_ENDPOINT);
-    const test = assertTestCase(context.getDivinationData);
-    await test(response);
+    if (magicalPhrase.toLowerCase() !== correctMagicPhrase.toLowerCase()) {
+      return helper.fail(
+        `The magical phrase "${magicalPhrase}" does not match the "${correctMagicPhrase}" that was expected. Make sure you're fetching from the correct endpoint and try again!`
+      );
+    }
+
+    helper.success(
+      "TwilioQuest found your magical phrase and verified it's authenticity with the academy. Great work!"
+    );
   } catch (err) {
     helper.fail(err);
     return;
   }
-
-  helper.success("Great job!");
 };
