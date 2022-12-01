@@ -692,6 +692,11 @@
                  "name":"exit_to_library_corridor",
                  "properties":[
                         {
+                         "name":"disabled",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"key",
                          "type":"string",
                          "value":"exit_to_library_corridor"
@@ -716,7 +721,7 @@
                  "visible":true,
                  "width":36,
                  "x":642,
-                 "y":708
+                 "y":688
                 }, 
                 {
                  "height":0,
@@ -1488,7 +1493,7 @@
  "nextobjectid":609,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -1534,6 +1539,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }

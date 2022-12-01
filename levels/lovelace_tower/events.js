@@ -22,7 +22,7 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
-                worldState.openedDoors.push("api-door-1");
+                worldState.insideLovelaceTower.openedDoors.push("api-door-1");
               },
             },
           },
@@ -49,7 +49,7 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_corridor"
                 );
-                worldState.openedDoors.push("api-door-1");
+                worldState.insideLibrary.openedDoors.push("api-door-1");
               },
             },
           },
@@ -133,53 +133,79 @@ module.exports = async function (event, world) {
   console.log(`event target ${event.target && event.target.key}`);
   console.log(worldState);
 
-// Operator observations on barriers
-if (event.name === "triggerAreaWasEntered" && event.target.key === "lockedDoorLibrary" && worldState.obj5Complete === false){
-  world.showNotification(
-    "I should complete the last objective to clean up this mess!"
-  );
-};
+  // Operator observations on barriers
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "lockedDoorLibrary" &&
+    worldState.obj5Complete === false
+  ) {
+    world.showNotification(
+      "I should complete the last objective to clean up this mess!"
+    );
+  }
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier1" && worldState.obj1Complete === false){
-  world.showNotification(
-    "I need to complete the next objective before I can pass through to the next area."
-  );
-};
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "objectiveBarrier1" &&
+    worldState.obj1Complete === false
+  ) {
+    world.showNotification(
+      "I need to complete the next objective before I can pass through to the next area."
+    );
+  }
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier2" && worldState.obj2Complete === false){
-  world.showNotification(
-    "I need to complete the next objective before I can pass through to the next area."
-  );
-};
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "objectiveBarrier2" &&
+    worldState.obj2Complete === false
+  ) {
+    world.showNotification(
+      "I need to complete the next objective before I can pass through to the next area."
+    );
+  }
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier3" && worldState.obj3Complete === false){
-  world.showNotification(
-    "I need to complete the next objective before I can pass through to the next area."
-  );
-};
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "objectiveBarrier3" &&
+    worldState.obj3Complete === false
+  ) {
+    world.showNotification(
+      "I need to complete the next objective before I can pass through to the next area."
+    );
+  }
 
-// Once the final objective has been hacked and closed, hide books and empty shelves
-if (worldState.obj5Complete === true){
-  if (event.name === "objectiveDidClose" && event.target.objectiveName === "api-05-get-patch"){
-    world.hideEntities(`bad-book`);
-  };
-  
-  world.enableTransitionAreas("exit_to_library_corridor");
+  // Once the final objective has been hacked and closed, hide books and empty shelves
+  if (worldState.obj5Complete === true) {
+    if (
+      event.name === "objectiveDidClose" &&
+      event.target.objectiveName === "api-05-get-patch"
+    ) {
+      world.hideEntities(`bad-book`);
+    }
 
-  // As player tries to leave, trigger Fredric conversation
-  if (event.name === "triggerAreaWasEntered" && event.target.key === "fredricTrigger" && worldState.fredricNoteTriggered === false){
-    world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
-  };
+    world.enableTransitionAreas("exit_to_library_corridor");
 
-  // When Fredric trigger closes, Fredric letter becomes interactable 
-  if (event.name === "conversationDidEnd" && event.npc.conversation === "fredric-threat-lovelace"){
-    world.forEachEntities("fredricNote", note => {
-      note.interactable = true;
-    });
-    worldState.fredricNoteTriggered = true;
-    // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
-  };
-};
+    // As player tries to leave, trigger Fredric conversation
+    if (
+      event.name === "triggerAreaWasEntered" &&
+      event.target.key === "fredricTrigger" &&
+      worldState.fredricNoteTriggered === false
+    ) {
+      world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
+    }
+
+    // When Fredric trigger closes, Fredric letter becomes interactable
+    if (
+      event.name === "conversationDidEnd" &&
+      event.npc.conversation === "fredric-threat-lovelace"
+    ) {
+      world.forEachEntities("fredricNote", (note) => {
+        note.interactable = true;
+      });
+      worldState.fredricNoteTriggered = true;
+      // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
+    }
+  }
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
