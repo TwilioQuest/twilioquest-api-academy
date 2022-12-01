@@ -1367,14 +1367,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-1"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1436,14 +1436,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-1"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1505,14 +1505,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-2"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1574,14 +1574,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-2"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1643,14 +1643,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-3"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1712,14 +1712,14 @@
                          "value":true
                         }, 
                         {
-                         "name":"isTopObject",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"api-hidden-door-3"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -3977,7 +3977,7 @@
  "nextobjectid":760,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -4023,6 +4023,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }
