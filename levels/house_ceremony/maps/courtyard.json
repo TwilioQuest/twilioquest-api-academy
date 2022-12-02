@@ -104,7 +104,7 @@
                  "y":552
                 }, 
                 {
-                 "gid":16347,
+                 "gid":15331,
                  "height":48,
                  "id":261,
                  "name":"",
@@ -122,7 +122,7 @@
                  "y":360
                 }, 
                 {
-                 "gid":16348,
+                 "gid":15332,
                  "height":48,
                  "id":262,
                  "name":"",
@@ -435,19 +435,15 @@
         }, 
         {
          "firstgid":10004,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/Tileset_API-Exterior.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_API-Exterior.json"
         }, 
         {
          "firstgid":13504,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/Tileset_API-Interior.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_API-Interior.json"
         }, 
         {
          "firstgid":15304,
          "source":"..\/..\/..\/..\/.bundled\/tilesets\/TwilioQuestObjects.json"
-        }, 
-        {
-         "firstgid":16320,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/TwilioQuestObjects.json"
         }],
  "tilewidth":24,
  "type":"map",

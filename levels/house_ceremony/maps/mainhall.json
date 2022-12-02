@@ -1821,7 +1821,7 @@
         }, 
         {
          "firstgid":16317,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/TwilioQuestObjects.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/TwilioQuestObjects.json"
         }, 
         {
          "firstgid":17333,
