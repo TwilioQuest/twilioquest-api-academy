@@ -1,9 +1,9 @@
-const { DIVINATION_API_ENDPOINT } = require("../../../../scripts/config");
+const { MAGIC_API_ENDPOINT } = require("../../../../scripts/config");
 
 module.exports = async function (helper) {
   try {
     const { magicalPhrase } = helper.validationFields;
-    const correctMagicPhrase = await fetch(DIVINATION_API_ENDPOINT);
+    const correctMagicPhrase = await fetch(MAGIC_API_ENDPOINT);
 
     if (!magicalPhrase) {
       return helper.fail(
