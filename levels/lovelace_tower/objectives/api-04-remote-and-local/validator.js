@@ -1,29 +1,15 @@
+const { DIVINATION_API_ENDPOINT } = require("../../../../scripts/config");
 const assert = require("assert");
 
 const assertTestCase = (testFunction, helper) => async (input, expected) => {
   const testResult = await testFunction(input);
-  let failureMessage = `Expected ${expected.length} book(s) from pageCount input of "${input}", but received ${testResult.length}.`;
-  const equality = helper.areArrayContentsEqual(
-    testResult,
-    expected,
-    (userBook, correctBook) => {
-      if (userBook.id !== correctBook.id) {
-        failureMessage = `Encountered unexpected book ${JSON.stringify(
-          userBook
-        )} from pageCount input of "${input}".`;
-        return false;
-      }
-
-      return true;
-    }
-  );
+  let failureMessage = `Expected "${expected}" authors from pageCount input of "${input}", but received "${testResult}" instead.`;
+  const equality = helper.areArrayContentsEqual(testResult, expected);
 
   if (!equality) {
     assert.fail(failureMessage);
   }
 };
-
-const DIVINATION_API_ENDPOINT = "https://twilio.com/quest/magic/divination";
 
 function getBooksByPageCount(pageCountThreshold, books) {
   const filteredBooks = books.filter(
@@ -32,27 +18,33 @@ function getBooksByPageCount(pageCountThreshold, books) {
   return filteredBooks;
 }
 
+function getAuthorNames(pageCountThreshold, books) {
+  const filteredBooks = getBooksByPageCount(pageCountThreshold, books);
+  const authorNames = filteredBooks.map((book) => book.author.name);
+  return authorNames;
+}
+
 module.exports = async function (helper) {
   let context;
 
   try {
     context = await helper.pullVarsFromQuestIdeUserCodeLocalScope(
-      ["getAndProcessDivinationData"],
+      ["getFilteredAuthors"],
       "api-04-remote-and-local"
     );
 
     assert(
-      context.getAndProcessDivinationData,
-      "The function getAndProcessDivinationData is not defined!"
+      context.getFilteredAuthors,
+      "The function getFilteredAuthors is not defined!"
     );
 
-    const test = assertTestCase(context.getAndProcessDivinationData, helper);
+    const test = assertTestCase(context.getFilteredAuthors, helper);
     const response = await fetch(DIVINATION_API_ENDPOINT);
     const books = (await response.json()).data;
-    await test(5, getBooksByPageCount(5, books));
-    await test(100, getBooksByPageCount(100, books));
-    await test(30, getBooksByPageCount(30, books));
-    await test(15, getBooksByPageCount(15, books));
+    await test(5, getAuthorNames(5, books));
+    await test(100, getAuthorNames(100, books));
+    await test(30, getAuthorNames(30, books));
+    await test(15, getAuthorNames(15, books));
   } catch (err) {
     helper.fail(err);
     return;
