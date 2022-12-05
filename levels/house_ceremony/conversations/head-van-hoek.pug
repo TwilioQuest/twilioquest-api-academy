@@ -23,9 +23,9 @@ conversation(display_name="Professor van Hoek, Head of House von Neumann")
     
     when "unique"
       statement#unique
-        responses 
-          +join 
-          +deciding
+      responses 
+        +join 
+         +deciding
 
     when "join"
       statement#join
@@ -54,32 +54,33 @@ conversation(display_name="Professor van Hoek, Head of House von Neumann")
       text.
         Welcome to Arcane, Operator! Will you be joining House von Neumann?
 
-  statement#unique
+    statement#unique
+        text.
+          House von Neumann is characterized by our attention to productivity 
+          and efficiency. By which I mean, potions! House von Neumann students 
+          are particularly strong at discovering effective solutions to 
+          productivity and efficiency problems down in the chemistry labs. 
+
+    statement#join
+        text.
+          That’s excellent news! Now that you’ve decided, 
+          take your pledge scroll to the #[span.highlight House Fire] to confirm your choice.
+
+    statement#deciding
+        text.
+          That’s no problem. Whenever you decide, 
+          just take your pledge scroll to the #[span.highlight House Fire].
+
+    statement#gauntlet_default 
       text.
-        House von Neumann is characterized by our attention to productivity 
-        and efficiency. By which I mean, potions! House von Neumann students 
-        are particularly strong at discovering effective solutions to 
-        productivity and efficiency problems down in the chemistry labs. 
+        House von Neumann usually ends the House Gauntlet – just by chance, of course. 
+        It’s always a fun ceremony to see the order in which the houses are 
+        randomly selected. Part of the fun, don’t you think?<br><br>
+        Also, great choice on your house: #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}] is lucky to have you!
 
-  statement#join
+    statement#getting_started 
       text.
-        That’s excellent news! Now that you’ve decided, 
-        take your pledge scroll to the #[span.highlight House Fire] to confirm your choice.
-
-  statement#deciding
-      text.
-        That’s no problem. Whenever you decide, 
-        just take your pledge scroll to the #[span.highlight House Fire].
-
-  statement#gauntlet_default 
-    text.
-      House von Neumann usually ends the House Gauntlet – just by chance. 
-      It’s always a fun ceremony to see the order in which the houses are 
-      randomly selected. Part of the fun, don’t you think?
-
-  statement#getting_started 
-    text.
-      Yes, yes, we’ll get down there at some point during the Gauntlet, that’s for sure.
+        Yes, yes, we’ll get down there at some point during the Gauntlet, that’s for sure.
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);
