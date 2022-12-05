@@ -47,8 +47,10 @@ module.exports = async function (event, world) {
     world.showEntities(`${worldState.playerHouse}-fire`);
 
     // [] Give avatar item based on chosen house
+    world.grantItems(`academy_jacket_${worldState.playerHouse}`, "academy_pleated_skirt", "academy_slacks");
     
-    // [] Pledge scroll fade animation is triggered
+    // [] Pledge scroll fade animation is triggered - half second delay; should only play once and then be hidden again
+    world.showEntities(`pledge-scroll`, 5);
 
     // Change Operator Observations on locked doors depending on progress
     world.enableTransitionAreas("exit_to_lovelace_corridor");
@@ -79,7 +81,12 @@ module.exports = async function (event, world) {
         world.tweenCameraToPlayer().then(()=> {
           world.enablePlayerMovement();
           worldState.heapsortConversationHasEnded = true;
-          // [] Quest Log updates
+          world.updateQuestStatus(
+            world.__internals.level.levelName,
+            world.__internals.level.levelProperties.questTitle,
+            "I got my pledge scroll! I'm done here until the rest of the API Academy grounds open up.",
+            true
+          );
         });
       };
   };

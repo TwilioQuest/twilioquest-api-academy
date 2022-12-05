@@ -245,12 +245,12 @@ module.exports = async function (event, world) {
     // current content. They'll learn their house later.
     // TODO: Update this notification on future release version.
     world.showNotification(
-      'I\'ve gotten my pledge scroll! That means everything in the <span class="highlight">API Academy Inside Perimeter</span> is completed for now!'
+      'I\'ve gotten my pledge scroll! That means everything in this area is completed for now!'
     );
     world.updateQuestStatus(
       world.__internals.level.levelName,
       world.__internals.level.levelProperties.questTitle,
-      "I got my pledge scroll! I'm done here until the rest of the API Academy grounds open up.",
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!",
       true
     );
   };
