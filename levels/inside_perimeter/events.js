@@ -68,7 +68,7 @@ const LEVEL_STATE = {
             failureActions: {
               hasKey({ world }) {
                 world.showNotification(
-                  "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these catacombs before returning."
+                  "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these Catacombs before returning."
                 );
               },
             },
@@ -211,7 +211,7 @@ module.exports = async function (event, world) {
       worldState.spellsEarned.push("unlock");
     destroyObject("magic_key");
     world.showNotification(
-      "I've obtained the magic key, I should go and claim my pledge scroll!"
+      "I've obtained the magic key. I should go and claim my pledge scroll!"
     );
 
     // TODO: actually add item to inventory
@@ -222,7 +222,7 @@ module.exports = async function (event, world) {
     worldState.insideCatacombs.hasPledgeScroll = true;
     destroyObject("pledge_scroll");
     world.showNotification(
-      "I've obtained my pledge scroll. Time to head to the Academy building and present it to the headmaster."
+      "I've obtained my pledge scroll. Time to head to the Main Hall and choose my house."
     );
 
     world.grantItems(["pledge_scroll"]);
@@ -245,7 +245,7 @@ module.exports = async function (event, world) {
     // current content. They'll learn their house later.
     // TODO: Update this notification on future release version.
     world.showNotification(
-      'I\'ve gotten my pledge scroll! That means everything in this area is completed for now!'
+      'I got my pledge scroll! I should head to the Main Hall to choose my house now!'
     );
     world.updateQuestStatus(
       world.__internals.level.levelName,
