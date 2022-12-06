@@ -124,8 +124,6 @@ module.exports = async function (event, world) {
 
   if (event.name === "playerDidInteract") {
     if (event.target.key === "inscription-fragment") {
-      console.log(event.target);
-      console.log("src", event.target.sprite.texture.baseTexture.source.src);
       world.startConversation(
         event.target.conversation,
         event.target.conversationAvatar
