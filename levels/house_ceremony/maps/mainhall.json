@@ -1248,6 +1248,34 @@
                  "width":36,
                  "x":120,
                  "y":576
+                }, 
+                {
+                 "gid":15395,
+                 "height":24,
+                 "id":408,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"pledge-scroll"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":324,
+                 "y":504
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1734,7 +1762,7 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":407,
+ "nextobjectid":409,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",
@@ -1755,11 +1783,11 @@
         }, 
         {
          "firstgid":10001,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/Tileset_API-Exterior.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_API-Exterior.json"
         }, 
         {
          "firstgid":13501,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/Tileset_API-Interior.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_API-Interior.json"
         }, 
         {
          "firstgid":15301,
@@ -1767,7 +1795,7 @@
         }, 
         {
          "firstgid":16317,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/TwilioQuestObjects.json"
+         "source":"..\/..\/..\/..\/.bundled\/tilesets\/TwilioQuestObjects.json"
         }, 
         {
          "firstgid":17333,

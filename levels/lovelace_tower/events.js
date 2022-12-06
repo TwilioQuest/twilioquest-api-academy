@@ -2,11 +2,6 @@ const merge = require("lodash.merge");
 const { LOVELACE_TOWER_STATE_KEY } = require("../../scripts/config");
 
 const INITIAL_STATE = {
-  obj1Complete: false,
-  obj2Complete: false,
-  obj3Complete: false,
-  obj4Complete: false,
-  obj5Complete: false,
   fredricNoteTriggered: false,
 };
 
@@ -22,44 +17,44 @@ module.exports = async function (event, world) {
 world.disableTransitionAreas("exit_to_library_corridor");
 
 // Operator observations on barriers
-if (event.name === "triggerAreaWasEntered" && event.target.key === "lockedDoorLibrary" && worldState.obj5Complete === false){
+if (event.name === "triggerAreaWasEntered" && event.target.key === "lockedDoorLibrary" && !world.isObjectiveCompleted("api-05-get-patch")){
   world.showNotification(
     "I should complete the last objective to clean up this mess!"
   );
 };
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier1" && worldState.obj1Complete === false){
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier1" && !world.isObjectiveCompleted("api-01-local-function")){
   world.showNotification(
     "I need to complete the next objective before I can pass through to the next area."
   );
 };
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier2" && worldState.obj2Complete === false){
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier2" && !world.isObjectiveCompleted("api-02-async-await")){
   world.showNotification(
     "I need to complete the next objective before I can pass through to the next area."
   );
 };
 
-if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier3" && worldState.obj3Complete === false){
+if (event.name === "triggerAreaWasEntered" && event.target.key === "objectiveBarrier3" && !world.isObjectiveCompleted("api-03-fetch")){
   world.showNotification(
     "I need to complete the next objective before I can pass through to the next area."
   );
 };
 
 // Remove objective barriers
-if (worldState.obj1Complete === true){
+if (world.isObjectiveCompleted("api-01-local-function")){
   world.hideEntities(`api-hidden-door-1`);
 };
-if (worldState.obj2Complete === true){
+if (world.isObjectiveCompleted("api-02-async-await")){
   world.hideEntities(`api-hidden-door-2`);
 };
-if (worldState.obj3Complete === true){
+if (world.isObjectiveCompleted("api-03-fetch")){
   world.hideEntities(`api-hidden-door-3`);
 };
 
 // Once the final objective has been hacked and closed, hide books and empty shelves
-if (worldState.obj5Complete === true){
-  if (event.name === "objectiveDidClose" && event.target.objectiveName === "api-05-get-patch"){
+if (world.isObjectiveCompleted("api-05-get-patch")){
+  if (event.name === "objectiveDidClose"){
     world.hideEntities(`bad-book`);
   };
   
@@ -76,7 +71,12 @@ if (worldState.obj5Complete === true){
       note.interactable = true;
     });
     worldState.fredricNoteTriggered = true;
-    // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
+    world.updateQuestStatus(
+      world.__internals.level.levelName,
+      world.__internals.level.levelProperties.questTitle,
+      "I should head back to the Main Hall now that I've completed the Lovelace Tower objectives.",
+      true
+    );
   };
 };
 
