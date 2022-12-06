@@ -1,3 +1,0 @@
-# Walkthrough
-
-Walkthrough goes here...
