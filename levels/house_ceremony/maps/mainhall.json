@@ -356,7 +356,7 @@
                  "y":259
                 }, 
                 {
-                 "gid":16412,
+                 "gid":15396,
                  "height":24,
                  "id":318,
                  "name":"",
@@ -368,7 +368,7 @@
                  "y":491
                 }, 
                 {
-                 "gid":16415,
+                 "gid":15399,
                  "height":24,
                  "id":319,
                  "name":"",
@@ -380,7 +380,7 @@
                  "y":491
                 }, 
                 {
-                 "gid":16414,
+                 "gid":15398,
                  "height":24,
                  "id":320,
                  "name":"",
@@ -392,7 +392,7 @@
                  "y":576
                 }, 
                 {
-                 "gid":16413,
+                 "gid":15397,
                  "height":24,
                  "id":321,
                  "name":"",
@@ -1078,7 +1078,7 @@
                  "y":528
                 }, 
                 {
-                 "gid":16410,
+                 "gid":15394,
                  "height":48,
                  "id":394,
                  "name":"house-fire",
@@ -1141,7 +1141,7 @@
                  "y":684
                 }, 
                 {
-                 "gid":17335,
+                 "gid":16319,
                  "height":32,
                  "id":399,
                  "name":"",
@@ -1248,6 +1248,34 @@
                  "width":36,
                  "x":120,
                  "y":576
+                }, 
+                {
+                 "gid":15395,
+                 "height":24,
+                 "id":410,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"hidden",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"pledge-scroll"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":324,
+                 "y":504
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1788,10 +1816,10 @@
          "y":0
         }],
  "nextlayerid":45,
- "nextobjectid":410,
+ "nextobjectid":411,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -1821,14 +1849,10 @@
         }, 
         {
          "firstgid":16317,
-         "source":"..\/..\/..\/..\/.bundled\/tilesets\/TwilioQuestObjects.json"
-        }, 
-        {
-         "firstgid":17333,
          "source":"..\/..\/..\/tilesets\/ApiAcademyObjects.json"
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":33
 }
