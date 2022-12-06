@@ -57,6 +57,7 @@ const INITIAL_STATE = {
       },
     },
   },
+  obj4Complete: false,
   fredricNoteTriggered: false,
 };
 
@@ -145,7 +146,7 @@ module.exports = async function (event, world) {
     !world.isObjectiveCompleted("api-01-local-function")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
 
@@ -155,7 +156,7 @@ module.exports = async function (event, world) {
     !world.isObjectiveCompleted("api-02-async-await")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
 
@@ -165,9 +166,17 @@ module.exports = async function (event, world) {
     !world.isObjectiveCompleted("api-03-fetch")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
+
+  // Library door inside Lovelace Library interactable / not spellable before Obj 04 is complete / launches dialogue box
+  if (
+    event.name === "objectiveCompleted" &&
+    event.target.objectiveName === "api-04-remote-and-local"
+  ) {
+    worldState.obj4Complete = true;
+  };
 
   // Once the final objective has been hacked and closed, hide books and empty shelves
   if (world.isObjectiveCompleted("api-01-local-function")) {
@@ -198,9 +207,8 @@ module.exports = async function (event, world) {
         note.interactable = true;
       });
       worldState.fredricNoteTriggered = true;
-      // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
-    }
-  }
+    };
+  };
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
