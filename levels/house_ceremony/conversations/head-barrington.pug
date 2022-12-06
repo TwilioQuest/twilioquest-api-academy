@@ -44,7 +44,10 @@ conversation(display_name="Professor Barrington, Head of House Hopper")
           +join 
           +deciding 
 
-      else
+      else if worldState.playerHouse && !worldState.heapsortConversationHasEnded
+        statement#history
+
+      else if worldState.playerHouse && worldState.heapsortConversationHasEnded
         statement#gauntlet_default
         responses
           +getting_started
@@ -69,13 +72,18 @@ conversation(display_name="Professor Barrington, Head of House Hopper")
         Take your time, but you should know that after you confirm your choice, the House Gauntlet will begin. 
         It’s a very exciting time at the Academy!
 
-    statement#gauntlet_default 
+    statement#history 
       text.
         Congratulations on choosing #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}]!<br><br>
         Did you know that the Hopper Greenhouse has actually never 
-        launched the House Gauntlet? Yet again, the first house, chosen completely at random, 
-        is House Lovelace. Once you've made your way through Lovelace Tower 
-        the next house will be revealed to you. Perhaps it’ll be House Hopper!
+        launched the House Gauntlet? The starting house of the House Gauntlet is always chosen completely at random.
+        I wonder which house it will be this year!
+
+    statement#gauntlet_default 
+      text.
+        Well, what a turn of events! This is completely unexpected - the missing Gauntleter, that is.
+        Instead, House Lovelace starting the Gauntlet... that's happened plenty of times before!
+        On that note, you better make your way to Lovelace Tower. Good luck on the House Lovelace challenges, Operator!
 
     statement#getting_started 
       text.
