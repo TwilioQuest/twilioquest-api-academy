@@ -3,21 +3,19 @@ const assert = require("assert");
 
 const assertTestCase = (testFunction) => async (input) => {
   await testFunction(input);
+
   const response = await fetch(
     `${DIVINATION_API_ENDPOINT}?target=lovelace_secret_statue&guid=${input}`
   );
+  let patchedInscription = await response.json();
 
-  const patchedInscription = await response.text();
-
-  if (!patchedInscription) {
-    assert.fail(
-      `Could not find patch with guid "${input}"! Make sure you're sending the guid along with the repaired inscription and try again.`
-    );
+  if (patchedInscription.errorMessage) {
+    assert.fail(patchedInscription.errorMessage);
   }
 
   if (!patchedInscription.data.operational) {
     assert.fail(
-      "The inscription hasn't been repaired! Ensure that you've put all of the fragments in the correct order and try again."
+      "Your patched inscription is still corrupted! Double check what you're sending and try again."
     );
   }
 };

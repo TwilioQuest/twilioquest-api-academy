@@ -4,4 +4,4 @@ async function getAndPatchCorruptedInscription(guid) {
 }
 
 // Replace {{RANDOM_GUID}} with any alphanumeric string (e.g. asngrue#@$55r9)
-getAndPatchCorruptedInscription("{{RANDOM_GUID}}");
+// getAndPatchCorruptedInscription("{{RANDOM_GUID}}");

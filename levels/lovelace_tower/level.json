@@ -9,5 +9,5 @@
   "flavorTextOverrides": {
     "lockedDoor": "This door won't budge!"
   },
-  "objectives": ["api-05-get-post"]
+  "objectives": ["api-05-get-patch"]
 }

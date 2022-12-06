@@ -14,10 +14,10 @@
 
 Let's put everything we've learned together and repair an inscription that was corrupted by Fredric! We'll need to first `fetch` the corrupted inscription to see which parts need fixing. After that, we'll have to gather fragments from scrolls scattered throughout the library, combine their text as part of a string in the QuestIDE (making sure they're in the correct order). Finally, we'll need to send the repaired inscription to the "divination" endpoint via a `patch` request.
 
-The `patch`ing portion of our request code should look similar to this when we're done:
+Here's an example of sending a `patch` request:
 
 ```js
-fetch("{{DIVINATION_ENDPOINT}}", {
+const response = await fetch("{{DIVINATION_ENDPOINT}}", {
   method: "PATCH",
   body: JSON.stringify({
     guid: "{{GUID_ARGUMENT}}",
@@ -26,6 +26,10 @@ fetch("{{DIVINATION_ENDPOINT}}", {
     },
   }),
 });
+
+// This code isn't required, but can be helpful in tracking errors
+const jsonData = await response.json();
+console.log(jsonData);
 ```
 
 Create a function called `getAndPatchCorruptedInscription`, place the inscription fragments in the right order based on the response you get from the "divination" endpoint, then send the repaired inscription back to the "divination" endpoint using the "patch" method. Using `console.log` to print the response you get may prove useful here!
