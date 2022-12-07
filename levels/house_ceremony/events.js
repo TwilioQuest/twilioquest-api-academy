@@ -5,9 +5,6 @@ const INITIAL_STATE = {
   playerHouse: undefined,
   heapsortConversationHasEnded: false,
   houseLovelaceComplete: false,
-  houseHopperComplete: false,
-  houseTuringComplete: false,
-  houseVonNeumannComplete: false,
   displayNames: {
     lovelace: "Lovelace",
     turing: "Turing",

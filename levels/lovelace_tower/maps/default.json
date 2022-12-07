@@ -1073,8 +1073,8 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":1218,
-                 "y":888
+                 "x":1248,
+                 "y":912
                 }, 
                 {
                  "gid":14193,
@@ -4336,7 +4336,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -4360,7 +4360,7 @@
                  "value":true
                 }],
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":71,
          "x":0,
          "y":0
