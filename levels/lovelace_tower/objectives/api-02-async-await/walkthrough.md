@@ -13,7 +13,11 @@ const contents = readdir("path/to/directory");
 console.log(contents);
 ```
 
-The example uses `readdir` to get files and folders in a directory. The `readdir` function is asynchronous and will take some time to finish. With things as they are, our `console.log` would print `Promise { <pending> }`. That's where promises come into the picture.
+The example uses `readdir` to get files and folders in a directory, and assigns those files and folders to a variable `contents`, and then outputs those contents to the console. Because `readdir` takes time to return a value, and Javascript doesn't wait, our `console.log` may not output what we expect.
+
+We call functions like this "asynchronous", and they return a Promise. In this case, our `console.log` would print `Promise { <pending> }`.
+
+The `readdir` function is asynchronous and will take some time to finish. With things as they are, our `console.log` would print `Promise { <pending> }`. That's where promises come into the picture.
 
 ## What are promises?
 
