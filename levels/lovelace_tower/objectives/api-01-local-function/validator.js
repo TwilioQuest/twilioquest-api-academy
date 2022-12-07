@@ -15,13 +15,13 @@ module.exports = async function (helper) {
 
   try {
     context = await helper.pullVarsFromQuestIdeUserCodeLocalScope(
-      ["wordSwapper"],
+      ["swapStrings"],
       "api-01-local-function"
     );
 
-    assert(context.wordSwapper, "The function wordSwapper is not defined!");
+    assert(context.swapStrings, "The function swapStrings is not defined!");
 
-    const test = assertTestCase(context.wordSwapper);
+    const test = assertTestCase(context.swapStrings);
 
     test(
       "foo foo foo something something bar",

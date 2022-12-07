@@ -3,7 +3,7 @@
 <div class="aside">
 <h3>Requirements</h3>
 <ul>
-  <li>Create a function called `wordSwapper`.</li>
+  <li>Create a function called `swapStrings`.</li>
   <li>This function receives 3 string arguments.</li>
   <li>Replace all instances of the "target" string in the "source" string with the "replacement" string, using the `replaceAll` function.</li>
   <li>Return the resulting string.</li>
@@ -24,6 +24,12 @@ console.log(swappedString);
 
 would print `one zero one zero one zero` to the console.
 
-Create a function called `wordSwapper` that takes 3 string arguments -- `sourceString`, `targetWord`, and `replacementWord`. Then replace all instances of `targetWord` in the `sourceString` with `replacementWord` and return the result.
+Create a function called `swapStrings` that takes 3 string arguments:
+
+- `sourceString`
+- `targetWord`
+- `replacementWord`
+
+Replace all instances of `targetWord` in the `sourceString` with `replacementWord` and return the result.
 
 Once finished, click the _HACK_ button!

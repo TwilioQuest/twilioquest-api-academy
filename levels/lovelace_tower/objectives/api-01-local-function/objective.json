@@ -6,7 +6,7 @@
     {
       "name": "prompt",
       "type": "prompt",
-      "label": "Write a function called \"wordSwapper\" that replaces all instances of \"targetWord\" in \"sourceString\" with \"replacementWord\"."
+      "label": "Write a function called \"swapStrings\" that replaces all instances of \"targetWord\" in \"sourceString\" with \"replacementWord\"."
     }
   ],
   "rewards": {
