@@ -25,17 +25,17 @@ conversation(display_name="House Lovelace Student")
       statement#busy
     
     when "wrong_1"
-      statement#wrong_1 
-      responses 
-        +busy 
-        +wrong_2 
-        +right 
+      statement#wrong_1
+      responses
+        +busy
+        +wrong_2
+        +right
 
     when "wrong_2"
-      statement#wrong_2 
-      responses 
-        +busy 
-        +wrong_1 
+      statement#wrong_2
+      responses
+        +busy
+        +wrong_1
         +right
 
     when "right"
@@ -61,14 +61,13 @@ conversation(display_name="House Lovelace Student")
 
     statement#wrong_1
       text.
-        Hmm, I don’t think that’s it. They’re related, but they are definitely different, if I remember correctly...<br><br>
-        What is the difference between resources and representations?
+        Hmm, I don’t think that’s it. Resources and representations are related, but they are definitely different... if I remember correctly...
 
     statement#wrong_2
       text.
-        Hmm… I tried that one already, but the professor said it’s not quite right. 
+        Hmm... I tried that one already, but the professor said it’s not quite right. 
         Resources need to be named, I know that much! And representations are related to resources, but in a different way...<br><br>
-        Hmm… What could be the difference?
+        Hmm... What could be the difference?
 
     statement#right
       text.

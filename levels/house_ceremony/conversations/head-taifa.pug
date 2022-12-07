@@ -16,7 +16,7 @@ mixin deciding
 
 mixin getting_started 
   response#getting_started.
-    I’m looking forward to exploring Turing Fields too!
+    I’m looking forward to exploring Turing Fields too, when the time comes!
 
 conversation(display_name="Professor Taifa, Head of House Turing")
   case lastResponse
@@ -44,7 +44,10 @@ conversation(display_name="Professor Taifa, Head of House Turing")
           +join 
           +deciding 
 
-      else
+      else if worldState.playerHouse && !worldState.heapsortConversationHasEnded
+        statement#history
+
+      else if worldState.playerHouse && worldState.heapsortConversationHasEnded
         statement#gauntlet_default
         responses
           +getting_started
@@ -72,12 +75,20 @@ conversation(display_name="Professor Taifa, Head of House Turing")
           By all means! As soon as you choose, you’ll be able to attend the House Gauntlet, 
           which is one of Arcane’s most exciting annual events.
 
-    statement#gauntlet_default 
+    statement#history
       text.
         House Turing was the first house to start the Gauntlet 
-        last year and the year before. Who knows, maybe once you’ve completed 
-        House Lovelace, House Turing might be selected as the second!<br><br>
-        Oh, and great choice on #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}] as your house!
+        last year and the year before. In fact, we launch the Gauntlet almost as much as House Lovelace does. 
+        We're all waiting on the edge of our seats, metaphorically speaking,
+        to see which house is selected first this year.<br><br>
+        Oh, and great choice of #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}]!
+
+    statement#gauntlet_default 
+      text.
+        So, you're not only watching the House Gauntlet, Operator, but competing in it too! 
+        How are you feeling? House Lovelace continues to hold their record as the most likely house to (by random selection) launch 
+        the Gauntlet. Lovelace Tower is filled with excellent challenges!<br><br>
+        I wish you luck as you begin!
 
     statement#getting_started_resp 
       text.

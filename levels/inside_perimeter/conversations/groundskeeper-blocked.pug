@@ -1,6 +1,7 @@
 -
   const STATE_KEY = 'TQ_API_ACADEMY_WORLD_STATE';
-  const worldState = getState(STATE_KEY);    
+  const worldState = getState(STATE_KEY);
+  let allComplete = worldState.insideCatacombs.keySpellsObtained.length === 4 ? true : false;   
 
 mixin gauntlet
   response#gauntlet.
@@ -11,18 +12,26 @@ conversation(display_name="Arcane Academy Groundskeeper")
     
     when "gauntlet"
       statement#gauntlet
-
+    
     default
       statement#default
       responses
         +gauntlet
 
   statements
+
     statement#default
-      text.
-        Well, this is exciting! You're just in time for the House Gauntlet, which is set to start in no time! 
-        Head straight on to the Main Hall, where you will find the House Fire being prepared for the House Ceremony. 
-        I hope you've been thinking about which house you'd like to join!
+      if allComplete
+        text.
+          Well, this is exciting! You're just in time for the House Gauntlet, which is set to start in no time! 
+          Head straight on to the Main Hall, where you will find the House Fire being prepared for the House Ceremony. 
+          I hope you've been thinking about which house you'd like to join!
+
+      else
+        text.
+          Hello again, Operator! The House Gauntlet is set to start soon, but it looks like you haven't completed 
+          all the objectives in the Catacombs yet. Once you do, you'll be able to head down this path to the Main Hall
+          and select your house.
 
     statement#gauntlet
       text.
