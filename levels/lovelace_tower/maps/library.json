@@ -707,7 +707,7 @@
                         {
                          "name":"conversationAvatar",
                          "type":"string",
-                         "value":"house-fire.png"
+                         "value":"inscription-fragment.png"
                         }, 
                         {
                          "name":"interactable",
