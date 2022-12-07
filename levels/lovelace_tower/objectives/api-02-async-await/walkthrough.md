@@ -1,6 +1,8 @@
 # Running code asynchronously
 
-Most of the code we write runs instantly\*, but situations exist in which it takes longer than usual. One such situation is when you're reading the contents of a directory using NodeJS and Javascript. In Javascript, we have the ability to execute code asynchronously. That is to say, without stopping everything else to wait for that code to finish.
+Most of the code we write returns a value instantly\*, but there are times when it takes longer than usual. When this happens, Javascript doesn't wait: it will keep executing the rest of our code, even if that code depends on the value we are waiting to be returned!
+
+An example of this is reading the contents of a directory using NodeJS and Javascript. Take a look at this code:
 
 Example(1):
 
