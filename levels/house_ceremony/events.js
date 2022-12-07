@@ -3,16 +3,17 @@ const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 
 const INITIAL_STATE = {
   playerHouse: undefined,
-  playerHouses: [
-    { name: "lovelace", id: 1 },
-    { name: "turing", id: 2 },
-    { name: "neumann", id: 3 },
-    { name: "hopper", id: 4 },
-  ],
+  heapsortConversationHasEnded: false,
   houseLovelaceComplete: false,
   houseHopperComplete: false,
   houseTuringComplete: false,
   houseVonNeumannComplete: false,
+  displayNames: {
+    lovelace: "Lovelace",
+    turing: "Turing",
+    neumann: "von Neumann",
+    hopper: "Hopper"
+  }   
 };
 
 module.exports = async function (event, world) {
@@ -20,190 +21,95 @@ module.exports = async function (event, world) {
 
   console.log(`event: ${event.name}`);
   console.log(`event target ${event.target}`);
+  console.log(`event target ${event.target && event.target.key}`);
   console.log(worldState);
 
-  // LEVEL FUNCTIONALITY OVERVIEW
+  // Lovelace Tower not accessible until player has selected a house
+  world.disableTransitionAreas("exit_to_lovelace_corridor");
+  world.disableTransitionAreas("secret_library_door_exit");
+  world.disableTransitionAreas("secret_library_door_anim_trigger");
 
-  // Has the player chosen their house? (playerHouse === undefined)
-
-  // If undefined: 
-  // [x] Heads of house say dialogue 1
-  // [] Fire is interactable
-  // [] House corridors are blocked off with Operator observation: "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
-
-  // If !undefined: 
-  // [] Give avatar item based on chosen house
-  // [] Fire is no longer interactable
-  // [x] Heads of house say dialogue 2
-  // [] Professor Heapsort's dialogue is triggered (interrupting professor) with Camera pan
-  // [] House Lovelace corridor is accessible
-  // [] Other house corridors not accessible with Operator observation: "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
-  // [] Quest Log updates
-  // [] Fires change to color of chosen house (show/hide entities on map)
-  // [] Pledge scroll fade animation is triggered
-
-  // Has the player completed Lovelace Tower? (houseLovelaceComplete === false)
-
-  // If No:
-  // [] Fire is no longer interactable
-  // [x] Heads of house say dialogue 2
-  // [] House Lovelace corridor is accessible
-  // [] Other house corridors not accessible with Operator observation 2
-
-  // If Yes (AND Next House is Ready):
-  // [] Heads of houses say dialogue 3
-  // [] Lovelace blue sparkle annimation appears on next house door
-
-  // Which house has the player chosen? (playerHouse)
-  
-  // Dependencies: 
-  // [] avatar item
-  // [] house of the missing student (Heapsort dialogue)
-  // [] fire color
-
-
-  // If player tries to enter a house corridor without having chosen a house.
-  // Tiled corridors need "unlock" type trigger boxes.
-  const unlock = (event) => {
-    if (!worldState.playerHouse) {
-      world.showNotification(
-        "I think I have to choose my house before I can explore [Lovelace Tower / Turing Fields / Hopper Greenhouse / von Neumann Labs]."
-      );
-      return;
-    // If the player has chosen their house and they are trying to access a corridor that is not Lovelace Tower
-    } else if (!worldState.playerHouse !== null) {
-        world.showNotification(
-          "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
-        );
-        return;
-      };  
+  // If Heapsort convo has happened, triggers get disabled
+  if (worldState.heapsortConversationHasEnded)
+  {
+    world.forEachEntities("triggerInterruptingHeapsort", heapsortTrigger => {
+      heapsortTrigger.key = "";
+    });
+    world.showEntities(`heapsort-avatar`);
   };
 
-// COLLECTIBLES 
+  // Once the player has selected their house, the fire is no longer interactable; Lovelace tower opens; 
+  // the fires change color
+  if (worldState.playerHouse)
+  {
+    world.forEachEntities("fire-convo", fire => {
+      fire.isConversationDisabled = true;
+      fire.interactable = false;
+    });
+    world.showEntities(`${worldState.playerHouse}-fire`);
 
-// The only collectibles in this level so far are the avatar uniforms once the player chooses the house.
-  const items = {
-    magic_key: (event) => addMagicKey(event),
-    pledge_scroll: (event) => addPledgeScroll(event),
-  };
-
-  const addMagicKey = (event) => {
-    worldState.insideCatacombs.hasKey = true;
-    if (!worldState.spellsEarned.includes("unlock"))
-      worldState.spellsEarned.push("unlock");
-    destroyObject("magic_key");
-    world.showNotification(
-      "I've obtained the magic key, I should go and claim my pledge scroll!"
-    );
-
-    // TODO: actually add item to inventory
-    tweenToScroll();
-  };
-
-  const addPledgeScroll = (event) => {
-    worldState.insideCatacombs.hasPledgeScroll = true;
-    destroyObject("pledge_scroll");
-    world.showNotification(
-      "I've obtained my pledge scroll. Time to head to the Academy building and present it to the headmaster."
-    );
-
-    world.grantItems(["pledge_scroll"]);
-    determineHouse();
-  };
-
-
-// EVENT HANDLING
-
-// Handles returning level to last object state
-  if (event.name === "mapDidLoad") {
-    console.log("Resetting map after load");
-
-    // destroy all previously destroyed objects
-    world.destroyEntities(({ instance }) =>
-      worldState.destroyedEntities.includes(instance.group || instance.key)
-    );
-
-    // show all previously unlocked objects
-    world.showEntities(({ instance }) =>
-      worldState.unlockedEntities.includes(instance.group || instance.key)
-    );
-
-    // show all previously unlocked transitions
-    world.enableTransitionAreas(({ instance }) =>
-      worldState.unlockedTransitions.includes(instance.name)
-    );
-
-    // change hack status of all no longer hackable items
-    world.forEachEntities(
-      ({ instance }) =>
-        worldState.unhackableEntities.includes(instance.group || instance.key),
-      (entity) => {
-        entity.hackable = false;
-      }
-    );
-
-    // for first run though
-    if (worldState.insideCatacombs.hasCredentials) {
-      // destroyObject("catacombs_barrier");
-      openDoor("catacombs_barrier");
-      unhackObject("statue_credentials");
-    }
-
-    // Adjust object dimensions
-    world.forEachEntities(
-      ({ instance }) => instance.layer === "upper",
-      (object) => {
-        // To force "upper" layer objects to render above objects
-        // they're placed on top of, we must hack their physics
-        // body size.
-        //
-        // To do this, we're going to add a hard coded 1000 pixels
-        // to the height of these objects. This is not perfect,
-        // but should function fine for this mission.
-        object.sprite.body.height += 1000;
-
-        // These sprites will all have their bodies disabled.
-        // This new tall sprite body will impede a lot of player
-        // movement space otherwise.
-        object.sprite.body.enable = false;
-      }
-    );
-  }
-
-// Handles object interactions
-  if (event.name === "playerDidInteract") {
-    console.log(`Interacting with ${event.target.key}`);
-
-    if (event.target.spellable) runSpell(event);
-    if (event.target.notify) runObjectNotification(event);
-    if (event.target.npc) runNpcChecks(event);
-    if (event.target.item) runAddItem(event);
-  }
-
-// Handles objective completions & failures
-  if (
-    event.name === "objectiveCompleted" ||
-    event.name === "objectiveCompletedAgain"
-  ) {
-    runObjectiveEffects(event);
-  }
-
-  if (event.name === "objectiveFailed") {
-    runUpdateMagicScore(event);
-  }
-
-// Handles Trigger Areas.
-// This functionality should be updated so that choosing the house in the House Ceremony 
-// triggers interrupting professor dialogue and camera pan
-// This should also trigger the opening of Lovelace Tower
-  if (event.name === "triggerAreaWasEntered") {
+    // Give avatar item based on chosen house
+    world.grantItems([`academy_jacket_${worldState.playerHouse}`, "academy_pleated_skirt", "academy_slacks"]);
+    
+    // When house-fire convo closes, pledge scroll fade animation is triggered - half second delay; should only play once and then be hidden again
     if (
-      event.target.key === "triggerGroundskeeperConversation" &&
-      !worldState.insidePerimeter.groundskeeper_introduction
-    ) {
-      world.startConversation("groundskeeper", "groundskeeper.png");
-    }
-  }
+      event.name === "conversationDidEnd" &&
+      event.npc.conversation === "house-fire"
+      ){
+        world.showEntities(`pledge-scroll`);
+        world.hideEntities(`pledge-scroll`, 750);
+        // world.forEachEntities(`pledge-scroll`, async scroll =>{
+        //   await scroll.playAnimation("idle");
+        //   scroll.hidden = true;
+        //   });
+        };
+
+    // Change Operator Observations on locked doors depending on progress
+    world.enableTransitionAreas("exit_to_lovelace_corridor");
+    if (
+      event.name === "triggerAreaWasEntered" && 
+      event.target.key === "lockedDoor" && 
+      worldState.houseLovelaceComplete === false
+      ){
+      world.showNotification(
+        "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
+      );
+    };
+    
+    // After choosing the house and entering triggers, camera jumps to Heapsort and dialogue begins
+    // Heapsort NPC becomes visible and interactable
+    if (
+      event.name === "triggerAreaWasEntered" && 
+      event.target.key === "triggerInterruptingHeapsort"
+      ){
+      world.showEntities(`heapsort-avatar`);
+      world.forEachEntities("heapsort", async heapsort => {
+        world.disablePlayerMovement();
+        await world.tweenCameraToPosition({
+          x: heapsort.startX,
+          y: heapsort.startY,
+        });
+        world.startConversation("interrupting-heapsort", "professor1.png");
+      });
+    };
+
+    // When the Heapsort dialogue ends, camera jumps back to player 
+    if (
+      event.name === "conversationDidEnd" &&
+      event.npc.conversation === "interrupting-heapsort"
+      ){
+        world.tweenCameraToPlayer().then(()=> {
+          world.enablePlayerMovement();
+          worldState.heapsortConversationHasEnded = true;
+          world.updateQuestStatus(
+            world.__internals.level.levelName,
+            world.__internals.level.levelProperties.questTitle,
+            "I should head to Lovelace Tower to start the House Gauntlet.",
+            true
+          );
+        });
+      };
+  };
 
   world.setState(HOUSE_CEREMONY_STATE_KEY, worldState);
 };

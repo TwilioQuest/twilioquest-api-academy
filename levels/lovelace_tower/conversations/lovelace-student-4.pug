@@ -25,17 +25,17 @@ conversation(display_name="House Lovelace Student")
       statement#busy
     
     when "wrong_1"
-      statement#wrong_1 
-      responses 
-        +busy 
-        +wrong_2 
-        +right 
+      statement#wrong_1
+      responses
+        +busy
+        +wrong_2
+        +right
 
     when "wrong_2"
-      statement#wrong_2 
-      responses 
-        +busy 
-        +wrong_1 
+      statement#wrong_2
+      responses
+        +busy
+        +wrong_1
         +right
 
     when "right"
@@ -53,24 +53,24 @@ conversation(display_name="House Lovelace Student")
     statement#default
       text.
         Wow, you only have one more room in Lovelace Tower. You are just racing through the House Gauntlet!<br><br>
-        Do you think you’d have time to help me with an assignment? It’s due in like an hour…<br><br>
+        Do you think you’d have time to help me with an assignment? It’s due in like an hour...<br><br>
         What is the difference between a #[span.highlight local] and #[span.highlight remote] API?
         
     statement#busy
       text.
         That’s alright. You can always come back into Lovelace Tower once you’ve finished all the Gauntlet challenges. 
-        I’ll be here, just trying to crack this problem… Please come back and find me!
+        I’ll be here, just trying to crack this problem... Please come back and find me!
 
     statement#wrong_1
       text.
-        Hmm… something tells me it’s a bit different than that. You’re right that remote APIs will work from anywhere, 
-        but that’s because they don’t need to be on your local machine. But local APIs work in another way…?<br><br>
+        Hmm... something tells me it’s a bit different than that. You’re right that remote APIs will work from anywhere, 
+        but that’s because they don’t need to be on your local machine. But don't local APIs work in another way?<br><br>
         What could the difference be?
 
     statement#wrong_2
       text.
         That’s the first answer I tried, but it’s not right! I think the difference depends on where the code is actually running, right?<br><br>
-        And the difference is…? If only I had paid attention during my classes…
+        And the difference is...? If only I had paid attention during my classes...
 
     statement#right
       text.
@@ -78,7 +78,7 @@ conversation(display_name="House Lovelace Student")
         but elsewhere, which gives you computing power and scale that you might not have locally. 
         Instead, local APIs might be in your programming language or in a package that you can 
         download from the internet, but they run locally on your machine or device.<br><br>
-        All I needed was to stand next to you and it would all come back to me! Thanks, Operator!
+        See, all I needed was to stand next to you for everything to come back to me! Thanks, Operator!
 
 
 // Flush world state changes, if any
