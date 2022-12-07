@@ -13,7 +13,7 @@ The `fetch` function takes two arguments, one is the URL that you're sending the
 HTTP Verbs (i.e. methods) represent the types of requests you can make. The most commonly used methods are `GET`, `POST`, `PATCH`, `PUT`, and `DELETE`.
 
 - `GET` asks for some sort of data or information from the other device
-- `POST` asks for something to be created by the other device
+- `POST` sends data to the other device
 - `PUT` asks for something that exists already to be replaced entirely by the other device with what's being sent in the request
 - `PATCH` asks for something that exists already to be updated by the other device using a set of instructions being sent in the request
 - `DELETE` asks for something to be deleted by the other device
