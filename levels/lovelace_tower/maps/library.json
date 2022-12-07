@@ -634,14 +634,24 @@
                  "name":"bad-book",
                  "properties":[
                         {
-                         "name":"disableBody",
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"inscription-fragment-1"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"house-fire.png"
+                        }, 
+                        {
+                         "name":"interactable",
                          "type":"bool",
                          "value":true
                         }, 
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"badBook"
+                         "value":"inscription-fragment"
                         }],
                  "rotation":0,
                  "type":"",
@@ -657,14 +667,24 @@
                  "name":"bad-book",
                  "properties":[
                         {
-                         "name":"disableBody",
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"inscription-fragment-3"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"house-fire.png"
+                        }, 
+                        {
+                         "name":"interactable",
                          "type":"bool",
                          "value":true
                         }, 
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"badBook"
+                         "value":"inscription-fragment"
                         }],
                  "rotation":0,
                  "type":"",
@@ -680,14 +700,24 @@
                  "name":"bad-book",
                  "properties":[
                         {
-                         "name":"disableBody",
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"inscription-fragment-2"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"inscription-fragment.png"
+                        }, 
+                        {
+                         "name":"interactable",
                          "type":"bool",
                          "value":true
                         }, 
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"badBook"
+                         "value":"inscription-fragment"
                         }],
                  "rotation":0,
                  "type":"",
@@ -1582,7 +1612,7 @@
  "nextobjectid":630,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -1620,6 +1650,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }
