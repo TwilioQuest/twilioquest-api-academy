@@ -1,6 +1,8 @@
 # What is fetch?
 
-Sometimes we want to get data or perform an action on another computer. One common way to do this is by visiting websites. Whenever you visit a website, your computer sends a request. The request's configuration helps determine what happens when the other device receives it. Javascript provides the `fetch` method, which allows you to send such requests to other computers based on a [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL) (Uniform Resource Locator) you provide.
+Sometimes we want to get data or perform an action on another computer. One common way to do this is by visiting websites. When you enter a the URL for a website in your web browser, the browser sends a HTTP request to the computer running the website, called the "server". The configuration of a HTTP request tells the server what to do with that request. Usually, when we visit a website from our browser, we send a HTTP GET request, which is a type of request which tells the server we want to "get" the website. 
+
+To send HTTP requests, Javascript provides the `fetch` method. `fetch` lets us configure and send HTTP requests, including those that would let us get the contents of a website from our code! When we send a request with `fetch`, just like in the browser, we use a [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL).
 
 ## Using fetch
 
