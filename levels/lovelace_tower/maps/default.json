@@ -1750,7 +1750,7 @@
                  "y":1104
                 }, 
                 {
-                 "gid":19820,
+                 "gid":13504,
                  "height":24,
                  "id":902,
                  "name":"poster",
@@ -1778,7 +1778,7 @@
                  "y":480
                 }, 
                 {
-                 "gid":19820,
+                 "gid":13504,
                  "height":24,
                  "id":903,
                  "name":"poster",
@@ -1806,7 +1806,7 @@
                  "y":408
                 }, 
                 {
-                 "gid":19820,
+                 "gid":13504,
                  "height":24,
                  "id":904,
                  "name":"poster",
@@ -4450,7 +4450,7 @@
          "y":0
         }],
  "nextlayerid":62,
- "nextobjectid":905,
+ "nextobjectid":906,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",
@@ -4488,10 +4488,6 @@
         {
          "firstgid":16320,
          "source":"..\/..\/..\/..\/.bundled\/tilesets\/Tileset_DevFundamentals-Interior.json"
-        }, 
-        {
-         "firstgid":19820,
-         "source":"..\/..\/..\/..\/twilioquest-base\/tilesets\/Tileset_API-Interior.json"
         }],
  "tilewidth":24,
  "type":"map",

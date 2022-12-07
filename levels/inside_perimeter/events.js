@@ -380,5 +380,16 @@ module.exports = async function (event, world) {
     }
   }
 
+  if (
+    worldState.insideCatacombs.hasPledgeScroll
+  ) {
+    world.updateQuestStatus(
+      world.__internals.level.levelName,
+      world.__internals.level.levelProperties.questTitle,
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!",
+      true
+    );
+  }
+
   world.setState(PRE_ACADEMY_STATE_KEY, worldState);
 };
