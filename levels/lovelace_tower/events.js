@@ -119,6 +119,13 @@ module.exports = async function (event, world) {
   });
 
   if (event.name === "playerDidInteract") {
+    if (event.target.key === "inscription-fragment") {
+      world.startConversation(
+        event.target.conversation,
+        event.target.conversationAvatar
+      );
+    }
+
     handleSpells(event, world, {
       ...worldState,
     });
