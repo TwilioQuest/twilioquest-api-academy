@@ -11,7 +11,7 @@
 </ul>
 </div>
 
-Before we jump into working with Web APIs let's try interacting with a function locally. For this, we'll use the `String.replaceAll` method to replace all instances of a particular string with something else.
+Before we jump into working with Web APIs let's remind ourselves about local APIs provided by libraries, as functions and objects. For this, we'll use the `String.replaceAll` method to replace all instances of a particular string with something else.
 
 For example:
 
