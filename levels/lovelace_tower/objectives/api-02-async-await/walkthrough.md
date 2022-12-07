@@ -21,7 +21,9 @@ The `readdir` function is asynchronous and will take some time to finish. With t
 
 ## What are promises?
 
-Promises are what asynchronous functions return, and is what Javascript uses to represent the state of asynchronous tasks. They give us the ability to pause our program until a task completes, or provide a callback (i.e. a function) to be invoked once finished. To do so, we use the `await` keyword and `promise.then` method respectively. More on those coming up.
+Promises represent a value that we will get in the future. Initially, an asynchronous function returns a Promise object, and when the real value is available, the Promise "resolves" and is replaced by the value. In other words, they are a **promise** of a future value! Get it?
+
+Javascript can use the presence of a Promise to control the execution of our program, giving us the ability to pause it until a task completes, or provide a callback (i.e. a function) to be invoked once finished. To do so, we use the `await` keyword and `promise.then` method respectively. More on those coming up.
 
 ## Chaining promises
 
