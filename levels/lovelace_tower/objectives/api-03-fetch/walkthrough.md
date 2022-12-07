@@ -1,6 +1,6 @@
 # What is fetch?
 
-Sometimes we want to get data or perform an action on another computer. One common way to do this is by visiting websites. When you enter a the URL for a website in your web browser, the browser sends a HTTP request to the computer running the website, called the "server". The configuration of a HTTP request tells the server what to do with that request. Usually, when we visit a website from our browser, we send a HTTP GET request, which is a type of request which tells the server we want to "get" the website. 
+Sometimes we want to get data or perform an action on another computer. One common way to do this is by visiting websites. When you enter the URL for a website in your web browser, the browser sends an HTTP request to the computer running the website, called the "server". The configuration of an HTTP request tells the server what to do with that request. Usually, when we visit a website from our browser, we send an HTTP GET request, which is a type of request that tells the server we want to "get" the website.
 
 To send HTTP requests, Javascript provides the `fetch` method. `fetch` lets us configure and send HTTP requests, including those that would let us get the contents of a website from our code! When we send a request with `fetch`, just like in the browser, we use a [URL](https://developer.mozilla.org/en-US/docs/Web/API/URL).
 
@@ -18,7 +18,7 @@ HTTP Verbs (i.e. methods) represent the types of requests you can make. The most
 - `PATCH` asks for something that exists already to be updated by the other device using a set of instructions being sent in the request
 - `DELETE` asks for something to be deleted by the other device
 
-Some methods require additional data to be sent along with the request, while others do not. Try experimenting with them to get the hang of things! Now let's take a look at a couple of `fetch` examples:
+Some methods require additional data to be sent along with the request, while others do not. It's also important to note that all requests receive a response, and that it may also (just like GET) contain data. Try experimenting with them to get the hang of things! Now let's take a look at a couple of `fetch` examples:
 
 ```js
 const response = await fetch("some_url", {
@@ -39,7 +39,7 @@ const response = await fetch("some_url", {
 console.log(response);
 ```
 
-This example is similar to the last, only this time we're making a `POST` request with another option in our configuration object. This type of request is one that needs data to be sent along with it, and we accomplish that with the `body` property. The example is requesting that another computer create something new using the `Hello World` data we supplied.
+This example is similar to the last, only now we're making a `POST` request with another option in our configuration object. This type of request is one that generally needs data to be sent along with it, and we accomplish that with the `body` property. The example is sending data (the "Hello World" string) to a server.
 
 ## Getting the magical phrase
 
