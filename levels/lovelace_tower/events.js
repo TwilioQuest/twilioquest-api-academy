@@ -178,11 +178,15 @@ module.exports = async function (event, world) {
   }
 
   // Library door inside Lovelace Library interactable / not spellable before Obj 04 is complete / launches dialogue box
-  if (
-    event.name === "objectiveCompleted" &&
-    event.target.objectiveName === "api-04-remote-and-local"
-  ) {
-    worldState.obj4Complete = true;
+  if (event.name === "playerDidInteract") {
+    if (event.target.key === "api-door-1") {
+      if (!world.isObjectiveCompleted("api-04-remote-and-local")) {
+        world.startConversation(
+          event.target.conversation,
+          event.target.conversationAvatar
+        );
+      }
+    }
   };
 
   // Once the final objective has been hacked and closed, hide books and empty shelves

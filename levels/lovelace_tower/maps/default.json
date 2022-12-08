@@ -1073,8 +1073,8 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":1218,
-                 "y":888
+                 "x":1248,
+                 "y":912
                 }, 
                 {
                  "gid":14193,
@@ -1748,6 +1748,90 @@
                  "width":24,
                  "x":354,
                  "y":1104
+                }, 
+                {
+                 "gid":13504,
+                 "height":24,
+                 "id":902,
+                 "name":"poster",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"poster_lovelace"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"poster_lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":1104,
+                 "y":480
+                }, 
+                {
+                 "gid":13504,
+                 "height":24,
+                 "id":903,
+                 "name":"poster",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"poster_lovelace"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"poster_lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":408
+                }, 
+                {
+                 "gid":13504,
+                 "height":24,
+                 "id":904,
+                 "name":"poster",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"poster_lovelace"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"poster_lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":408
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4336,7 +4420,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -4360,13 +4444,13 @@
                  "value":true
                 }],
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":71,
          "x":0,
          "y":0
         }],
  "nextlayerid":62,
- "nextobjectid":901,
+ "nextobjectid":906,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",

@@ -1,13 +1,11 @@
 const merge = require("lodash.merge");
 const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
+const helperFunctions = require("../../scripts/helperFunctions");
 
 const INITIAL_STATE = {
   playerHouse: undefined,
   heapsortConversationHasEnded: false,
   houseLovelaceComplete: false,
-  houseHopperComplete: false,
-  houseTuringComplete: false,
-  houseVonNeumannComplete: false,
   displayNames: {
     lovelace: "Lovelace",
     turing: "Turing",
@@ -18,6 +16,10 @@ const INITIAL_STATE = {
 
 module.exports = async function (event, world) {
   const worldState = merge(INITIAL_STATE, world.getState(HOUSE_CEREMONY_STATE_KEY));
+
+  const {
+    applyFadeInTween,
+  } = helperFunctions(event, world, worldState);
 
   console.log(`event: ${event.name}`);
   console.log(`event target ${event.target}`);
@@ -57,11 +59,12 @@ module.exports = async function (event, world) {
       event.npc.conversation === "house-fire"
       ){
         world.showEntities(`pledge-scroll`);
-        world.hideEntities(`pledge-scroll`, 750);
-        // world.forEachEntities(`pledge-scroll`, async scroll =>{
-        //   await scroll.playAnimation("idle");
-        //   scroll.hidden = true;
-        //   });
+        world.forEachEntities(`pledge-scroll`, async scroll =>{
+          await applyFadeInTween(`pledge-scroll`, 500);
+          await world.wait(1000);
+          await scroll.playAnimation("idle");
+          world.hideEntities(`pledge-scroll`);
+          });
         };
 
     // Change Operator Observations on locked doors depending on progress
