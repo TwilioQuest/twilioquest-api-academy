@@ -16,7 +16,7 @@ mixin deciding
 
 mixin getting_started 
   response#getting_started.
-    I’m excited to explore the von Neumann Labs when the time comes. 
+    I’m excited to explore the von Neumann Labs when it's House von Neumann's turn. 
 
 conversation(display_name="Professor van Hoek, Head of House von Neumann")
   case lastResponse
@@ -25,7 +25,7 @@ conversation(display_name="Professor van Hoek, Head of House von Neumann")
       statement#unique
       responses 
         +join 
-         +deciding
+        +deciding
 
     when "join"
       statement#join
@@ -44,10 +44,13 @@ conversation(display_name="Professor van Hoek, Head of House von Neumann")
           +join 
           +deciding 
 
-      else
+      else if worldState.playerHouse && !worldState.heapsortConversationHasEnded
+        statement#history
+
+      else if worldState.playerHouse && worldState.heapsortConversationHasEnded
         statement#gauntlet_default
         responses
-            +getting_started
+          +getting_started
 
   statements
     statement#default
@@ -71,16 +74,22 @@ conversation(display_name="Professor van Hoek, Head of House von Neumann")
           That’s no problem. Whenever you decide, 
           just take your pledge scroll to the #[span.highlight House Fire].
 
+    statement#history
+      text.
+        Fun fact: while House Lovelace typically starts the Gauntlet, House von Neumann usually ends it, all by chance, of course. 
+        It’s always fun to see the order in which the houses are 
+        randomly selected. Maybe the von Neumann labs will host the Gauntlet first this year. One never knows...<br><br>
+        Also, great choice on your house: #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}] is lucky to have you!
+        
     statement#gauntlet_default 
       text.
-        House von Neumann usually ends the House Gauntlet – just by chance, of course. 
-        It’s always a fun ceremony to see the order in which the houses are 
-        randomly selected. Part of the fun, don’t you think?<br><br>
-        Also, great choice on your house: #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}] is lucky to have you!
+        A missing student on the morning of the House Gauntlet! And not just any student, but a Gauntleter herself...
+        Arcane Academy is lucky to have you step in and take her place, while we search for her...<br><br>
+        Anyway, Lovelace Tower is an excellent place to begin the House Gauntlet.
 
     statement#getting_started 
       text.
-        Yes, yes, we’ll get down there at some point during the Gauntlet, that’s for sure.
+        Yes, yes, we’ll get down there at some point during the Gauntlet, that’s for sure. Good luck, Operator!
 
 // Flush world state changes, if any
 - setState(STATE_KEY, worldState);

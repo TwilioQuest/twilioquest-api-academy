@@ -44,10 +44,13 @@ conversation(display_name="Professor Clay, Head of House Lovelace")
           +join 
           +deciding 
 
-      else
+      else if worldState.playerHouse && !worldState.heapsortConversationHasEnded
+        statement#history
+
+      else if worldState.playerHouse && worldState.heapsortConversationHasEnded
         statement#gauntlet_default
         responses
-            +getting_started
+          +getting_started
 
   statements
     statement#default
@@ -69,10 +72,18 @@ conversation(display_name="Professor Clay, Head of House Lovelace")
         text.
           Completely understandable, Operator. It’s an important decision to make!
 
+    statement#history
+        text.
+          Excellent choice of #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}], Operator.<br><br>
+          Any moment now, we shall know which house will start the House Gauntlet. Though the houses 
+          are selected in random order, fortune seems to always favor House Lovelace. 
+          Who knows if yet again, Lovelace Tower will launch the Gauntlet!
+
     statement#gauntlet_default 
       text.
-        Excellent choice of #[span.highlight House #{worldState.displayNames[worldState.playerHouse]}]. And now you get to 
-        start the Gauntlet: House Lovelace is an exciting place to begin, if I do say so myself.<br><br> 
+        Thank you, dear Operator, for agreeing to complete the House Gauntlet as we begin searching for the missing Gauntleter.
+        Not to worry though, you've got some exciting challenges ahead of you.
+        House Lovelace is an exciting place to begin the Gauntlet, if I do say so myself.<br><br> 
         I hope you enjoy exploring Lovelace Tower! I’ll meet you up there whenever 
         you are ready for further instructions.
 

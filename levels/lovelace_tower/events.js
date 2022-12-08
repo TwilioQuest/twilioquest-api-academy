@@ -57,11 +57,7 @@ const INITIAL_STATE = {
       },
     },
   },
-  obj1Complete: false,
-  obj2Complete: false,
-  obj3Complete: false,
   obj4Complete: false,
-  obj5Complete: false,
   fredricNoteTriggered: false,
 };
 
@@ -123,6 +119,13 @@ module.exports = async function (event, world) {
   });
 
   if (event.name === "playerDidInteract") {
+    if (event.target.key === "inscription-fragment") {
+      world.startConversation(
+        event.target.conversation,
+        event.target.conversationAvatar
+      );
+    }
+
     handleSpells(event, world, {
       ...worldState,
     });
@@ -137,7 +140,7 @@ module.exports = async function (event, world) {
   if (
     event.name === "triggerAreaWasEntered" &&
     event.target.key === "lockedDoorLibrary" &&
-    worldState.obj5Complete === false
+    !world.isObjectiveCompleted("api-05-get-patch")
   ) {
     world.showNotification(
       "I should complete the last objective to clean up this mess!"
@@ -147,35 +150,47 @@ module.exports = async function (event, world) {
   if (
     event.name === "triggerAreaWasEntered" &&
     event.target.key === "objectiveBarrier1" &&
-    worldState.obj1Complete === false
+    !world.isObjectiveCompleted("api-01-local-function")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
 
   if (
     event.name === "triggerAreaWasEntered" &&
     event.target.key === "objectiveBarrier2" &&
-    worldState.obj2Complete === false
+    !world.isObjectiveCompleted("api-02-async-await")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
 
   if (
     event.name === "triggerAreaWasEntered" &&
     event.target.key === "objectiveBarrier3" &&
-    worldState.obj3Complete === false
+    !world.isObjectiveCompleted("api-03-fetch")
   ) {
     world.showNotification(
-      "I need to complete the next objective before I can pass through to the next area."
+      "I need to complete the current objective before I can pass through to the next room."
     );
   }
 
+  // Library door inside Lovelace Library interactable / not spellable before Obj 04 is complete / launches dialogue box
+  if (event.name === "playerDidInteract") {
+    if (event.target.key === "api-door-1") {
+      if (!world.isObjectiveCompleted("api-04-remote-and-local")) {
+        world.startConversation(
+          event.target.conversation,
+          event.target.conversationAvatar
+        );
+      }
+    }
+  };
+
   // Once the final objective has been hacked and closed, hide books and empty shelves
-  if (worldState.obj5Complete === true) {
+  if (world.isObjectiveCompleted("api-01-local-function")) {
     if (
       event.name === "objectiveDidClose" &&
       event.target.objectiveName === "api-05-get-patch"
@@ -203,9 +218,8 @@ module.exports = async function (event, world) {
         note.interactable = true;
       });
       worldState.fredricNoteTriggered = true;
-      // world.getState(HOUSE_CEREMONY_STATE_KEY) set houseLovelaceComplete = true;
-    }
-  }
+    };
+  };
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
