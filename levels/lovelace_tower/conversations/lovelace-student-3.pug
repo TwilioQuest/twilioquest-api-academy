@@ -8,7 +8,7 @@ mixin busy
 
 mixin wrong_1
   response#wrong_1.
-    Are you sure your monitor isn’t upside down? Just kidding…
+    Are you sure your monitor isn’t upside down? Just kidding...
 
 mixin wrong_2
   response#wrong_2.
@@ -25,16 +25,16 @@ conversation(display_name="House Lovelace Student")
       statement#busy
     
     when "wrong_1"
-      statement#wrong_1 
-      responses 
-        +busy 
-        +wrong_2 
-        +right 
+      statement#wrong_1
+      responses
+        +busy
+        +wrong_2
+        +right
 
     when "wrong_2"
-      statement#wrong_2 
-      responses 
-        +busy  
+      statement#wrong_2
+      responses
+        +busy
         +right
         +wrong_1
 
@@ -70,12 +70,12 @@ conversation(display_name="House Lovelace Student")
       text.
         Now that you mention synchronous code, I do remember learning something about asynchronous code. 
         I definitely know that it’s possible to run multiple, non-blocking functions at once. 
-        I promise I learned about it… I just don’t remember the specifics!<br><br>
+        I promise I learned about it... I just don’t remember the specifics!<br><br>
         What do you think could be behind this asynchronous execution?
 
     statement#right
       text.
-        Oh, that’s it! I’m making two HTTP requests and I should use the await keyword after an asynchronous 
+        Oh, that’s it! I’m making two HTTP requests and I should use the #[span.highlight await] keyword after an asynchronous 
         function to get the value back before my code keeps going.<br><br>
         I knew you’d be able to solve it for me. Thanks, Operator!
 
