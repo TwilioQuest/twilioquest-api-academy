@@ -3,7 +3,7 @@ async function getFilteredAuthors(pageCount) {
   // TODO: get and filter the authors!
 }
 
-(async function () {
+async function runTests() {
   console.log("Test case 1:");
   console.log((await getFilteredAuthors(5)).toString());
 
@@ -21,4 +21,6 @@ async function getFilteredAuthors(pageCount) {
 
   console.log("Test case 6:");
   console.log((await getFilteredAuthors(24)).toString());
-})();
+}
+
+runTests();
