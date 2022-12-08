@@ -3,7 +3,7 @@
 <div class="aside">
 <h3>Requirements</h3>
 <ul>
-  <li>Create an async function called `getAndPatchCorruptedInscription`.</li>
+  <li>Create an async function called "getAndPatchCorruptedInscription".</li>
   <li>This function receives a number.</li>
   <li>Fetch and parse the corrupted inscription from the "divination" endpoint.</li>
   <li>Get the inscription fragments from the scrolls that litter the library.</li>
