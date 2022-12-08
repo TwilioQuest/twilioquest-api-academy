@@ -1,6 +1,6 @@
 # What is an API?
 
-[APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#what_are_apis) (Application Programming Interface) provide ways in which we can interact with other computer programs. They do so by publicly exposing what are called `endpoints`. Each `endpoint` represents a different service, and made accessible via a unique URL (Uniform Resource Locator) and [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
+[APIs](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction#what_are_apis) (Application Programming Interface) provide a way to interact with other computer programs. They do so by publicly exposing `endpoints`, with each `endpoint` representing a different service, and made accessible via a unique URL (Uniform Resource Locator) and [method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 
 ## What is JSON?
 
