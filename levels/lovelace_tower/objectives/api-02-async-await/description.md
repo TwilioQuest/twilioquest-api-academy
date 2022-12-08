@@ -11,7 +11,9 @@
 </ul>
 </div>
 
-Two important things to understand before working with Web APIs is `async` (short for asynchronous) and `await`. We'll be using these tools to perform actions that can take a while to finish. Let's use the `readdir` (short for read directory) method to asynchronously pull in all of the items in a directory and return the last item.
+Welcome, Gauntleter, to the second challenge of Lovelace Tower. For this challenge, you must acknowledge the magical powers of `asynchronous` functions. Because of this asynchronicity, wielders of such API powers must `await` the return of their functions. But delaying the instant execution of code has a worthwhile power: it can transcend the very concept of linear time.
+
+Two important things to understand when working with Web APIs is `async` (short for asynchronous) and `await`. We'll be using these tools to perform actions that can take a while to finish. Let's use the `readdir` (short for read directory) method to asynchronously pull in all of the items in a directory and return the last entry.
 
 For example, if you had a directory that looked like the following tree:
 
