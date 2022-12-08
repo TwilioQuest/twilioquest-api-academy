@@ -11,18 +11,21 @@
 </ul>
 </div>
 
-Before we jump into working with Web APIs let's remind ourselves about local APIs provided by libraries, as functions and objects. For this, we'll use the `String.replaceAll` method to replace all instances of a particular string with something else.
+Welcome, Gauntleter, to the first of many challenges in the Arcane Academy's annual House Gauntlet. As you progress through Lovelace Tower, you will be tested on your ability to apply your knowledge of APIs. For this first challenge, the House Gauntlet asks you to explore how local APIs, provided by libraries as functions and objects, can manipulate the written word, as befits House Lovelace. For this, you'll use the `String.replaceAll` method to replace all instances of a particular string with something else.
 
 For example:
 
 ```js
-const myString = "one two one two one two";
+const myString =
+  "I read in a book that the answer to the universe is: one two one two one two.";
 const swappedString = myString.replaceAll("two", "zero");
 
 console.log(swappedString);
 ```
 
-would print `one zero one zero one zero` to the console.
+would print `I read in a book that the answer to the universe is: one zero one zero one zero.` to the console.
+
+Local function APIs have the power to alter not just individual sentences, but entire tomes. A Gauntleter might imagine the chaos if one were to swap every `" "` in a House Lovelace volume for a `""` -- how easily important documents could be corrupted -- or repaired -- through such simple APIs!
 
 Create a function called `swapStrings` that takes 3 string arguments:
 

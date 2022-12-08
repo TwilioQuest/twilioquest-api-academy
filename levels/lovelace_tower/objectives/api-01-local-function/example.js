@@ -3,31 +3,33 @@ function swapStrings(sourceString, targetWord, replacementWord) {
 }
 
 console.log("Test case 1:");
-console.log(swapStrings("aaaeeecccddd", "e", "b"));
+console.log(
+  swapStrings(
+    'As a famous API master once said, "ATCHOOO"!',
+    "ATCHOOO",
+    "HATEOAS"
+  )
+);
 
 console.log("Test case 2:");
 console.log(
   swapStrings(
-    "Cheese cake is really really good!",
-    "really really good",
-    "very tasty"
+    "The b*ooks **can b*ecome qui*t*e *dusty* i*f we *do*n't clea**n th*em *oft*en!",
+    "\\*",
+    ""
   )
 );
 
 console.log("Test case 3:");
 console.log(
-  swapStrings("I'm scared to ride that rollercoaster!", "scared", "excited")
+  swapStrings(
+    "If~~~not~~~for~~~books~~~and~~~documentation,~~~we~~~would~~~be~~~swimming~~~in~~~a~~~sea~~~of~~~spaghetti!",
+    "~~~",
+    " "
+  )
 );
 
 console.log("Test case 4:");
 console.log(
-  swapStrings("My*bug*code*bug*is*bug*bug*bug*free!", "\\*bug\\*", " ")
+  swapStrings("The    library    is    very    spacious!", "   ", "")
 );
-
-console.log("Test case 5:");
-console.log(
-  swapStrings("Thatspacewasspacereallyspacehardspacetospaceread!", "space", " ")
-);
-
-console.log("Test case 6:");
-console.log(swapStrings("You're an ___ programmer!", "___", "awesome"));
