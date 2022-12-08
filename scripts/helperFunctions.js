@@ -77,6 +77,27 @@ module.exports = (event, world, worldState) => {
     return Promise.all(tweenPromises);
   };
 
+  const applyFadeInTween = (key, duration = 400) => {
+    const { game } = world.__internals.level;
+    return new Promise((resolve) => {
+      world.forEachEntities(
+        key,
+        ({ sprite }) => {
+          sprite.alpha = 0;
+          const tween = game.add
+            .tween(sprite)
+            .to(
+              { alpha: 1 },
+              duration,
+              Phaser.Easing.Exponential.In
+            );
+          tween.onComplete.add(resolve);
+          tween.start();
+        }
+      );
+    });
+  }
+
   return {
     unlockObject,
     unlockTransition,
@@ -84,5 +105,6 @@ module.exports = (event, world, worldState) => {
     unhackObject,
     openDoor,
     applyDisappearTween,
+    applyFadeInTween,
   };
 };

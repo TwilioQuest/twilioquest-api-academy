@@ -25,18 +25,18 @@ conversation(display_name="House Lovelace Student")
       statement#busy
     
     when "wrong_1"
-      statement#wrong_1 
-      responses 
+      statement#wrong_1
+      responses
         +busy
         +right
-        +wrong_2  
+        +wrong_2
 
     when "wrong_2"
-      statement#wrong_2 
-      responses 
-        +busy 
+      statement#wrong_2
+      responses
+        +busy
         +right
-        +wrong_1 
+        +wrong_1
 
     when "right"
       statement#right
@@ -54,8 +54,7 @@ conversation(display_name="House Lovelace Student")
       text.
         Thank goodness you made it through the second door. 
         This API problem set is due in an hour, and I’m barely through the first question.<br><br>
-        “What is the definition of #[span.highlight PUT] in HTTP Protocol Semantics?” That’s the question, 
-        but now I’m not sure I even understand what it’s asking!
+        “What is the definition of #[span.highlight PUT] in HTTP Protocol Semantics?” I'm not even sure what the question is asking!
        
     statement#busy
       text.
@@ -65,13 +64,13 @@ conversation(display_name="House Lovelace Student")
     statement#wrong_1
       text.
         Hmm, I could have sworn my professor said PUT is an HTTP... like GET and POST – those are also HTTP verbs, right?<br><br>
-        Hmm… what could PUT be used for?
+        Hmm... what could PUT be used for?
 
 
     statement#wrong_2
       text.
-        I’m pretty sure DELETE is its own HTTP verb that allows you to… delete resources. Haha, right?<br><br>
-        And PUT instead let’s you…? Hmm…
+        I’m pretty sure DELETE is its own HTTP verb that allows you to... delete resources. Haha, right?<br><br>
+        PUT, instead, let’s you...? Hmm...
 
 
     statement#right
