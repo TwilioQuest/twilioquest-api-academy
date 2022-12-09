@@ -6,9 +6,11 @@
  */
 function getEntityAssignedDoors(entity) {
   return entity.assignedDoors
-    .replace(/\s/g, "")
-    .split(",")
-    .filter((assignedDoor) => !!assignedDoor);
+    ? entity.assignedDoors
+        .replace(/\s/g, "")
+        .split(",")
+        .filter((assignedDoor) => !!assignedDoor)
+    : [];
 }
 
 function runDoorAction(world, assignedDoors, action) {
