@@ -1252,14 +1252,14 @@
                  "name":"secret-library-door",
                  "properties":[
                         {
-                         "name":"@interactable",
-                         "type":"string",
-                         "value":"completedObjectives[\"api-05-get-patch\"]"
-                        }, 
-                        {
                          "name":"@spellable",
                          "type":"string",
-                         "value":"completedObjectives[\"api-05-get-patch\"]"
+                         "value":".completedObjectives[\"lovelace_tower.api-05-get-patch\"]"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"key",
@@ -1438,7 +1438,12 @@
                         {
                          "name":"@hidden",
                          "type":"string",
-                         "value":"completedObjectives[\"api-05-get-patch\"]"
+                         "value":"!completedObjectives[\"lovelace_tower.api-05-get-patch\"]"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":1
                         }],
                  "rotation":0,
                  "type":"",
@@ -1762,7 +1767,7 @@
  "nextobjectid":641,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -1800,6 +1805,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }

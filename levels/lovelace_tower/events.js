@@ -7,7 +7,6 @@ const INITIAL_STATE = {
     destroyedEntities: [],
     unlockedTransitions: [],
     hiddenEntities: [],
-    openedDoors: [],
     entities: {
       "api-door-1": {
         spell: {
@@ -18,11 +17,12 @@ const INITIAL_STATE = {
               },
             },
             successActions: {
-              enableLevelChange({ world, worldState }) {
+              enableLevelChange({ event, world, worldState }) {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
-                worldState.insideLovelaceTower.openedDoors.push("api-door-1");
+                event.target.setInteractable(false);
+                event.target.state.fsm.action("open");
               },
             },
           },
@@ -45,10 +45,11 @@ const INITIAL_STATE = {
               },
             },
             successActions: {
-              enableLevelChange({ world, worldState }) {
+              enableLevelChange({ event, world, worldState }) {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_corridor"
                 );
+                event.target.setInteractable(false);
                 worldState.insideLibrary.openedDoors.push("api-door-1");
               },
             },
@@ -74,8 +75,6 @@ module.exports = async function (event, world) {
     ["api-03-fetch", "api-hidden-door-3"],
   ];
 
-  const doorPairs = [["api-04-remote-and-local", "api-door-1"]];
-
   if (
     event.name === "objectiveCompleted" ||
     event.name === "objectiveCompletedAgain"
@@ -86,15 +85,6 @@ module.exports = async function (event, world) {
         !worldState.insideLovelaceTower.hiddenEntities.includes(hiddenDoorKey)
       ) {
         worldState.insideLovelaceTower.hiddenEntities.push(hiddenDoorKey);
-      }
-    });
-
-    doorPairs.forEach(([objectiveKey, doorKey]) => {
-      if (
-        event.objective === objectiveKey &&
-        !worldState.insideLovelaceTower.openedDoors.includes(doorKey)
-      ) {
-        worldState.insideLovelaceTower.openedDoors.push(doorKey);
       }
     });
   }
@@ -108,10 +98,7 @@ module.exports = async function (event, world) {
   });
 
   // Open doors
-  [
-    ...worldState.insideLovelaceTower.openedDoors,
-    ...worldState.insideLibrary.openedDoors,
-  ].forEach((openedDoorKey) => {
+  worldState.insideLibrary.openedDoors.forEach((openedDoorKey) => {
     world.forEachEntities(
       openedDoorKey,
       (door) => door.state && door.state.fsm && door.state.fsm.action("open")
@@ -130,11 +117,6 @@ module.exports = async function (event, world) {
       ...worldState,
     });
   }
-
-  console.log(`event: ${event.name}`);
-  console.log(`event target ${event.target}`);
-  console.log(`event target ${event.target && event.target.key}`);
-  console.log(worldState);
 
   // Operator observations on barriers
   if (
@@ -187,39 +169,32 @@ module.exports = async function (event, world) {
         );
       }
     }
-  };
+  }
 
-  // Set obj4Complete 
-  if (world.isObjectiveCompleted("api-04-remote-and-local")){
+  // Set obj4Complete
+  if (world.isObjectiveCompleted("api-04-remote-and-local")) {
     worldState.obj4Complete = true;
-    world.forEachEntities("lovelace-tower-door", towerDoor => {
-      towerDoor.interactable = false;
-    });
-  };
+  }
 
   // Once the final objective has been hacked and closed, hide books and empty shelves
   if (world.isObjectiveCompleted("api-05-get-patch")) {
-    world.hideEntities(`bad-book`);
-    if (
-      event.name === "objectiveDidClose" &&
-      event.target.objectiveName === "api-05-get-patch"
-    ) {
-      world.hideEntities(`bad-book`);
-    };
+    world.hideEntities(`badBook`);
 
     world.enableTransitionAreas("exit_to_library_corridor");
 
     // As player tries to leave, trigger Fredric conversation
-    if (world.isObjectiveCompleted("api-05-get-patch")){
+    if (world.isObjectiveCompleted("api-05-get-patch")) {
       if (
         event.name === "triggerAreaWasEntered" &&
         event.target.key === "fredricTrigger" &&
         worldState.fredricNoteTriggered === false
       ) {
-        world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
+        world.startConversation(
+          "fredric-threat-lovelace",
+          "fredricNeutral.png"
+        );
       }
     }
-   
 
     // When Fredric trigger closes, Fredric letter becomes interactable
     if (
@@ -230,8 +205,8 @@ module.exports = async function (event, world) {
         note.interactable = true;
       });
       worldState.fredricNoteTriggered = true;
-    };
-  };
+    }
+  }
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
