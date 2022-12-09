@@ -12,7 +12,13 @@
 </ul>
 </div>
 
-Let's put everything we've learned together and repair an inscription that was corrupted by Fredric! We'll need to first `fetch` the corrupted inscription to see which parts need fixing. After that, we'll have to gather fragments from scrolls scattered throughout the library, combine their text as part of a string in the QuestIDE (making sure they're in the correct order). Finally, we'll need to send the repaired inscription to the "divination" endpoint via a `patch` request.
+<i>
+Welcome to the final challenge of Lovelace Tower.<br><br> 
+Here the House Gauntlet grants you the privilege of reading House Lovelace's divination incantation inscribed into this statue's facade. This inscription is the core of the Divination Spell you have earned in Lovelace Tower, its very words essential to the spell's ability to work... 
+</i>
+
+It looks like something has happened inside the secret Lovelace library: books have been torn from their shelves and scattered around the room; and the Divination Incantation has been corrupted! Let's put everything we've learned together and repair the House Lovelace inscription so that the Divination Spell will work once again!<br><br>
+We'll need to first `fetch` the corrupted inscription to see which parts need fixing. After that, we'll have to gather fragments from scrolls scattered throughout the library, combine their text as part of a string in the QuestIDE (making sure they're in the correct order). Finally, we'll need to send the repaired inscription to the "divination" endpoint via a `patch` request.
 
 Here's an example of sending a `patch` request:
 

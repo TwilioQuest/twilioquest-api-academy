@@ -13,9 +13,11 @@
 </ul>
 </div>
 
-Welcome, Gauntleter, to the fourth challenge of Lovelace Tower. For this challenge, you must excercise your newly acquired `async` and `await` abilities to help find some peculiar names that are said to have ties to a powerful incantation you may find useful. We've discovered that those names belong to authors of books we have at a remote library. Besides that though, the only clue we have is that they've written more than a certain number of pages. If you can uncover those specific names, you can read them aloud to reveal the secret location of the incantation.
+<i>
+Welcome, Gauntleter, to the fourth challenge of Lovelace Tower. For this challenge, you must excercise your newly acquired `async` and `await` abilities to uncover the names of authors of a group of special books housed in a remote library in The Cloud. These author names are said to have ties to a powerful incantation, which, when invoked, will earn you the `Divination Spell` that you will need to progress through the remaining houses of the Gauntlet. To identify these names, however, the House Gauntlet grants you only a single clue: each of these authors has written more than a certain number of pages. Once you uncover the specific names, read them aloud to produce the Divination Spell.
+</i>
 
-The last objective asked you to immediately return data from an API (Application Programming Interface). We'll want to do a bit more than that, normally, so this time let's do work with the response we get from the new endpoint. Similar to before, we'll be using `fetch` combined with `await` to request data.
+The previous objective asked you to immediately return data from an API (Application Programming Interface). We'll want to do a bit more than that, normally, so this time let's do work with the response we get from the new endpoint. Similar to before, we'll be using `fetch` combined with `await` to request data.
 
 Here's an example of fetching data and parsing the JSON (Javascript Object Notation) response from an API:
 
