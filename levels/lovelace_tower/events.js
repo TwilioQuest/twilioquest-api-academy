@@ -21,7 +21,7 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
-                console.log("working");
+                event.target.setInteractable(false);
                 event.target.state.fsm.action("open");
               },
             },
@@ -45,10 +45,11 @@ const INITIAL_STATE = {
               },
             },
             successActions: {
-              enableLevelChange({ world, worldState }) {
+              enableLevelChange({ event, world, worldState }) {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_corridor"
                 );
+                event.target.setInteractable(false);
                 worldState.insideLibrary.openedDoors.push("api-door-1");
               },
             },
@@ -116,11 +117,6 @@ module.exports = async function (event, world) {
       ...worldState,
     });
   }
-
-  console.log(`event: ${event.name}`);
-  console.log(`event target ${event.target}`);
-  console.log(`event target ${event.target && event.target.key}`);
-  console.log(worldState);
 
   // Operator observations on barriers
   if (
