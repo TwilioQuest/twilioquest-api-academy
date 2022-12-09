@@ -1035,7 +1035,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",
@@ -1409,7 +1409,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",
@@ -1426,7 +1426,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",
