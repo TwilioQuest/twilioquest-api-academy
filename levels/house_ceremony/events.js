@@ -3,52 +3,6 @@ const handleTriggerDoors = require("../../scripts/handleTriggerDoors");
 const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 const helperFunctions = require("../../scripts/helperFunctions");
 
-// Returns the elements that are part of a comma delimited string collection.
-// For example, "hello, world, foo, bar" would return ["hello", "world", "foo", "bar"]
-function getArrayFromCommaDelimitedCollection(commaDelimitedCollection = []) {
-  const output = commaDelimitedCollection
-    .replace(/\s/g, "")
-    .split(",")
-    .filter((requiredLevel) => !!requiredLevel);
-
-  return output;
-}
-
-// Gets the keys for any entities that have the "requiresCompletedLevels" property in which the specified levels have
-// not all been completed, and returns them together in an array. For example, if "requireCompletedLevels" is set to
-// "challenge-questions, house_ceremony", then if either of those levels hasn't been completed, the target object
-// is marked for deletion
-async function getEntitiesMarkedForDeletion(world) {
-  const entitiesMarkedForDeletion = [];
-
-  // Awaiting the "world.isLevelCompleted" calls, in order to hault execution of the "world.destroyEntities"
-  // invocation. Not doing so will lead to entitiesMarkedForDeletion always being empty, even if it shouldn't be
-  await Promise.all(
-    world.entityService
-      // Using "getAll" and "filter", since the "world.forEachEntity" method cannot be awaited
-      .getAll()
-      .filter(({ instance }) => instance.requiresCompletedLevels)
-      // Mapping each remaining element into a promise that will be apart of "Promise.all"
-      .map(async ({ instance }) => {
-        if (instance.requiresCompletedLevels) {
-          const completedRequiredLevels =
-            await getArrayFromCommaDelimitedCollection(
-              instance.requiresCompletedLevels
-            ).reduce(async (allCompleted, requiredLevel) => {
-              return (
-                allCompleted && (await world.isLevelCompleted(requiredLevel))
-              );
-            }, true);
-
-          if (!completedRequiredLevels) {
-            entitiesMarkedForDeletion.push(instance.key);
-          }
-        }
-      })
-  );
-
-  return entitiesMarkedForDeletion;
-}
 const INITIAL_STATE = {
   playerHouse: undefined,
   heapsortConversationHasEnded: false,
@@ -66,18 +20,6 @@ module.exports = async function (event, world) {
     INITIAL_STATE,
     world.getState(HOUSE_CEREMONY_STATE_KEY)
   );
-
-  if (event.name === "mapDidLoad") {
-    const entitiesMarkedForDeletion = await getEntitiesMarkedForDeletion(world);
-
-    world.destroyEntities(({ instance }) => {
-      const instanceIsMarkedForDeletion = entitiesMarkedForDeletion.some(
-        (entityKey) => instance.key === entityKey
-      );
-
-      return instanceIsMarkedForDeletion;
-    });
-  }
 
   handleTriggerDoors(event, world, worldState);
   const { applyFadeInTween } = helperFunctions(event, world, worldState);
@@ -178,6 +120,12 @@ module.exports = async function (event, world) {
       }
     }
     }
+
+  if (world.isObjectiveCompleted("api-05-get-patch", "lovelace_tower")) {
+    world.enableTransitionAreas("secret_library_door_exit");
+  } else {
+    world.destroyEntities("secret_library_door_anim_trigger");
+  }
 
   world.setState(HOUSE_CEREMONY_STATE_KEY, worldState);
 };
