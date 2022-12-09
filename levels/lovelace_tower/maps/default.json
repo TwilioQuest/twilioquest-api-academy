@@ -1457,7 +1457,12 @@
                         {
                          "name":"@spellable",
                          "type":"string",
-                         "value":"completedObjectives[\"api-04-remote-and-local\"]"
+                         "value":"completedObjectives[\"lovelace_tower.api-04-remote-and-local\"]"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
                         }, 
                         {
                          "name":"key",
@@ -4381,7 +4386,7 @@
  "nextobjectid":917,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -4419,6 +4424,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }
