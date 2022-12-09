@@ -1885,6 +1885,34 @@
                  "width":24,
                  "x":677,
                  "y":657
+                }, 
+                {
+                 "gid":13504,
+                 "height":6,
+                 "id":918,
+                 "name":"library-door",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"library-door"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"door_lovelace.png"
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":1248,
+                 "y":198
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -4388,10 +4416,10 @@
          "y":0
         }],
  "nextlayerid":62,
- "nextobjectid":918,
+ "nextobjectid":919,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -4429,6 +4457,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":71
 }
