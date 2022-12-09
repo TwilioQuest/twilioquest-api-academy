@@ -263,8 +263,8 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":696,
-                 "y":768
+                 "x":678,
+                 "y":786
                 }, 
                 {
                  "gid":5937,
@@ -380,44 +380,6 @@
                  "width":24,
                  "x":576,
                  "y":768
-                }, 
-                {
-                 "gid":5936,
-                 "height":24,
-                 "id":554,
-                 "name":"fredricNote",
-                 "properties":[
-                        {
-                         "name":"conversation",
-                         "type":"string",
-                         "value":"fredric-threat-lovelace"
-                        }, 
-                        {
-                         "name":"conversationAvatar",
-                         "type":"string",
-                         "value":"fredricNeutral.png"
-                        }, 
-                        {
-                         "name":"disableBody",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"interactable",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"fredricNote"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":672,
-                 "y":786
                 }, 
                 {
                  "gid":5934,
@@ -1086,9 +1048,9 @@
                  "rotation":0,
                  "type":"levelChange",
                  "visible":true,
-                 "width":48,
-                 "x":516,
-                 "y":924
+                 "width":30,
+                 "x":522,
+                 "y":930
                 }, 
                 {
                  "height":0,
@@ -1329,6 +1291,44 @@
                  "width":24,
                  "x":576,
                  "y":696
+                }, 
+                {
+                 "gid":5936,
+                 "height":24,
+                 "id":641,
+                 "name":"fredricNote",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"fredric-threat-lovelace"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"fredricNeutral.png"
+                        }, 
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"fredricNote"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":696,
+                 "y":768
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1453,7 +1453,7 @@
                  "y":708
                 }, 
                 {
-                 "height":30,
+                 "height":36,
                  "id":608,
                  "name":"fredricTrigger",
                  "properties":[
@@ -1529,7 +1529,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -1764,10 +1764,10 @@
          "y":0
         }],
  "nextlayerid":66,
- "nextobjectid":641,
+ "nextobjectid":642,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.0",
  "tileheight":24,
  "tilesets":[
         {
@@ -1805,6 +1805,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":71
 }

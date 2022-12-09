@@ -1035,7 +1035,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",
@@ -1269,6 +1269,11 @@
                          "name":"disableBody",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"disableInteraction",
+                         "type":"bool",
+                         "value":false
                         }],
                  "rotation":0,
                  "type":"",
@@ -1427,7 +1432,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",
@@ -1444,7 +1449,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"lockedMainhallDoor"
+                         "value":"lockedDoor"
                         }],
                  "rotation":0,
                  "type":"triggerArea",

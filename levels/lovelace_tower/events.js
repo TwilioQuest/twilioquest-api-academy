@@ -159,9 +159,19 @@ module.exports = async function (event, world) {
     );
   }
 
+  // Set obj4Complete and make door no longer interactable
+  if (world.isObjectiveCompleted("api-04-remote-and-local")) {
+    worldState.obj4Complete = true;
+    world.forEachEntities(`library-door-locked`, (libraryDoor) => {
+      libraryDoor.interactable = false;
+      libraryDoor.disableBody = true;
+      libraryDoor.key = "";
+    })
+  }
+
   // Library door inside Lovelace Library interactable / not spellable before Obj 04 is complete / launches dialogue box
   if (event.name === "playerDidInteract") {
-    if (event.target.key === "api-door-1") {
+    if (event.target.key === "library-door-locked") {
       if (!world.isObjectiveCompleted("api-04-remote-and-local")) {
         world.startConversation(
           event.target.conversation,
@@ -171,9 +181,24 @@ module.exports = async function (event, world) {
     }
   }
 
-  // Set obj4Complete
-  if (world.isObjectiveCompleted("api-04-remote-and-local")) {
-    worldState.obj4Complete = true;
+  // Make Fredric note interactable upon subsequent reentries into library
+  if (worldState.fredricNoteTriggered === true) {
+    world.forEachEntities("fredricNote", (note) => {
+      note.interactable = true;
+      disableBody = false;
+    })
+  }
+
+  // if player interacts with note after initial trigger takes place
+  if (
+    event.name === "playerDidInteract" &&
+    event.target.key === "fredricNote" &&
+    worldState.fredricNoteTriggered === true
+  ) {
+    world.startConversation(
+      "fredric-threat-lovelace",
+      "fredricNeutral.png"
+    );
   }
 
   // Once the final objective has been hacked and closed, hide books and empty shelves
@@ -203,6 +228,7 @@ module.exports = async function (event, world) {
     ) {
       world.forEachEntities("fredricNote", (note) => {
         note.interactable = true;
+        note.disableBody = false;
       });
       worldState.fredricNoteTriggered = true;
     }

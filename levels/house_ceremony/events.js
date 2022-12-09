@@ -42,8 +42,8 @@ module.exports = async function (event, world) {
     world.showEntities(`heapsort-avatar`);
   }
 
-  // Once the player has selected their house, the fire is no longer interactable; Lovelace tower opens; the fires change color
-  // The various other events occur only after the player house has been selected
+  // Once the player has selected their house, the fire is no longer interactable; Lovelace tower opens;
+  // the fires change color
   if (worldState.playerHouse) {
     world.forEachEntities("fire-convo", (fire) => {
       fire.isConversationDisabled = true;
@@ -70,56 +70,66 @@ module.exports = async function (event, world) {
         await scroll.playAnimation("idle");
         world.hideEntities(`pledge-scroll`);
       });
+    }
 
-      // Change Operator Observations on locked doors depending on progress
-      world.enableTransitionAreas("exit_to_lovelace_corridor");
+    // Change Operator Observations on locked doors depending on progress
+    world.enableTransitionAreas("exit_to_lovelace_corridor");
+    if (
+      event.name === "triggerAreaWasEntered" &&
+      event.target.key === "lockedDoor" &&
+      worldState.houseLovelaceComplete === false
+    ) {
+      world.showNotification(
+        "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
+      );
+    }
 
-      if (
-        event.name === "triggerAreaWasEntered" &&
-        event.target.key === "lockedMainhallDoor" &&
-        worldState.houseLovelaceComplete === false &&
-        worldState.heapsortConversationHasEnded === false
-      ) {
-        world.showNotification(
-          "Lovelace Tower is the first house in the House Gauntlet. I should find the House Lovelace corridor!"
+    // After choosing the house and entering triggers, camera jumps to Heapsort and dialogue begins
+    // Heapsort NPC becomes visible and interactable
+    if (
+      event.name === "triggerAreaWasEntered" &&
+      event.target.key === "triggerInterruptingHeapsort"
+    ) {
+      world.showEntities(`heapsort-avatar`);
+      world.forEachEntities("heapsort", async (heapsort) => {
+        world.disablePlayerMovement();
+        await world.tweenCameraToPosition({
+          x: heapsort.startX,
+          y: heapsort.startY,
+        });
+        world.startConversation("interrupting-heapsort", "professor1.png");
+      });
+    }
+
+    // When the Heapsort dialogue ends, camera jumps back to player
+    if (
+      event.name === "conversationDidEnd" &&
+      event.npc.conversation === "interrupting-heapsort"
+    ) {
+      world.tweenCameraToPlayer().then(() => {
+        world.enablePlayerMovement();
+        worldState.heapsortConversationHasEnded = true;
+        world.updateQuestStatus(
+          world.__internals.level.levelName,
+          world.__internals.level.levelProperties.questTitle,
+          "I should head to Lovelace Tower to start the House Gauntlet.",
+          true
         );
-      }
-
-      // After choosing the house and entering triggers, camera jumps to Heapsort and dialogue begins
-      // Heapsort NPC becomes visible and interactable
-      if (
-        event.name === "triggerAreaWasEntered" &&
-        event.target.key === "triggerInterruptingHeapsort"
-      ) {
-        world.showEntities(`heapsort-avatar`);
-        world.forEachEntities("heapsort", async (heapsort) => {
-          world.disablePlayerMovement();
-          await world.tweenCameraToPosition({
-            x: heapsort.startX,
-            y: heapsort.startY,
-          });
-          world.startConversation("interrupting-heapsort", "professor1.png");
-        });
-      }
-
-      // When the Heapsort dialogue ends, camera jumps back to player
-      if (
-        event.name === "conversationDidEnd" &&
-        event.npc.conversation === "interrupting-heapsort"
-      ) {
-        world.tweenCameraToPlayer().then(() => {
-          world.enablePlayerMovement();
-          worldState.heapsortConversationHasEnded = true;
-          world.updateQuestStatus(
-            world.__internals.level.levelName,
-            world.__internals.level.levelProperties.questTitle,
-            "I should head to Lovelace Tower to start the House Gauntlet.",
-            true
-          );
-        });
-      }
+      });
     }
-    }
+  }
+
+
+  // // if player interacts with statue
+  // if (
+  //   event.name === "playerDidInteract" &&
+  //   event.target.key === "lovelace-bust"
+  // ) {
+  //   world.startConversation(
+  //     "lovelace-statue-corridor",
+  //     "lovelace_bust.png"
+  //   );
+  // }
 
   if (world.isObjectiveCompleted("api-05-get-patch", "lovelace_tower")) {
     world.enableTransitionAreas("secret_library_door_exit");
