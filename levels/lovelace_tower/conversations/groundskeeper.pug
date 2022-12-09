@@ -1,6 +1,7 @@
 -
   const STATE_KEY = 'TQ_LOVELACE_TOWER_WORLD_STATE';
-  const worldState = getState(STATE_KEY);    
+  const worldState = getState(STATE_KEY);   
+  
 
 mixin secret
   response#secret.
@@ -20,13 +21,13 @@ conversation(display_name="Arcane Academy Groundskeeper")
       statement#library
 
     default
-      if worldState.obj4Complete === false
+      if !worldState.obj4Complete
         statement#default
         responses
           +secret
 
-      else if worldState.obj4Complete === true 
-        statement#secret_default 
+      else if worldState.obj4Complete
+        statement#secret_default
         responses
           +library
 
@@ -43,9 +44,9 @@ conversation(display_name="Arcane Academy Groundskeeper")
 
     statement#secret_default
       text.
-        You made the Divination Spell. Great work, Operator! Behind me is the door to the secret Lovelace Library. 
-        To access the library, use the Divination Spell. This spell will also help you get through to the next part of the House Gauntlet 
-        once you make your way back to the Main Hall. Just look for the sparkling blue marker, like the one on the door behind me.
+        You earned the Divination Spell! Great work, Operator. Behind me is the door to the secret Lovelace Library. 
+        You can use the Divination Spell to access the library. This spell will also help you get through to the next part of the House Gauntlet 
+        once you make your way back to the Main Hall. Just look for the sparkling blue marker for places you can use this spell, like the one on the door behind me.
 
     statement#library
       text.

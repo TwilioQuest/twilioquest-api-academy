@@ -10,7 +10,9 @@
 </ul>
 </div>
 
-The House Gauntlet welcomes you to the third challenge of Lovelace Tower! In this challenge, you must test the powers of `await` by `fetch`ing a magical phrase. You may find this process helpful, Operator, when generating the Divination Spell that will be granted to you in Lovelace Tower upon completion of its challenges.
+<i>
+The House Gauntlet welcomes you to the third challenge of Lovelace Tower! In this challenge, you must test the powers of `await` by `fetch`ing a magical phrase. You may find this process helpful, Gauntleter, when generating the Divination Spell that will be granted to you in Lovelace Tower upon completion of its challenges.
+</i>
 
 Before we get started, let's take a look at an example of fetching data from an API:
 
