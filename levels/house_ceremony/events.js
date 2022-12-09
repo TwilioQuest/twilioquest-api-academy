@@ -119,18 +119,6 @@ module.exports = async function (event, world) {
     }
   }
 
-
-  // // if player interacts with statue
-  // if (
-  //   event.name === "playerDidInteract" &&
-  //   event.target.key === "lovelace-bust"
-  // ) {
-  //   world.startConversation(
-  //     "lovelace-statue-corridor",
-  //     "lovelace_bust.png"
-  //   );
-  // }
-
   if (world.isObjectiveCompleted("api-05-get-patch", "lovelace_tower")) {
     world.enableTransitionAreas("secret_library_door_exit");
   } else {
