@@ -65,6 +65,11 @@ const LEVEL_STATE = {
                 return worldState.insideCatacombs.hasKey;
               },
             },
+            successActions: {
+              hasKey({ event }) {
+                event.target.setInteractable(false);
+              },
+            },
             failureActions: {
               hasKey({ world }) {
                 world.showNotification(
@@ -245,7 +250,7 @@ module.exports = async function (event, world) {
     // current content. They'll learn their house later.
     // TODO: Update this notification on future release version.
     world.showNotification(
-      'I got my pledge scroll! I should head to the Main Hall to choose my house now!'
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!"
     );
     world.updateQuestStatus(
       world.__internals.level.levelName,

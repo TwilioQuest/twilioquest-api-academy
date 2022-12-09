@@ -189,25 +189,37 @@ module.exports = async function (event, world) {
     }
   };
 
+  // Set obj4Complete 
+  if (world.isObjectiveCompleted("api-04-remote-and-local")){
+    worldState.obj4Complete = true;
+    world.forEachEntities("lovelace-tower-door", towerDoor => {
+      towerDoor.interactable = false;
+    });
+  };
+
   // Once the final objective has been hacked and closed, hide books and empty shelves
-  if (world.isObjectiveCompleted("api-01-local-function")) {
+  if (world.isObjectiveCompleted("api-05-get-patch")) {
+    world.hideEntities(`bad-book`);
     if (
       event.name === "objectiveDidClose" &&
       event.target.objectiveName === "api-05-get-patch"
     ) {
       world.hideEntities(`bad-book`);
-    }
+    };
 
     world.enableTransitionAreas("exit_to_library_corridor");
 
     // As player tries to leave, trigger Fredric conversation
-    if (
-      event.name === "triggerAreaWasEntered" &&
-      event.target.key === "fredricTrigger" &&
-      worldState.fredricNoteTriggered === false
-    ) {
-      world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
+    if (world.isObjectiveCompleted("api-05-get-patch")){
+      if (
+        event.name === "triggerAreaWasEntered" &&
+        event.target.key === "fredricTrigger" &&
+        worldState.fredricNoteTriggered === false
+      ) {
+        world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
+      }
     }
+   
 
     // When Fredric trigger closes, Fredric letter becomes interactable
     if (

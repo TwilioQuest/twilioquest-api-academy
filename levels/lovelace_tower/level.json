@@ -9,5 +9,11 @@
   "flavorTextOverrides": {
     "lockedDoor": "This door won't budge!"
   },
-  "objectives": ["api-01-local-function"]
+  "objectives": [
+    "api-01-local-function",
+    "api-02-async-await",
+    "api-03-fetch",
+    "api-04-remote-and-local",
+    "api-05-get-patch"
+  ]
 }
