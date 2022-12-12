@@ -13,7 +13,7 @@ const assertTestCase = (testFunction, helper) => async (input, expected) => {
 
 function getBooksByPageCount(pageCountThreshold, books) {
   const filteredBooks = books.filter(
-    (book) => pageCountThreshold > book.metadata.pageCount
+    (book) => book.metadata.pageCount > pageCountThreshold
   );
   return filteredBooks;
 }
@@ -40,7 +40,8 @@ module.exports = async function (helper) {
 
     const test = assertTestCase(context.getFilteredAuthors, helper);
     const response = await fetch(DIVINATION_API_ENDPOINT);
-    const books = (await response.json()).data;
+    const books = await response.json();
+    console.log(books);
     await test(5, getAuthorNames(5, books));
     await test(100, getAuthorNames(100, books));
     await test(30, getAuthorNames(30, books));
