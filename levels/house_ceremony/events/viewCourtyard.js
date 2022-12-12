@@ -21,20 +21,9 @@ module.exports = function viewCourtyard(world) {
       );
       await world.wait(400);
 
-      world.forEachEntities("viewpoint_water_fountain", async (viewpoint) => {
-        await world.tweenCameraToPosition(
-          {
-            x: viewpoint.startX,
-            y: viewpoint.startY,
-          },
-          { duration: 5000 }
-        );
-        await world.wait(400);
+      await world.tweenCameraToPlayer({ duration: 5000 });
 
-        await world.tweenCameraToPlayer({ duration: 5000 });
-
-        world.enablePlayerMovement();
-      });
+      world.enablePlayerMovement();
     });
   });
 };

@@ -378,24 +378,6 @@
                  "width":0,
                  "x":504,
                  "y":240
-                }, 
-                {
-                 "height":0,
-                 "id":290,
-                 "name":"viewpoint_water_fountain",
-                 "point":true,
-                 "properties":[
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"viewpoint_water_fountain"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":408,
-                 "y":528
                 }],
          "opacity":1,
          "type":"objectgroup",
