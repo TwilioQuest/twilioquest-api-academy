@@ -2,11 +2,13 @@ const merge = require("lodash.merge");
 const handleTriggerDoors = require("../../scripts/handleTriggerDoors");
 const { HOUSE_CEREMONY_STATE_KEY } = require("../../scripts/config");
 const helperFunctions = require("../../scripts/helperFunctions");
+const viewCourtyard = require("./events/viewCourtyard");
 
 const INITIAL_STATE = {
   playerHouse: undefined,
   heapsortConversationHasEnded: false,
   houseLovelaceComplete: false,
+  hasStartedInitialCourtyardTween: false,
   displayNames: {
     lovelace: "Lovelace",
     turing: "Turing",
@@ -23,11 +25,6 @@ module.exports = async function (event, world) {
 
   handleTriggerDoors(event, world, worldState);
   const { applyFadeInTween } = helperFunctions(event, world, worldState);
-
-  console.log(`event: ${event.name}`);
-  console.log(`event target ${event.target}`);
-  console.log(`event target ${event.target && event.target.key}`);
-  console.log(worldState);
 
   // Lovelace Tower not accessible until player has selected a house
   world.disableTransitionAreas("exit_to_lovelace_corridor");
@@ -117,6 +114,19 @@ module.exports = async function (event, world) {
         );
       });
     }
+  }
+
+  if (
+    event.name === "triggerAreaWasEntered" &&
+    event.target.key === "triggerViewCourtyard" &&
+    !worldState.hasStartedInitialCourtyardTween
+  ) {
+    worldState.hasStartedInitialCourtyardTween = true;
+    viewCourtyard(world);
+  }
+
+  if (event.name === "playerDidInteract" && event.target.key === "telescope") {
+    viewCourtyard(world);
   }
 
   if (world.isObjectiveCompleted("api-05-get-patch", "lovelace_tower")) {
