@@ -24,6 +24,16 @@ const LEVEL_STATE = {
         spell: {
           disappear: {
             requirements: {
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(false);
+                  }
+                );
+
+                return true;
+              },
               hasWand({ worldState }) {
                 return worldState.insidePerimeter.hasWand;
               },
@@ -42,6 +52,14 @@ const LEVEL_STATE = {
               hasDisappearSpell({ world }) {
                 world.showNotification(
                   "I think I need to learn a spell later to do anything here!"
+                );
+              },
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(true);
+                  }
                 );
               },
             },

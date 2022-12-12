@@ -153,9 +153,9 @@ module.exports = async function handleSpells(event, world, worldState) {
     }
 
     const targetSpellColor = event.target.spell_color
-      ? event.target.spell_color.trim().toUpperCase()
+      ? SPELL_TYPE[event.target.spell_color.trim().toUpperCase()]
       : SPELL_TYPE.RED;
-    await useWand(world, SPELL_TYPE[targetSpellColor]);
+    await useWand(world, targetSpellColor);
     spells[event.target.spell_type](event);
   };
 
