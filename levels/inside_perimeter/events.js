@@ -66,8 +66,10 @@ const LEVEL_STATE = {
               },
             },
             successActions: {
-              hasKey({ event }) {
-                event.target.setInteractable(false);
+              hasKey({ world }) {
+                world.forEachEntities("scroll_room_door", (door) => {
+                  door.setInteractable(false);
+                });
               },
             },
             failureActions: {
@@ -297,6 +299,13 @@ module.exports = async function (event, world) {
    * Handles returning level to last object state
    */
   if (event.name === "mapDidLoad") {
+    if (
+      worldState.insideCatacombs.hasPledgeScroll &&
+      !worldState.unlockedTransitions.includes("exit_to_courtyard")
+    ) {
+      worldState.unlockedTransitions.push("exit_to_courtyard");
+    }
+
     // destroy all previously destroyed objects
     world.destroyEntities(({ instance }) =>
       worldState.destroyedEntities.includes(instance.group || instance.key)
@@ -385,9 +394,7 @@ module.exports = async function (event, world) {
     }
   }
 
-  if (
-    worldState.insideCatacombs.hasPledgeScroll
-  ) {
+  if (worldState.insideCatacombs.hasPledgeScroll) {
     world.updateQuestStatus(
       world.__internals.level.levelName,
       world.__internals.level.levelProperties.questTitle,

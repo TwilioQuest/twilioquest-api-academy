@@ -1054,6 +1054,16 @@
                  "name":"exit_to_courtyard",
                  "properties":[
                         {
+                         "name":"disabled",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"exit_to_courtyard"
+                        }, 
+                        {
                          "name":"levelName",
                          "type":"string",
                          "value":"house_ceremony"
@@ -1067,11 +1077,6 @@
                          "name":"playerEntryPoint",
                          "type":"string",
                          "value":"player_entry1"
-                        }, 
-                        {
-                         "name":"requiresCompletedLevels",
-                         "type":"string",
-                         "value":"inside_perimeter"
                         }],
                  "rotation":0,
                  "type":"levelChange",
@@ -1814,7 +1819,7 @@
  "nextobjectid":264,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -1852,6 +1857,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }
