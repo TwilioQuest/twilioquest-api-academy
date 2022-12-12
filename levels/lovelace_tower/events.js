@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     destroyedEntities: [],
     unlockedTransitions: [],
     hiddenEntities: [],
+    usedSpellOnLibraryDoor: false,
     entities: {
       "api-door-1": {
         spell: {
@@ -22,7 +23,7 @@ const INITIAL_STATE = {
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
                 event.target.setInteractable(false);
-                event.target.state.fsm.action("open");
+                worldState.insideLovelaceTower.usedSpellOnLibraryDoor = true;
               },
             },
           },
@@ -34,7 +35,7 @@ const INITIAL_STATE = {
     destroyedEntities: [],
     unlockedTransitions: [],
     hiddenEntities: [],
-    openedDoors: [],
+    usedSpellOnLibraryDoor: false,
     entities: {
       "api-door-1": {
         spell: {
@@ -50,7 +51,7 @@ const INITIAL_STATE = {
                   ({ instance }) => instance.key === "exit_to_lovelace_corridor"
                 );
                 event.target.setInteractable(false);
-                worldState.insideLibrary.openedDoors.push("api-door-1");
+                worldState.insideLibrary.usedSpellOnLibraryDoor = true;
               },
             },
           },
@@ -97,13 +98,21 @@ module.exports = async function (event, world) {
     world.hideEntities(hiddenEntityKey);
   });
 
-  // Open doors
-  worldState.insideLibrary.openedDoors.forEach((openedDoorKey) => {
-    world.forEachEntities(
-      openedDoorKey,
-      (door) => door.state && door.state.fsm && door.state.fsm.action("open")
-    );
-  });
+  if (
+    (event.mapName === "default" &&
+      worldState.insideLovelaceTower.usedSpellOnLibraryDoor) ||
+    (event.mapName === "library" &&
+      worldState.insideLibrary.usedSpellOnLibraryDoor)
+  ) {
+    world.forEachEntities("api-door-1", (door) => {
+      door.setInteractable(false);
+      door.spellable = false;
+
+      if (door.state && door.state.fsm) {
+        door.state.fsm.action("open");
+      }
+    });
+  }
 
   if (event.name === "playerDidInteract") {
     if (event.target.key === "inscription-fragment") {
@@ -162,17 +171,14 @@ module.exports = async function (event, world) {
   // Set obj4Complete and make door no longer interactable
   if (world.isObjectiveCompleted("api-04-remote-and-local")) {
     worldState.obj4Complete = true;
-    world.forEachEntities(`library-door-locked`, (libraryDoor) => {
-      libraryDoor.interactable = false;
-      libraryDoor.disableBody = true;
-      libraryDoor.key = "";
-    })
+    world.destroyEntities(`library-door-locked`);
   }
 
   // Library door inside Lovelace Library interactable / not spellable before Obj 04 is complete / launches dialogue box
   if (event.name === "playerDidInteract") {
     if (event.target.key === "library-door-locked") {
       if (!world.isObjectiveCompleted("api-04-remote-and-local")) {
+        console.log(event.target);
         world.startConversation(
           event.target.conversation,
           event.target.conversationAvatar
@@ -186,7 +192,7 @@ module.exports = async function (event, world) {
     world.forEachEntities("fredricNote", (note) => {
       note.interactable = true;
       disableBody = false;
-    })
+    });
   }
 
   // if player interacts with note after initial trigger takes place
@@ -195,10 +201,7 @@ module.exports = async function (event, world) {
     event.target.key === "fredricNote" &&
     worldState.fredricNoteTriggered === true
   ) {
-    world.startConversation(
-      "fredric-threat-lovelace",
-      "fredricNeutral.png"
-    );
+    world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
   }
 
   // Once the final objective has been hacked and closed, hide books and empty shelves
@@ -208,17 +211,12 @@ module.exports = async function (event, world) {
     world.enableTransitionAreas("exit_to_library_corridor");
 
     // As player tries to leave, trigger Fredric conversation
-    if (world.isObjectiveCompleted("api-05-get-patch")) {
-      if (
-        event.name === "triggerAreaWasEntered" &&
-        event.target.key === "fredricTrigger" &&
-        worldState.fredricNoteTriggered === false
-      ) {
-        world.startConversation(
-          "fredric-threat-lovelace",
-          "fredricNeutral.png"
-        );
-      }
+    if (
+      event.name === "triggerAreaWasEntered" &&
+      event.target.key === "fredricTrigger" &&
+      worldState.fredricNoteTriggered === false
+    ) {
+      world.startConversation("fredric-threat-lovelace", "fredricNeutral.png");
     }
 
     // When Fredric trigger closes, Fredric letter becomes interactable

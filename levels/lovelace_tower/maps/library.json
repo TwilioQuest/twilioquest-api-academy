@@ -1061,14 +1061,14 @@
                         {
                          "name":"initialFacing",
                          "type":"string",
-                         "value":"right"
+                         "value":"up"
                         }],
                  "rotation":0,
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":540,
-                 "y":834
+                 "x":523.362484535643,
+                 "y":880.073119747451
                 }, 
                 {
                  "height":12,
@@ -1229,6 +1229,11 @@
                          "value":"api-door-1"
                         }, 
                         {
+                         "name":"spell_color",
+                         "type":"string",
+                         "value":"blue"
+                        }, 
+                        {
                          "name":"spell_type",
                          "type":"string",
                          "value":"unlock"
@@ -1311,7 +1316,7 @@
                         {
                          "name":"disableBody",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }, 
                         {
                          "name":"interactable",
@@ -1439,6 +1444,11 @@
                          "name":"@hidden",
                          "type":"string",
                          "value":"!completedObjectives[\"lovelace_tower.api-05-get-patch\"]"
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"door-sparkle"
                         }, 
                         {
                          "name":"zIndex",
@@ -1767,7 +1777,7 @@
  "nextobjectid":642,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -1805,6 +1815,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }

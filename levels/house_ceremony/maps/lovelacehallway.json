@@ -70,11 +70,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"interactable",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
                          "name":"key",
                          "type":"string",
                          "value":"lovelace_tower_exit"
@@ -85,18 +80,6 @@
                  "width":24,
                  "x":408,
                  "y":144
-                }, 
-                {
-                 "gid":10100,
-                 "height":24,
-                 "id":73,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":24,
-                 "x":408,
-                 "y":138
                 }, 
                 {
                  "height":60.171301825627,
@@ -837,7 +820,7 @@
  "nextobjectid":110,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -867,6 +850,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":30
 }
