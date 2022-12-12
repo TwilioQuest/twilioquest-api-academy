@@ -24,6 +24,16 @@ const LEVEL_STATE = {
         spell: {
           disappear: {
             requirements: {
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(false);
+                  }
+                );
+
+                return true;
+              },
               hasWand({ worldState }) {
                 return worldState.insidePerimeter.hasWand;
               },
@@ -42,6 +52,14 @@ const LEVEL_STATE = {
               hasDisappearSpell({ world }) {
                 world.showNotification(
                   "I think I need to learn a spell later to do anything here!"
+                );
+              },
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(true);
+                  }
                 );
               },
             },
@@ -66,8 +84,10 @@ const LEVEL_STATE = {
               },
             },
             successActions: {
-              hasKey({ event }) {
-                event.target.setInteractable(false);
+              hasKey({ world }) {
+                world.forEachEntities("scroll_room_door", (door) => {
+                  door.setInteractable(false);
+                });
               },
             },
             failureActions: {
@@ -183,6 +203,9 @@ module.exports = async function (event, world) {
     if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
       world.grantItems(["magic_key"]);
       unlockObject("magic_key");
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
     }
   };
 
@@ -211,6 +234,10 @@ module.exports = async function (event, world) {
   };
 
   const addMagicKey = (event) => {
+    if (!event.target.interactable) {
+      return;
+    }
+
     worldState.insideCatacombs.hasKey = true;
     if (!worldState.spellsEarned.includes("unlock"))
       worldState.spellsEarned.push("unlock");
@@ -297,6 +324,19 @@ module.exports = async function (event, world) {
    * Handles returning level to last object state
    */
   if (event.name === "mapDidLoad") {
+    if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
+    }
+
+    if (
+      worldState.insideCatacombs.hasPledgeScroll &&
+      !worldState.unlockedTransitions.includes("exit_to_courtyard")
+    ) {
+      worldState.unlockedTransitions.push("exit_to_courtyard");
+    }
+
     // destroy all previously destroyed objects
     world.destroyEntities(({ instance }) =>
       worldState.destroyedEntities.includes(instance.group || instance.key)
@@ -385,9 +425,7 @@ module.exports = async function (event, world) {
     }
   }
 
-  if (
-    worldState.insideCatacombs.hasPledgeScroll
-  ) {
+  if (worldState.insideCatacombs.hasPledgeScroll) {
     world.updateQuestStatus(
       world.__internals.level.levelName,
       world.__internals.level.levelProperties.questTitle,
