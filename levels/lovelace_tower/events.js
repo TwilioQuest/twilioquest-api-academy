@@ -23,7 +23,6 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
-                console.log("setting worldState");
                 worldState.insideLovelaceTower.usedSpellOnLibraryDoor = true;
               },
             },
