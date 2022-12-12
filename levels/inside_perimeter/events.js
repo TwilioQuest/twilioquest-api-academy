@@ -185,6 +185,9 @@ module.exports = async function (event, world) {
     if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
       world.grantItems(["magic_key"]);
       unlockObject("magic_key");
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
     }
   };
 
@@ -213,6 +216,10 @@ module.exports = async function (event, world) {
   };
 
   const addMagicKey = (event) => {
+    if (!event.target.interactable) {
+      return;
+    }
+
     worldState.insideCatacombs.hasKey = true;
     if (!worldState.spellsEarned.includes("unlock"))
       worldState.spellsEarned.push("unlock");
@@ -299,6 +306,12 @@ module.exports = async function (event, world) {
    * Handles returning level to last object state
    */
   if (event.name === "mapDidLoad") {
+    if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
+    }
+
     if (
       worldState.insideCatacombs.hasPledgeScroll &&
       !worldState.unlockedTransitions.includes("exit_to_courtyard")

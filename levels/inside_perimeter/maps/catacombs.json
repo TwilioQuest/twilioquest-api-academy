@@ -1791,7 +1791,7 @@
                         {
                          "name":"interactable",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"item",
