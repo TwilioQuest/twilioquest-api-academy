@@ -193,19 +193,14 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":1242,
-                 "y":234
+                 "x":1245,
+                 "y":196
                 }, 
                 {
                  "height":18,
                  "id":756,
                  "name":"exit_to_lovelace_library",
                  "properties":[
-                        {
-                         "name":"disabled",
-                         "type":"bool",
-                         "value":true
-                        }, 
                         {
                          "name":"key",
                          "type":"string",
@@ -1449,6 +1444,44 @@
                  "y":360
                 }, 
                 {
+                 "gid":13504,
+                 "height":12,
+                 "id":918,
+                 "name":"library-door",
+                 "properties":[
+                        {
+                         "name":"conversation",
+                         "type":"string",
+                         "value":"library-door"
+                        }, 
+                        {
+                         "name":"conversationAvatar",
+                         "type":"string",
+                         "value":"door_lovelace.png"
+                        }, 
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"interactable",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"library-door-locked"
+                        }],
+                 "rotation":0,
+                 "type":"conversationResponder",
+                 "visible":true,
+                 "width":24,
+                 "x":1248,
+                 "y":192.01
+                }, 
+                {
                  "gid":15386,
                  "height":48,
                  "id":746,
@@ -1468,6 +1501,11 @@
                          "name":"key",
                          "type":"string",
                          "value":"api-door-1"
+                        }, 
+                        {
+                         "name":"spell_color",
+                         "type":"string",
+                         "value":"blue"
                         }, 
                         {
                          "name":"spell_type",
@@ -1530,7 +1568,7 @@
                  "visible":true,
                  "width":54,
                  "x":740.666666666667,
-                 "y":382.666666666667
+                 "y":387.67
                 }, 
                 {
                  "gid":15396,
@@ -1885,44 +1923,6 @@
                  "width":24,
                  "x":677,
                  "y":657
-                }, 
-                {
-                 "gid":13504,
-                 "height":12,
-                 "id":918,
-                 "name":"library-door",
-                 "properties":[
-                        {
-                         "name":"conversation",
-                         "type":"string",
-                         "value":"library-door"
-                        }, 
-                        {
-                         "name":"conversationAvatar",
-                         "type":"string",
-                         "value":"door_lovelace.png"
-                        }, 
-                        {
-                         "name":"disableBody",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"interactable",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"key",
-                         "type":"string",
-                         "value":"library-door-locked"
-                        }],
-                 "rotation":0,
-                 "type":"conversationResponder",
-                 "visible":true,
-                 "width":24,
-                 "x":1278,
-                 "y":186
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2149,6 +2149,16 @@
                          "name":"@hidden",
                          "type":"string",
                          "value":"!completedObjectives[\"lovelace_tower.api-04-remote-and-local\"]"
+                        }, 
+                        {
+                         "name":"disableBody",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"api-door-1-sparkle"
                         }, 
                         {
                          "name":"zIndex",
@@ -4426,10 +4436,10 @@
          "y":0
         }],
  "nextlayerid":62,
- "nextobjectid":919,
+ "nextobjectid":924,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.0",
+ "tiledversion":"1.7.2",
  "tileheight":24,
  "tilesets":[
         {
@@ -4467,6 +4477,6 @@
         }],
  "tilewidth":24,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":71
 }

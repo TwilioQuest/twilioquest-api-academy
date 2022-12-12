@@ -1,4 +1,5 @@
 const helperFunctions = require("./helperFunctions");
+const { useWand, SPELL_TYPE } = require("./useWand");
 
 function getFormattedWorldStateMapName(levelName) {
   return (
@@ -33,8 +34,7 @@ function getWorldStateMapName(world) {
 }
 
 module.exports = async function handleSpells(event, world, worldState) {
-  // If the target of the event isn't spellable, none of what's in this script needs to run
-  if (!event.target.spellable) {
+  if (!event.target.spellable || !event.target.interactable) {
     return;
   }
 
@@ -68,9 +68,6 @@ module.exports = async function handleSpells(event, world, worldState) {
       if (event.target.unlocksTransition) {
         unlockTransition(event.target.unlocksTransition);
       }
-
-      world.stopUsingTool();
-      world.enablePlayerMovement();
     });
   };
 
@@ -78,12 +75,6 @@ module.exports = async function handleSpells(event, world, worldState) {
 
   const unlock = (event) => {
     openDoor(event.target.group || event.target.key);
-
-    // Stop using tool after a second
-    world.wait(1000).then(() => {
-      world.stopUsingTool();
-      world.enablePlayerMovement();
-    });
   };
 
   const allObstacleSpellRequirementsAreMet = (group) => {
@@ -152,7 +143,7 @@ module.exports = async function handleSpells(event, world, worldState) {
     return allRequirementsAreMet;
   };
 
-  const runSpell = (event) => {
+  const runSpell = async (event) => {
     if (
       !allObstacleSpellRequirementsAreMet(
         event.target.group || event.target.key
@@ -161,8 +152,8 @@ module.exports = async function handleSpells(event, world, worldState) {
       return;
     }
 
-    world.disablePlayerMovement();
-    world.useTool("wand");
+    const targetSpellColor = event.target.spell_color.trim().toUpperCase();
+    await useWand(world, SPELL_TYPE[targetSpellColor] || SPELL_TYPE.RED);
     spells[event.target.spell_type](event);
   };
 
