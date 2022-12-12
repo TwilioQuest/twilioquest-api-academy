@@ -3,7 +3,8 @@ const { MAGIC_API_ENDPOINT } = require("../../../../scripts/config");
 module.exports = async function (helper) {
   try {
     const { magicalPhrase } = helper.validationFields;
-    const correctMagicPhrase = await fetch(MAGIC_API_ENDPOINT);
+    const response = await fetch(MAGIC_API_ENDPOINT);
+    const correctMagicPhrase = await response.text();
 
     if (!magicalPhrase) {
       return helper.fail(

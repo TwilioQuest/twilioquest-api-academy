@@ -80,12 +80,16 @@ module.exports = async function (event, world) {
     unlockPairs.forEach(([objectiveKey, hiddenDoorKey]) => {
       if (
         event.objective === objectiveKey &&
-        !worldState.insideLovelaceTower.hiddenEntities.includes(hiddenDoorKey)
+        !worldState.hiddenEntities.includes(hiddenDoorKey)
       ) {
-        worldState.insideLovelaceTower.hiddenEntities.push(hiddenDoorKey);
+        worldState.hiddenEntities.push(hiddenDoorKey);
       }
     });
   }
+
+  worldState.hiddenEntities.forEach((hiddenEntityKey) => {
+    world.hideEntities(hiddenEntityKey);
+  });
 
   if (event.name === "mapDidLoad") {
     if (
