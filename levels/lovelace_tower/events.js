@@ -3,10 +3,11 @@ const { LOVELACE_TOWER_STATE_KEY } = require("../../scripts/config");
 const handleSpells = require("../../scripts/handleSpells");
 
 const INITIAL_STATE = {
+  destroyedEntities: [],
+  unlockedTransitions: [],
+  hiddenEntities: [],
+  spelledEntities: [],
   insideLovelaceTower: {
-    destroyedEntities: [],
-    unlockedTransitions: [],
-    hiddenEntities: [],
     usedSpellOnLibraryDoor: false,
     entities: {
       "api-door-1": {
@@ -22,7 +23,7 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_library"
                 );
-                event.target.setInteractable(false);
+                console.log("setting worldState");
                 worldState.insideLovelaceTower.usedSpellOnLibraryDoor = true;
               },
             },
@@ -32,9 +33,6 @@ const INITIAL_STATE = {
     },
   },
   insideLibrary: {
-    destroyedEntities: [],
-    unlockedTransitions: [],
-    hiddenEntities: [],
     usedSpellOnLibraryDoor: false,
     entities: {
       "api-door-1": {
@@ -50,7 +48,6 @@ const INITIAL_STATE = {
                 world.enableTransitionAreas(
                   ({ instance }) => instance.key === "exit_to_lovelace_corridor"
                 );
-                event.target.setInteractable(false);
                 worldState.insideLibrary.usedSpellOnLibraryDoor = true;
               },
             },
@@ -90,28 +87,26 @@ module.exports = async function (event, world) {
     });
   }
 
-  // Hide entities
-  [
-    ...worldState.insideLovelaceTower.hiddenEntities,
-    ...worldState.insideLibrary.hiddenEntities,
-  ].forEach((hiddenEntityKey) => {
-    world.hideEntities(hiddenEntityKey);
-  });
+  if (event.name === "mapDidLoad") {
+    if (
+      (event.mapName === "default" &&
+        worldState.insideLovelaceTower.usedSpellOnLibraryDoor) ||
+      (event.mapName === "library" &&
+        worldState.insideLibrary.usedSpellOnLibraryDoor)
+    ) {
+      world.forEachEntities("api-door-1", (door) => {
+        door.setInteractable(false);
+        door.spellable = false;
 
-  if (
-    (event.mapName === "default" &&
-      worldState.insideLovelaceTower.usedSpellOnLibraryDoor) ||
-    (event.mapName === "library" &&
-      worldState.insideLibrary.usedSpellOnLibraryDoor)
-  ) {
-    world.forEachEntities("api-door-1", (door) => {
-      door.setInteractable(false);
-      door.spellable = false;
+        if (door.state && door.state.fsm) {
+          door.state.fsm.action("open");
+        }
+      });
 
-      if (door.state && door.state.fsm) {
-        door.state.fsm.action("open");
-      }
-    });
+      world.destroyEntities(
+        ({ instance }) => instance.key === "api-door-1-sparkle"
+      );
+    }
   }
 
   if (event.name === "playerDidInteract") {
@@ -122,9 +117,12 @@ module.exports = async function (event, world) {
       );
     }
 
-    handleSpells(event, world, {
-      ...worldState,
-    });
+    handleSpells(event, world, worldState);
+
+    if (event.target.key === "api-door-1" && event.target.spellable) {
+      world.destroyEntities("api-door-1-sparkle");
+      event.target.setInteractable(false);
+    }
   }
 
   // Operator observations on barriers

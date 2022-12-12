@@ -175,8 +175,8 @@
                  "type":"player",
                  "visible":true,
                  "width":0,
-                 "x":676.409025215683,
-                 "y":426.938196492673
+                 "x":402,
+                 "y":978
                 }, 
                 {
                  "height":0,
@@ -2154,6 +2154,11 @@
                          "name":"disableBody",
                          "type":"bool",
                          "value":true
+                        }, 
+                        {
+                         "name":"key",
+                         "type":"string",
+                         "value":"api-door-1-sparkle"
                         }, 
                         {
                          "name":"zIndex",

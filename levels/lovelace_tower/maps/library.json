@@ -1448,7 +1448,7 @@
                         {
                          "name":"key",
                          "type":"string",
-                         "value":"door-sparkle"
+                         "value":"api-door-1-sparkle"
                         }, 
                         {
                          "name":"zIndex",
