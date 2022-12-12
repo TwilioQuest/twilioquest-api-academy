@@ -1529,8 +1529,8 @@
                  "type":"triggerArea",
                  "visible":true,
                  "width":54,
-                 "x":740.666666666667,
-                 "y":382.666666666667
+                 "x":741.333333333333,
+                 "y":387.333333333333
                 }, 
                 {
                  "gid":15396,
@@ -4426,7 +4426,7 @@
          "y":0
         }],
  "nextlayerid":62,
- "nextobjectid":919,
+ "nextobjectid":920,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.0",
