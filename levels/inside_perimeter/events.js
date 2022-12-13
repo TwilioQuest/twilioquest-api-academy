@@ -1,5 +1,7 @@
 const merge = require("lodash.merge");
-const { WORLD_STATE_KEY } = require("../../scripts/config");
+const { PRE_ACADEMY_STATE_KEY } = require("../../scripts/config");
+const handleSpells = require("../../scripts/handleSpells");
+const helperFunctions = require("../../scripts/helperFunctions");
 
 const LEVEL_STATE = {
   destroyedEntities: [],
@@ -17,6 +19,54 @@ const LEVEL_STATE = {
   insidePerimeter: {
     hasWand: false,
     enteredPerimeterFirstTime: false,
+    entities: {
+      bramble_path: {
+        spell: {
+          disappear: {
+            requirements: {
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(false);
+                  }
+                );
+
+                return true;
+              },
+              hasWand({ worldState }) {
+                return worldState.insidePerimeter.hasWand;
+              },
+              hasDisappearSpell({ event, worldState }) {
+                return worldState.spellsEarned.includes(
+                  event.target.spell_type
+                );
+              },
+            },
+            failureActions: {
+              hasWand({ world }) {
+                world.showNotification(
+                  "I should go find the toolshed and see if there is an extra wand inside!"
+                );
+              },
+              hasDisappearSpell({ world }) {
+                world.showNotification(
+                  "I think I need to learn a spell later to do anything here!"
+                );
+              },
+              disableInteraction({ event, world }) {
+                world.forEachEntities(
+                  ({ instance }) => instance.group === event.target.group,
+                  (bramble) => {
+                    bramble.setInteractable(true);
+                  }
+                );
+              },
+            },
+          },
+        },
+      },
+    },
   },
   insideCatacombs: {
     keySpellsObtained: [],
@@ -24,6 +74,33 @@ const LEVEL_STATE = {
     hasKey: false,
     hasPledgeScroll: false,
     tweenRunning: false,
+    entities: {
+      scroll_room_door: {
+        spell: {
+          unlock: {
+            requirements: {
+              hasKey({ worldState }) {
+                return worldState.insideCatacombs.hasKey;
+              },
+            },
+            successActions: {
+              hasKey({ world }) {
+                world.forEachEntities("scroll_room_door", (door) => {
+                  door.setInteractable(false);
+                });
+              },
+            },
+            failureActions: {
+              hasKey({ world }) {
+                world.showNotification(
+                  "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these Catacombs before returning."
+                );
+              },
+            },
+          },
+        },
+      },
+    },
   },
 };
 
@@ -59,102 +136,10 @@ const CLEAR_STATE = {
 };
 
 module.exports = async function (event, world) {
-  const worldState = merge(LEVEL_STATE, world.getState(WORLD_STATE_KEY));
-  //const worldState = CLEAR_STATE;
+  const worldState = merge(LEVEL_STATE, world.getState(PRE_ACADEMY_STATE_KEY));
 
-  console.log(`event: ${event.name}`);
-  console.log(`event target ${event.target}`);
-  console.log(worldState);
-
-  /*
-   *
-   * HELPER FUNCTION DEFINITIONS
-   *
-   */
-  const unlockObject = (group) => {
-    world.showEntities(
-      ({ instance }) => instance.group === group || instance.key == group
-    );
-    if (!worldState.unlockedEntities.includes(group))
-      worldState.unlockedEntities.push(group);
-  };
-
-  const unlockTransition = (group) => {
-    world.enableTransitionAreas(({ instance }) => instance.name === group);
-    if (!worldState.unlockedTransitions.includes(group))
-      worldState.unlockedTransitions.push(group);
-  };
-
-  const destroyObject = (group) => {
-    world.destroyEntities(
-      ({ instance }) => instance.group === group || instance.key == group
-    );
-    if (!worldState.destroyedEntities.includes(group))
-      worldState.destroyedEntities.push(group);
-  };
-
-  const unhackObject = (group) => {
-    world.forEachEntities(
-      ({ instance }) => instance.group === group || instance.key == group,
-      (entity) => {
-        entity.hackable = false;
-      }
-    );
-    if (!worldState.unhackableEntities.includes(group))
-      worldState.unhackableEntities.push(group);
-  };
-
-  const openDoor = (group) => {
-    world.forEachEntities(group, (door) => {
-      door.state.fsm.action("open");
-      // prevents door from being marked as "inRangeObject" for the Player and
-      // stops the exclamation point from showing up
-      door.interactable = false;
-      // prevents the player from casting spells on the door, which would cause
-      // an animation to play as though the player was opening the door, even though it was
-      // already open
-      door.spellable = false;
-    });
-  };
-
-  const applyDisappearTween = (group) => {
-    const { game } = world.__internals.level;
-
-    const tweenPromises = [];
-
-    world.forEachEntities(
-      ({ instance }) => instance.group === group || instance.key == group,
-      ({ sprite }) => {
-        const tweenPromise = new Promise((resolve) => {
-          const tween = game.add
-            .tween(sprite)
-            .to(
-              {
-                alpha: 0.6,
-              },
-              400, // time
-              Phaser.Easing.Exponential.In,
-              undefined,
-              0, // delay
-              1, // repeat once
-              true // yoyo
-            )
-            .to(
-              { alpha: 0 },
-              400, // time
-              Phaser.Easing.Exponential.In
-            );
-
-          tween.onComplete.add(resolve);
-          tween.start();
-        });
-
-        tweenPromises.push(tweenPromise);
-      }
-    );
-
-    return Promise.all(tweenPromises);
-  };
+  const { unlockObject, destroyObject, unhackObject, openDoor } =
+    helperFunctions(event, world, worldState);
 
   /*
    *
@@ -218,6 +203,9 @@ module.exports = async function (event, world) {
     if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
       world.grantItems(["magic_key"]);
       unlockObject("magic_key");
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
     }
   };
 
@@ -239,72 +227,6 @@ module.exports = async function (event, world) {
 
   /*
    *
-   * SPELL FUNCTION DEFINITIONS
-   *
-   */
-  const spells = {
-    disappear: (event) => disappear(event),
-    move: (event) => move(event),
-    unlock: (event) => unlock(event),
-  };
-
-  const disappear = (event) => {
-    applyDisappearTween(event.target.group).then(() => {
-      destroyObject(event.target.group);
-
-      if (event.target.unlocksObject) unlockObject(event.target.unlocksObject);
-      if (event.target.unlocksTransition)
-        unlockTransition(event.target.unlocksTransition);
-
-      world.stopUsingTool();
-      world.enablePlayerMovement();
-    });
-  };
-
-  const move = (event) => {}; // coming soon
-
-  const unlock = (event) => {
-    if (!worldState.insideCatacombs.hasKey) {
-      world.showNotification(
-        "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these catacombs before returning."
-      );
-      return;
-    }
-
-    openDoor("scroll_room_door");
-    // Forces the player's exclamation point to become hidden after opening the door
-    event.target.level.player.inRangeObject = null;
-
-    // Stop using tool after a second
-    world.wait(1000).then(() => {
-      world.stopUsingTool();
-      world.enablePlayerMovement();
-    });
-  };
-
-  const runSpell = (event) => {
-    if (!worldState.insidePerimeter.hasWand) {
-      world.showNotification(
-        "I should go find the toolshed and see if there is an extra wand inside!"
-      );
-      return;
-    }
-
-    if (!worldState.spellsEarned.includes(event.target.spell_type)) {
-      world.showNotification(
-        "I think I need to learn a spell later to do anything here!"
-      );
-      return;
-    }
-
-    world.disablePlayerMovement();
-    world.useTool("wand");
-
-    spells[event.target.spell_type](event);
-  };
-
-  /*
-   *
    * ITEM RELATED FUNCTION DEFINITIONS
    *
    */
@@ -314,12 +236,16 @@ module.exports = async function (event, world) {
   };
 
   const addMagicKey = (event) => {
+    if (!event.target.interactable) {
+      return;
+    }
+
     worldState.insideCatacombs.hasKey = true;
     if (!worldState.spellsEarned.includes("unlock"))
       worldState.spellsEarned.push("unlock");
     destroyObject("magic_key");
     world.showNotification(
-      "I've obtained the magic key, I should go and claim my pledge scroll!"
+      "I've obtained the magic key. I should go and claim my pledge scroll!"
     );
 
     // TODO: actually add item to inventory
@@ -330,7 +256,7 @@ module.exports = async function (event, world) {
     worldState.insideCatacombs.hasPledgeScroll = true;
     destroyObject("pledge_scroll");
     world.showNotification(
-      "I've obtained my pledge scroll. Time to head to the Academy building and present it to the headmaster."
+      "I've obtained my pledge scroll. Time to head to the Main Hall and choose my house."
     );
 
     world.grantItems(["pledge_scroll"]);
@@ -338,7 +264,6 @@ module.exports = async function (event, world) {
   };
 
   const determineHouse = () => {
-    console.log("determining house");
     const bestScore = Math.min(
       ...worldState.houses.map((house) => house.magicScore)
     );
@@ -354,18 +279,17 @@ module.exports = async function (event, world) {
     // current content. They'll learn their house later.
     // TODO: Update this notification on future release version.
     world.showNotification(
-      'I\'ve gotten my pledge scroll! That means everything in the <span class="highlight">API Academy Inside Perimeter</span> is completed for now!'
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!"
     );
     world.updateQuestStatus(
       world.__internals.level.levelName,
       world.__internals.level.levelProperties.questTitle,
-      "I got my pledge scroll! I'm done here until the rest of the API Academy grounds open up.",
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!",
       true
     );
   };
 
   const runAddItem = (event) => {
-    console.log(event);
     items[event.target.key](event);
   };
 
@@ -377,7 +301,6 @@ module.exports = async function (event, world) {
     worldState.insideCatacombs.tweenRunning = true;
 
     world.forEachEntities("scroll_viewpoint", async (viewpoint) => {
-      console.log(viewpoint);
       world.disablePlayerMovement();
 
       await world.tweenCameraToPosition({
@@ -403,7 +326,18 @@ module.exports = async function (event, world) {
    * Handles returning level to last object state
    */
   if (event.name === "mapDidLoad") {
-    console.log("Resetting map after load");
+    if (worldState.insideCatacombs.keySpellsObtained.length == 4) {
+      world.forEachEntities("magic_key", (magicKey) => {
+        magicKey.setInteractable(true);
+      });
+    }
+
+    if (
+      worldState.insideCatacombs.hasPledgeScroll &&
+      !worldState.unlockedTransitions.includes("exit_to_courtyard")
+    ) {
+      worldState.unlockedTransitions.push("exit_to_courtyard");
+    }
 
     // destroy all previously destroyed objects
     world.destroyEntities(({ instance }) =>
@@ -461,9 +395,7 @@ module.exports = async function (event, world) {
    * Handles object interactions
    */
   if (event.name === "playerDidInteract") {
-    console.log(`Interacting with ${event.target.key}`);
-
-    if (event.target.spellable) runSpell(event);
+    handleSpells(event, world, worldState);
     if (event.target.notify) runObjectNotification(event);
     if (event.target.npc) runNpcChecks(event);
     if (event.target.item) runAddItem(event);
@@ -495,5 +427,14 @@ module.exports = async function (event, world) {
     }
   }
 
-  world.setState(WORLD_STATE_KEY, worldState);
+  if (worldState.insideCatacombs.hasPledgeScroll) {
+    world.updateQuestStatus(
+      world.__internals.level.levelName,
+      world.__internals.level.levelProperties.questTitle,
+      "I got my pledge scroll! I should head to the Main Hall to choose my house now!",
+      true
+    );
+  }
+
+  world.setState(PRE_ACADEMY_STATE_KEY, worldState);
 };
