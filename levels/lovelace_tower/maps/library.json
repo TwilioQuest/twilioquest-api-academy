@@ -1322,6 +1322,11 @@
                          "name":"key",
                          "type":"string",
                          "value":"fredricNote"
+                        }, 
+                        {
+                         "name":"zIndex",
+                         "type":"int",
+                         "value":-1000
                         }],
                  "rotation":0,
                  "type":"",
