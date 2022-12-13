@@ -23,17 +23,31 @@ const LEVEL_STATE = {
       bramble_path: {
         spell: {
           disappear: {
-            requirements: {
-              disableInteraction({ event, world }) {
-                world.forEachEntities(
-                  ({ instance }) => instance.group === event.target.group,
-                  (bramble) => {
-                    bramble.setInteractable(false);
-                  }
-                );
+            preRequirementCheckCallback({ event, world }) {
+              world.forEachEntities(
+                ({ instance }) => instance.group === event.target.group,
+                (bramble) => {
+                  bramble.setInteractable(false);
+                }
+              );
+            },
+            postRequirementCheckCallback({
+              event,
+              world,
+              allRequirementsAreMet,
+            }) {
+              if (allRequirementsAreMet) {
+                return;
+              }
 
-                return true;
-              },
+              world.forEachEntities(
+                ({ instance }) => instance.group === event.target.group,
+                (bramble) => {
+                  bramble.setInteractable(true);
+                }
+              );
+            },
+            requirements: {
               hasWand({ worldState }) {
                 return worldState.insidePerimeter.hasWand;
               },
@@ -52,14 +66,6 @@ const LEVEL_STATE = {
               hasDisappearSpell({ world }) {
                 world.showNotification(
                   "I think I need to learn a spell later to do anything here!"
-                );
-              },
-              disableInteraction({ event, world }) {
-                world.forEachEntities(
-                  ({ instance }) => instance.group === event.target.group,
-                  (bramble) => {
-                    bramble.setInteractable(true);
-                  }
                 );
               },
             },
@@ -210,7 +216,9 @@ module.exports = async function (event, world) {
   };
 
   const runObjectiveEffects = ({ objective }) => {
-    objectives[objective]();
+    if (objectives[objective]) {
+      objectives[objective]();
+    }
   };
 
   const runUpdateMagicScore = ({ objective }) => {

@@ -123,6 +123,11 @@ module.exports = async function handleSpells(event, world, worldState) {
     );
     let allRequirementsAreMet = true;
 
+    if (entitySpell.preRequirementCheckCallback) {
+      // Used to execute logic prior to the requirements check, that has no bearing on whether the requirements are met or not
+      entitySpell.preRequirementCheckCallback({ event, world, worldState });
+    }
+
     // Invokes all of the requirement predicate functions for the target entity and calls the
     // associated success/failure method for each one if they exist
     for (let i = 0; i < entitySpellRequirementEntries.length; i++) {
@@ -138,6 +143,16 @@ module.exports = async function handleSpells(event, world, worldState) {
         allRequirementsAreMet = false;
         break;
       }
+    }
+
+    if (entitySpell.postRequirementCheckCallback) {
+      // Used to execute logic following the requirements check, that has no bearing on whether the requirements are met or not
+      entitySpell.postRequirementCheckCallback({
+        event,
+        world,
+        worldState,
+        allRequirementsAreMet,
+      });
     }
 
     return allRequirementsAreMet;
