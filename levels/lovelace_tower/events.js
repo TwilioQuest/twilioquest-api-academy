@@ -1,4 +1,6 @@
 const merge = require("lodash.merge");
+const updateQuestLogWhenComplete = require("../../scripts/updateQuestLogWhenComplete");
+const packageInfo = require("../../package.json");
 const { LOVELACE_TOWER_STATE_KEY } = require("../../scripts/config");
 const handleSpells = require("../../scripts/handleSpells");
 
@@ -232,6 +234,16 @@ module.exports = async function (event, world) {
       worldState.fredricNoteTriggered = true;
     }
   }
+
+  updateQuestLogWhenComplete({
+    notification:
+      'I\'ve completed everything in the <span class="highlight">API Academy House Gauntlet</span> for now!',
+    log: "I've completed everything in the API Academy House Gauntlet for now!",
+    event,
+    world,
+    worldStateKey: LOVELACE_TOWER_STATE_KEY,
+    version: packageInfo.version,
+  });
 
   world.setState(LOVELACE_TOWER_STATE_KEY, worldState);
 };
