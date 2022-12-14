@@ -78,35 +78,9 @@ const LEVEL_STATE = {
     keySpellsObtained: [],
     hasCredentials: false,
     hasKey: false,
+    openedScrollRoomDoor: false,
     hasPledgeScroll: false,
     tweenRunning: false,
-    entities: {
-      scroll_room_door: {
-        spell: {
-          unlock: {
-            requirements: {
-              hasKey({ worldState }) {
-                return worldState.insideCatacombs.hasKey;
-              },
-            },
-            successActions: {
-              hasKey({ world }) {
-                world.forEachEntities("scroll_room_door", (door) => {
-                  door.setInteractable(false);
-                });
-              },
-            },
-            failureActions: {
-              hasKey({ world }) {
-                world.showNotification(
-                  "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these Catacombs before returning."
-                );
-              },
-            },
-          },
-        },
-      },
-    },
   },
 };
 
@@ -172,6 +146,31 @@ module.exports = async function (event, world) {
 
   const runNpcChecks = (event) => {
     npcChecks[event.target.key]();
+  };
+
+  const openScrollRoomDoor = async () => {
+    if (worldState.insideCatacombs.hasKey) {
+      if (!event.target.interactable) {
+        return;
+      }
+
+      worldState.insideCatacombs.openedScrollRoomDoor = true;
+
+      world.disablePlayerMovement();
+      world.useTool("wand");
+      world.forEachEntities("scroll_room_door", (door) => {
+        door.setInteractable(false);
+      });
+      await world.wait(1000);
+      openDoor("scroll_room_door");
+      world.stopUsingTool();
+      await world.wait(1000);
+      world.enablePlayerMovement();
+    } else {
+      world.showNotification(
+        "I need the magic key to unlock the Scroll Room. I should activate all the house statues inside these Catacombs before returning."
+      );
+    }
   };
 
   /*
@@ -376,6 +375,14 @@ module.exports = async function (event, world) {
       unhackObject("statue_credentials");
     }
 
+    if (worldState.insideCatacombs.openedScrollRoomDoor) {
+      openDoor("scroll_room_door");
+
+      world.forEachEntities("scroll_room_door", (door) => {
+        door.setInteractable(false);
+      });
+    }
+
     // Adjust object dimensions
     world.forEachEntities(
       ({ instance }) => instance.layer === "upper",
@@ -405,6 +412,7 @@ module.exports = async function (event, world) {
     if (event.target.notify) runObjectNotification(event);
     if (event.target.npc) runNpcChecks(event);
     if (event.target.item) runAddItem(event);
+    if (event.target.key === "scroll_room_door") await openScrollRoomDoor();
   }
 
   /*
