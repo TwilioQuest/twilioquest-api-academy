@@ -25,10 +25,13 @@ const response = await fetch("some_url", {
   method: "GET",
 });
 
+// const textData = await response.text();
+// const jsonData = await response.json();
+
 console.log(response);
 ```
 
-Notice the `await` keyword here. The `fetch` function is asynchronous and must be awaited or passed a callback via promise chaining. The example is making a fetch request to a fake URL, but any valid URL would work! Also, pay attention to how we're configuring the request -- the second argument we're passing in is an object and our request uses [the properties](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters:~:text=A%20Request%20object.-,options,-Optional) of that object as the different parts of it's configuration.
+Notice the `await` keyword here. The `fetch` function is asynchronous and must be awaited or passed a callback via promise chaining. The example is making a fetch request to a fake URL, but any valid URL would work! Also, pay attention to how we're configuring the request -- the second argument we're passing in is an object and our request uses [the properties](https://developer.mozilla.org/en-US/docs/Web/API/fetch#parameters:~:text=A%20Request%20object.-,options,-Optional) of that object as the different parts of it's configuration. The example also has comments showing two ways you can parse the data received from the response, one for text and another for JSON. How you parse the response depends on the kind of data being sent to you.
 
 ```js
 const response = await fetch("some_url", {
@@ -50,8 +53,9 @@ async function getMagicalPhrase() {
   const response = await fetch("https://twilio.com/quest/magic", {
     method: "GET",
   });
+  const magicalPhrase = await response.text();
 
-  console.log(response);
+  console.log(magicalPhrase);
 }
 ```
 

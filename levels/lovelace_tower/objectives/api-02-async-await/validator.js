@@ -7,7 +7,7 @@ const assertTestCase = (testFunction) => async (input, expected) => {
   assert.strictEqual(
     testResult,
     expected,
-    `Expected "${expected}" from input "${input}", but received "${testResult}".`
+    `Expected "${expected}" but received "${testResult}".`
   );
 };
 

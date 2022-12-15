@@ -10,6 +10,7 @@
     }
   ],
   "rewards": {
-    "xp": 100
+    "xp": 100,
+    "items": ["spell_lovelace_divination"]
   }
 }
