@@ -18,7 +18,7 @@ Here the House Gauntlet grants you the privilege of reading House Lovelace's div
 </i>
 
 It looks like something has happened inside the secret Lovelace library: books have been torn from their shelves and scattered around the room; and the Divination Incantation has been corrupted! Let's put everything we've learned together and repair the House Lovelace inscription so that the Divination Spell will work once again!<br><br>
-We'll need to first `fetch` the corrupted inscription to see which parts need fixing. After that, we'll have to gather fragments from scrolls scattered throughout the library, combine their text as part of a string in the QuestIDE (making sure they're in the correct order). Finally, we'll need to send the repaired inscription to the "divination" endpoint via a `patch` request.
+We'll need to first `fetch` the corrupted inscription to see which parts need fixing. After that, we'll have to gather fragments from scrolls scattered throughout the library, combine their text as part of a string in the QuestIDE. Finally, we'll need to send the repaired inscription to the "divination" endpoint via a `patch` request.
 
 Here's an example of sending a `patch` request:
 
@@ -38,6 +38,6 @@ const jsonData = await response.json();
 console.log(jsonData);
 ```
 
-Create a function called `getAndPatchCorruptedInscription`, place the inscription fragments in the right order based on the response you get from the "divination" endpoint, then send the repaired inscription back to the "divination" endpoint using the "patch" method. Using `console.log` to print the response you get may prove useful here!
+Create a function called `getAndPatchCorruptedInscription`, fetch the corrupted inscription from the "divination" endpoint, find the parts of the inscription that are missing by searching through the fragments in the library and put them together in your QuestIDE, then send the repaired inscription back to the "divination" endpoint via a "patch" request along with the "guid". Using `console.log` to print the responses you get may prove useful here!
 
 Once you're all done, click the _HACK_ button!
