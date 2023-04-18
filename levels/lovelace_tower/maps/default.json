@@ -1012,7 +1012,7 @@
                         {
                          "name":"hackable",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"objectiveName",
@@ -1035,7 +1035,7 @@
                         {
                          "name":"hackable",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"objectiveName",
